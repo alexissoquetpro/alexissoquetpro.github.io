@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cyril, Dorine, l'état locatif de votre tunnel</title>
+<meta name="description" content="Votre tunnel en immeuble de rapport : 5 lots à ouvrir. Pour Les Investisseurs Sereins, par Alexis.">
+<meta property="og:title" content="Cyril, Dorine, l'état locatif de votre tunnel">
+<meta property="og:description" content="5 lots, du rez-de-chaussée aux combles. Trois attendent leurs locataires.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Mada:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#0D3B3E; --sky-2:#18565A; --night:#082A2C;
+  --stone:#EADBC8; --stone-2:#DDC9B1; --stone-line:#BFA688;
+  --slate:#3B5254; --slate-2:#2E4446;
+  --paper:#F7F1E8; --ink:#17282A; --muted:#4D5D5B;
+  --glow:#F4A340; --glow-soft:#FFD9A0; --glow-ink:#8F4A0B;
+  --mint:#A8D5CB; --shutter:#6F938D; --shutter-2:#5B7E78;
+  --font-title:"Libre Baskerville", Georgia, serif;
+  --font-body:"Mada", system-ui, sans-serif;
+  --maxw:1140px; --gutter:20px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--font-body);overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--font-title);font-weight:700;line-height:1.12;margin:0 0 .5em;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(1.9rem,7.4vw,3.4rem)}
+h2{font-size:clamp(1.6rem,5.6vw,2.7rem)}
+p{margin:0 0 1em}
+a{color:inherit}
+q{quotes:"«\00a0" "\00a0»"}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+:focus-visible{outline:3px solid var(--glow);outline-offset:3px}
+.src{display:inline-flex;align-items:center;min-height:48px;margin-right:16px;font-size:.92rem;font-weight:600;color:var(--glow-ink);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.src:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:999px;background:var(--glow);color:var(--night);font:800 1.02rem var(--font-body);text-decoration:none}
+.btn:hover{background:var(--glow-soft)}
+.where{font:600 .95rem/1.3 var(--font-body);color:var(--muted);margin:0 0 10px}
+
+/* ---------- 1. La façade ---------- */
+.scene{background:linear-gradient(180deg,var(--night) 0%,var(--sky) 45%,var(--sky-2) 100%);color:#fff;padding:40px 0 0}
+.scene-grid{display:grid;gap:26px;grid-template-areas:"txt" "fac" "unl"}
+.s-txt{grid-area:txt}
+.said{font:italic 400 1.05rem/1.45 var(--font-title);color:var(--glow-soft);margin:0 0 4px}
+.said-src{color:var(--mint);font-size:.9rem;margin:0 0 18px}
+.said-src a{display:inline-flex;align-items:center;min-height:48px;color:var(--mint);text-decoration:underline;text-underline-offset:3px}
+.lede{color:#DCEBE7;max-width:30em;font-size:1.08rem}
+.count{font:800 1rem var(--font-body);color:var(--mint);margin:0}
+.count b{color:#fff;font-size:1.25rem}
+
+.facade{grid-area:fac;width:100%;max-width:560px;margin:0 auto}
+.roof{width:100%;height:auto}
+.lots{list-style:none;margin:0;padding:0;display:flex;flex-direction:column-reverse}
+.lot{background:var(--stone);border-bottom:6px solid var(--stone-line);box-shadow:inset 0 -2px 0 var(--stone-2);color:var(--ink);position:relative}
+.lot::before,.lot::after{content:"";position:absolute;top:0;bottom:0;width:12px;background:repeating-linear-gradient(180deg,var(--stone-2) 0 22px,var(--stone) 22px 26px)}
+.lot::before{left:0}.lot::after{right:0}
+.lot[data-l="5"]{background:var(--slate);border-bottom-color:var(--stone-line);color:#fff}
+.lot[data-l="5"]::before,.lot[data-l="5"]::after{display:none}
+.lot[data-l="1"]{border-bottom:10px solid #9F8B74}
+.lot-btn{width:100%;display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;min-height:108px;padding:16px 22px 12px;background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}
+@media (hover:hover){.js .lot:not(.on) .lot-btn:hover .win{box-shadow:0 0 0 3px var(--glow)}}
+.plate{display:grid;gap:2px}
+.plate-n{font-size:.82rem;font-weight:600;color:var(--muted)}
+.lot[data-l="5"] .plate-n{color:#D4E3E0}
+.plate-name{font:700 .9rem/1.15 var(--font-title)}
+@media (max-width:719px){.lot-btn{grid-template-columns:108px 1fr}.win{width:40px}}
+@media (min-width:720px){.plate-name{font-size:1rem}}
+.tag{justify-self:start;margin-top:5px;font:800 .82rem/1 var(--font-body);padding:5px 9px;border-radius:4px}
+[data-s="loue"] .tag{background:var(--glow);color:var(--night)}
+[data-s="vacant"] .tag{background:var(--night);color:#fff}
+[data-s="travaux"] .tag{background:#F2C14E;color:var(--night);border-bottom:3px solid #17282A}
+.wins{display:flex;justify-content:space-around;align-items:flex-end;gap:8px;position:relative}
+.win{position:relative;width:44px;height:62px;border:4px solid #F8F1E6;border-bottom-width:7px;background:#27494A;overflow:hidden;transition:background .5s var(--ease),box-shadow .5s var(--ease)}
+.win.arch{border-radius:22px 22px 0 0}
+.win.shop{width:58px;height:70px}
+.win.door{width:46px;height:88px;border-radius:23px 23px 0 0;background:#1E5A5D;border-color:#F8F1E6}
+.win.luc{width:42px;height:54px;border-radius:21px 21px 0 0;border-color:#E6D7C2}
+.win::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,var(--shutter) 0 5px,var(--shutter-2) 5px 7px);transition:opacity .5s var(--ease)}
+.win::before{opacity:0}
+.js .lot:not(.on) .win::before{opacity:1}
+.win.door::before{background:repeating-linear-gradient(90deg,#1E5A5D 0 10px,#174A4C 10px 12px)}
+.rail{position:absolute;left:4%;right:4%;bottom:-4px;height:14px;background:repeating-linear-gradient(90deg,#2C3B3C 0 2px,transparent 2px 9px);border-top:3px solid #2C3B3C;pointer-events:none}
+.pancarte{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-4deg);background:#fff;color:var(--glow-ink);border:2px solid var(--glow);font:800 .78rem/1 var(--font-body);padding:6px 8px;white-space:nowrap;box-shadow:2px 3px 0 rgba(0,0,0,.25)}
+.js .lot:not(.on) .pancarte,.js .lot:not(.on) .tag,.js .lot:not(.on) .lot-say{display:none}
+.lot-say{margin:0;padding:0 22px 16px;font-size:.98rem;line-height:1.5}
+.lot[data-l="5"] .lot-say{color:#EEF5F3}
+/* états */
+[data-s="loue"] .win:not(.door){background:radial-gradient(circle at 50% 38%,#FFF1D2 0%,var(--glow-soft) 35%,var(--glow) 100%);box-shadow:0 0 18px rgba(244,163,64,.55)}
+[data-s="vacant"] .win{background:#0E2A2C}
+[data-s="travaux"] .win{background:linear-gradient(45deg,transparent 44%,#F2C14E 44% 56%,transparent 56%),linear-gradient(-45deg,transparent 44%,#F2C14E 44% 56%,transparent 56%),#C9D3CF}
+.ground{height:14px;background:#9F8B74;border-radius:0 0 4px 4px;opacity:.6}
+.unlock{grid-area:unl;background:var(--paper);color:var(--ink);border-radius:6px;padding:20px 20px 22px;margin-bottom:40px;border-left:8px solid var(--glow)}
+.unlock .big{font:700 1.25rem/1.3 var(--font-title);margin:0 0 .3em}
+.js .unlock[hidden]{display:none}
+
+/* ---------- Arrivées ---------- */
+.locked .gated{display:none}
+.js [data-in]{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js [data-in].in{opacity:1;transform:none}
+.js [data-d="1"]{transition-delay:.12s}.js [data-d="2"]{transition-delay:.24s}.js [data-d="3"]{transition-delay:.36s}
+
+/* ---------- 2. Les murs ---------- */
+.murs{padding:80px 0 56px}
+.m-list{display:grid;gap:8px;margin-top:22px}
+.m-item{padding:20px 0 6px;border-top:3px double var(--stone-line)}
+.m-item q{display:block;font:700 clamp(1.2rem,3.6vw,1.6rem)/1.25 var(--font-title);margin-bottom:8px}
+.m-item p{color:var(--muted);margin:0}
+
+/* ---------- 3. Les 3 lots ---------- */
+.lot-sec{padding:84px 0;overflow:hidden}
+.lot-sec.dark{background:var(--sky);color:#fff}
+.lot-sec.dark .where{color:var(--mint)}
+.lot-sec.dark .src{color:var(--glow-soft)}
+.lot-sec.dark .src:hover{color:#fff}
+.lot-sec.dark .lab{color:var(--mint)}
+.lot-sec.stone{background:var(--stone)}
+.grid2{display:grid;gap:36px}
+.stamp{display:inline-block;font:800 .95rem/1 var(--font-body);padding:7px 12px;border-radius:4px;margin-bottom:14px;background:var(--night);color:#fff}
+.stamp.tr{background:#F2C14E;color:var(--night);border-bottom:5px solid #17282A}
+.dark .stamp{background:#fff;color:var(--night)}
+.lab{font:800 .9rem var(--font-body);color:var(--glow-ink);margin:0 0 6px}
+.quote{border-left:4px solid var(--glow);padding:2px 0 2px 14px;margin:0 0 2px}
+.quote q{font-weight:600}
+.cost{font:700 clamp(1.05rem,2.8vw,1.25rem)/1.45 var(--font-title);margin:18px 0}
+.change{background:var(--glow);color:var(--night);border-radius:4px;padding:16px 18px;font-weight:600}
+.change .lab{color:var(--night)}
+.lock{display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px 14px;border:2px dashed currentColor;border-radius:4px;opacity:.85;font-weight:600}
+.lock .bars{flex:1;display:grid;gap:6px;filter:blur(2.5px);opacity:.45}
+.lock .bars span{display:block;height:7px;border-radius:7px;background:currentColor}
+.lock .bars span:nth-child(2){width:65%}
+.lock-txt{flex:2}
+/* visuel 1 : la porte */
+.porte{max-width:280px;margin:0 auto}
+.porte text{font-family:var(--font-body)}
+/* visuel 2 : l'annonce */
+.annonce{max-width:340px;margin:0 auto;background:#fff;color:var(--ink);border-radius:4px;box-shadow:8px 8px 0 var(--night);transform:rotate(-1.5deg);overflow:hidden}
+.an-head{background:var(--glow);color:var(--night);font:800 1rem var(--font-body);padding:10px 16px}
+.an-photo{height:120px;background:repeating-linear-gradient(45deg,#EFE6D8 0 10px,#E4D7C4 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+.an-body{padding:14px 16px 16px}
+.an-title{font:700 1.05rem/1.25 var(--font-title);margin:0 0 10px}
+.an-row{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #E6DCCD;padding:7px 0;font-size:.94rem}
+.an-row span:last-child{font-weight:800}
+/* visuel 3 : l'interphone */
+.interphone{max-width:300px;margin:0 auto;background:linear-gradient(160deg,#C9A86A,#A98848);border-radius:10px;padding:18px 16px 20px;box-shadow:inset 0 0 0 3px #8C6E36,6px 6px 0 rgba(0,0,0,.18)}
+.grille{height:34px;border-radius:6px;margin-bottom:14px;background:radial-gradient(circle,#5A4520 2px,transparent 2.5px) 0 0/10px 10px,#B8975A}
+.nom{display:flex;align-items:center;gap:10px;background:#F8F1E6;border-radius:4px;padding:8px 10px;margin-bottom:8px;color:var(--ink);font-size:.95rem}
+.nom b{flex:1}
+.nom small{color:var(--muted);font-weight:600}
+.nom i{flex:none;width:18px;height:18px;border-radius:50%;background:#7B5F2C;box-shadow:inset 0 -2px 0 #5A4520}
+.v-note{text-align:center;font-size:.92rem;margin-top:14px;color:var(--muted)}
+.dark .v-note{color:#CFE3DF}
+
+/* ---------- 4. Aperçu ---------- */
+.apercu{padding:84px 0;background:var(--paper)}
+.ap-grid{display:grid;gap:34px;align-items:center}
+.maquette{max-width:320px;margin:0 auto;background:#fff;border:2px solid var(--ink);border-radius:6px;padding:20px 18px 22px;box-shadow:10px 10px 0 var(--sky)}
+.maquette .t{font:700 1.15rem/1.2 var(--font-title);margin:0 0 4px}
+.maquette .st{font-weight:600;color:var(--glow-ink);margin:0 0 12px}
+.flou{filter:blur(4px);user-select:none;pointer-events:none}
+.flou i{display:block;height:9px;border-radius:9px;background:#D9CDBB;margin:0 0 8px}
+.flou .w8{width:80%}.flou .w6{width:60%}.flou .w9{width:92%}
+.flou .vid{height:96px;border-radius:6px;background:var(--sky);margin:12px 0;position:relative}
+.flou .vid::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-40%,-50%);border-left:22px solid var(--glow);border-top:14px solid transparent;border-bottom:14px solid transparent}
+.flou .q{height:44px;border-radius:4px;border-left:5px solid var(--glow);background:#F3EBDF;margin:10px 0}
+.flou .p{height:44px;border-radius:999px;background:var(--glow);margin-top:12px}
+
+/* ---------- 5. Fin ---------- */
+.fin{padding:88px 0 80px;text-align:center;background:linear-gradient(180deg,var(--sky) 0%,var(--night) 100%);color:#fff}
+.fin p{max-width:32em;margin-left:auto;margin-right:auto;color:#DCEBE7}
+.mini{width:150px;margin:0 auto 26px}
+.sign{font:italic 700 2.4rem var(--font-title);margin:24px 0 0;color:#fff}
+footer{padding:24px 0 34px;font-size:.85rem;color:var(--muted)}
+
+@media (min-width:720px){
+  body{font-size:18px}
+  .scene{padding-top:60px}
+  .lot-btn{grid-template-columns:130px 1fr;padding:18px 30px 14px}
+  .lot-say{padding:0 30px 18px 170px}
+  .win{width:54px;height:74px}
+  .win.shop{width:78px;height:82px}
+  .win.door{width:56px;height:100px;border-radius:28px 28px 0 0}
+  .win.luc{width:50px;height:62px}
+  .m-list{grid-template-columns:repeat(3,1fr);gap:30px}
+  .grid2{grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}
+  .flip .grid2{grid-template-columns:.75fr 1.25fr}
+  .flip .visual{order:-1}
+  .ap-grid{grid-template-columns:1fr 1fr;gap:60px}
+}
+@media (min-width:1000px){
+  .scene-grid{grid-template-columns:1fr 560px;grid-template-areas:"txt fac" "unl fac";column-gap:56px;align-items:start}
+  .s-txt{padding-top:30px}
+  .facade{margin-bottom:0}
+  .unlock{align-self:start}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<main>
+  <!-- 1. LA FAÇADE : 5 lots à ouvrir -->
+  <section class="scene" aria-labelledby="h1">
+    <div class="wrap scene-grid">
+      <div class="s-txt">
+        <p class="said">« Tous les chiffres de notre immeuble 1 ! »</p>
+        <p class="said-src"><a href="https://www.instagram.com/p/Df945mwOccE/" target="_blank" rel="noopener">Votre reel du 20 novembre, 9 313 vues</a></p>
+        <h1 id="h1">Cyril, Dorine, votre tunnel aussi est un immeuble de rapport.</h1>
+        <p class="lede">5 lots, du rez-de-chaussée aux combles. Ouvrez chaque fenêtre.</p>
+        <p class="lede legende"><b>Loué</b> : ça tourne. <b>Vacant</b> : rien n'y attend vos visiteurs. <b>En travaux</b> : c'est là, mais pas fini.</p>
+        <p class="count" aria-live="polite"><b id="cnt">0</b> / 5 lots ouverts</p>
+      </div>
+
+      <div class="facade">
+        <svg class="roof" viewBox="0 0 560 74" aria-hidden="true">
+          <rect x="92" y="4" width="34" height="40" fill="#9F8B74"/><rect x="88" y="0" width="42" height="8" fill="#BFA688"/>
+          <rect x="436" y="10" width="30" height="34" fill="#9F8B74"/><rect x="432" y="6" width="38" height="8" fill="#BFA688"/>
+          <path d="M58 40 L502 40 L548 74 L12 74 Z" fill="#2E4446"/>
+          <rect x="54" y="36" width="452" height="6" fill="#1F3233"/>
+        </svg>
+        <ol class="lots">
+          <li class="lot" data-l="1" data-s="loue">
+            <button class="lot-btn" type="button" aria-expanded="false" aria-controls="say1">
+              <span class="plate"><span class="plate-n">Rez-de-chaussée</span><span class="plate-name">Se faire connaître</span><span class="tag">Loué</span></span>
+              <span class="wins" aria-hidden="true"><span class="win shop"></span><span class="win door"></span><span class="win shop"></span></span>
+            </button>
+            <p class="lot-say" id="say1">365 épisodes de podcast et votre reel «&nbsp;immeuble&nbsp;1&nbsp;» à 9&nbsp;313&nbsp;vues. Les gens vous trouvent.</p>
+          </li>
+          <li class="lot" data-l="2" data-s="vacant">
+            <button class="lot-btn" type="button" aria-expanded="false" aria-controls="say2">
+              <span class="plate"><span class="plate-n">1er étage</span><span class="plate-name">Entre deux challenges</span><span class="tag">Vacant</span></span>
+              <span class="wins" aria-hidden="true"><span class="win"></span><span class="win"></span><span class="win"></span><span class="pancarte">À louer</span></span>
+            </button>
+            <p class="lot-say" id="say2">Le dernier challenge est fini depuis le 2 octobre. Votre bio mène à une liste d'attente, sans date. Personne n'a de raison de rester.</p>
+          </li>
+          <li class="lot" data-l="3" data-s="travaux">
+            <button class="lot-btn" type="button" aria-expanded="false" aria-controls="say3">
+              <span class="plate"><span class="plate-n">2e étage</span><span class="plate-name">Le challenge</span><span class="tag">En travaux</span></span>
+              <span class="wins" aria-hidden="true"><span class="win arch"></span><span class="win arch"></span><span class="win arch"></span><span class="rail"></span></span>
+            </button>
+            <p class="lot-say" id="say3">Il existe : 5 jours en live. Mais vos meilleures preuves, Caroline, Margaux, Benoît, Adama, restent dans le podcast. Pas sur la page.</p>
+          </li>
+          <li class="lot" data-l="4" data-s="vacant">
+            <button class="lot-btn" type="button" aria-expanded="false" aria-controls="say4">
+              <span class="plate"><span class="plate-n">3e étage</span><span class="plate-name">Le Club</span><span class="tag">Vacant</span></span>
+              <span class="wins" aria-hidden="true"><span class="win"></span><span class="win"></span><span class="win"></span><span class="pancarte">À louer</span></span>
+            </button>
+            <p class="lot-say" id="say4">Deux phrases et un bouton d'appel. Personne ne peut le visiter avant d'appeler.</p>
+          </li>
+          <li class="lot" data-l="5" data-s="loue">
+            <button class="lot-btn" type="button" aria-expanded="false" aria-controls="say5">
+              <span class="plate"><span class="plate-n">Combles</span><span class="plate-name">Les offres au-dessus</span><span class="tag">Loué</span></span>
+              <span class="wins" aria-hidden="true"><span class="win luc"></span><span class="win luc"></span></span>
+            </button>
+            <p class="lot-say" id="say5">Premium, VIP, diagnostic 1:1. Et Caroline, ex-membre devenue coach.</p>
+          </li>
+        </ol>
+        <div class="ground" aria-hidden="true"></div>
+      </div>
+
+      <div class="unlock" id="unlock" hidden>
+        <p class="big">2 lots loués, 2 vacants, 1 en travaux.</p>
+        <p>Trois lots attendent leurs locataires.</p>
+        <a class="btn" href="#murs">Visiter la suite</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CE QUI MARCHE -->
+  <section class="murs gated" id="murs" aria-labelledby="h-murs">
+    <div class="wrap">
+      <h2 id="h-murs" data-in>Les murs sont solides.</h2>
+      <div class="m-list">
+        <div class="m-item" data-in>
+          <q>365 épisodes.</q>
+          <p>Depuis mars 2022. Les derniers renvoient vers votre plan d'action. <a class="src" href="https://podcasts.audiomeans.fr/avenirserein-27b3c7e4b184" target="_blank" rel="noopener">Votre podcast</a></p>
+        </div>
+        <div class="m-item" data-in data-d="1">
+          <q>Acheter 3 immeubles de rapport.</q>
+          <p>Money Tree et Investir Simple ont reçu Dorine. <a class="src" href="https://podcast.ausha.co/money-tree/175-acheter-3-immeubles-de-rapport-et-atteindre-sa-liberte-financiere-replay-dorine-hipp" target="_blank" rel="noopener">Money Tree #175</a><a class="src" href="https://podcasts.apple.com/cd/podcast/investir-simple/id1531608620" target="_blank" rel="noopener">Investir Simple</a></p>
+        </div>
+        <div class="m-item" data-in data-d="2">
+          <q>Libre financièrement à deux en 18 mois.</q>
+          <p>Caroline, ancienne membre, aujourd'hui coach du Club. <a class="src" href="https://podcasts.audiomeans.fr/avenirserein-27b3c7e4b184/316-interview-libre-financierement-a-deux-en-18-mois-avec-caroline-13a03ad2" target="_blank" rel="noopener">Épisode 316</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. LES 3 LOTS -->
+  <div class="gated">
+    <section class="lot-sec dark" id="lot-2" aria-labelledby="h-l2">
+      <div class="wrap grid2">
+        <div>
+          <p class="where" data-in>Lot du 1er étage, garder le contact</p>
+          <span class="stamp" data-in>Vacant</span>
+          <h2 id="h-l2" data-in>Entre deux challenges, votre bio ouvre sur une salle d'attente.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote"><q>Entrez vos informations pour être informé de la sortie du challenge.</q> Ni date, ni programme, ni témoignage. Et votre plan d'action en 5 étapes n'est pas en bio.</p>
+            <a class="src" href="https://challenge.les-investisseurs-sereins.fr/" target="_blank" rel="noopener">La page de votre bio</a><a class="src" href="https://les-investisseurs-sereins.fr/formation-offerte/" target="_blank" rel="noopener">votre plan d'action</a>
+          </div>
+          <p class="cost" data-in>Votre reel le plus vu de novembre mène à une promesse sans date. Qui laisse son mail pour&nbsp;ça&nbsp;?</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Celui qui vous découvre un mardi repart avec quelque chose. Et il entend parler de vous jusqu'au prochain challenge.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si vous voulez.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <svg class="porte" viewBox="0 0 280 340" role="img" aria-label="La porte d'entrée de l'immeuble, fermée. Un mot scotché dessus : être informé de la sortie du challenge. Date : aucune.">
+            <rect x="10" y="20" width="260" height="320" fill="#EADBC8"/>
+            <path d="M40 340 L40 110 Q40 50 140 50 Q240 50 240 110 L240 340 Z" fill="#DDC9B1"/>
+            <path d="M54 340 L54 114 Q54 64 140 64 Q226 64 226 114 L226 340 Z" fill="#1E5A5D"/>
+            <line x1="140" y1="66" x2="140" y2="340" stroke="#174A4C" stroke-width="4"/>
+            <rect x="70" y="130" width="56" height="190" fill="none" stroke="#174A4C" stroke-width="3"/>
+            <rect x="154" y="130" width="56" height="190" fill="none" stroke="#174A4C" stroke-width="3"/>
+            <circle cx="128" cy="236" r="5" fill="#C9A86A"/><circle cx="152" cy="236" r="5" fill="#C9A86A"/>
+            <g transform="rotate(-4 140 168)">
+              <rect x="62" y="124" width="156" height="92" fill="#FFFDF8"/>
+              <rect x="112" y="116" width="56" height="16" fill="#F4A340" opacity=".85"/>
+              <text x="140" y="154" text-anchor="middle" font-size="13" font-weight="600" fill="#17282A">Être informé</text>
+              <text x="140" y="172" text-anchor="middle" font-size="13" font-weight="600" fill="#17282A">de la sortie du challenge</text>
+              <text x="140" y="200" text-anchor="middle" font-size="14" font-weight="800" fill="#8F4A0B">Date : aucune</text>
+            </g>
+          </svg>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="lot-sec flip" id="lot-4" aria-labelledby="h-l4">
+      <div class="wrap grid2">
+        <div>
+          <p class="where" data-in>Lot du 3e étage, vendre</p>
+          <span class="stamp" data-in>Vacant</span>
+          <h2 id="h-l4" data-in>Votre Club n'a pas d'annonce.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Sur « Nos offres », le Club tient en deux phrases. Trois offres, trois fois le même bouton : <q>RÉSERVER UN APPEL DÉCOUVERTE</q>. Vos CGV décrivent pourtant trois formules.</p>
+            <a class="src" href="https://les-investisseurs-sereins.fr/nos-offres/" target="_blank" rel="noopener">Nos offres</a><a class="src" href="https://challenge.les-investisseurs-sereins.fr/cgv/" target="_blank" rel="noopener">vos CGV</a>
+          </div>
+          <p class="cost" data-in>Votre futur membre arrive à l'appel sans savoir ce qu'il achète. L'appel fait tout le travail.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Il arrive à l'appel en sachant déjà que c'est pour lui.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si vous voulez.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="annonce" role="img" aria-label="L'annonce du lot Club : pas de photo, pour qui et programme vides, formules seulement dans les CGV, visite sur appel.">
+            <div class="an-head" aria-hidden="true">À louer, lot du 3e</div>
+            <div class="an-photo" aria-hidden="true"></div>
+            <div class="an-body" aria-hidden="true">
+              <p class="an-title">Le Club des Investisseurs Sereins</p>
+              <div class="an-row"><span>Pour qui</span><span>?</span></div>
+              <div class="an-row"><span>Programme</span><span>?</span></div>
+              <div class="an-row"><span>Formules</span><span>dans les CGV</span></div>
+              <div class="an-row"><span>Visite</span><span>sur appel</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lot-sec stone" id="lot-3" aria-labelledby="h-l3">
+      <div class="wrap grid2">
+        <div>
+          <p class="where" data-in>Lot du 2e étage, accompagner</p>
+          <span class="stamp tr" data-in>En travaux</span>
+          <h2 id="h-l3" data-in>Vos meilleures preuves ne s'écoutent qu'au casque.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Caroline, 3 immeubles en 18 mois, devenue coach du Club. Margaux, soignante. Benoît. Adama. Aucun de ces prénoms sur votre page de challenge, « Nos offres » ou votre page d'accueil.</p>
+            <a class="src" href="https://podcasts.audiomeans.fr/avenirserein-27b3c7e4b184/316-interview-libre-financierement-a-deux-en-18-mois-avec-caroline-13a03ad2" target="_blank" rel="noopener">Caroline</a><a class="src" href="https://podcasts.audiomeans.fr/avenirserein-27b3c7e4b184/278-equilibrer-sa-vie-de-soignant-grace-aux-investissements-avec-margaux-441b3fc5" target="_blank" rel="noopener">Margaux</a><a class="src" href="https://podcasts.audiomeans.fr/avenirserein-27b3c7e4b184/274-trouver-de-la-rentabilite-dans-un-secteur-tendu-avec-benoit-1c97cdb6" target="_blank" rel="noopener">Benoît</a><a class="src" href="https://podcasts.audiomeans.fr/avenirserein-27b3c7e4b184/234-interview-trouver-de-la-rentabilite-en-ile-de-france-avec-adama-bcb248e1" target="_blank" rel="noopener">Adama</a>
+          </div>
+          <p class="cost" data-in>Pour les croiser, il faut des dizaines d'épisodes.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Leurs histoires l'attendent, écrites, là où il hésite.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si vous voulez.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="interphone" role="img" aria-label="L'interphone de l'immeuble : Caroline, épisode 316 ; Margaux, épisode 278 ; Benoît, épisode 274 ; Adama, épisode 234.">
+            <div class="grille" aria-hidden="true"></div>
+            <div class="nom" aria-hidden="true"><b>Caroline</b><small>ép. 316</small><i></i></div>
+            <div class="nom" aria-hidden="true"><b>Margaux</b><small>ép. 278</small><i></i></div>
+            <div class="nom" aria-hidden="true"><b>Benoît</b><small>ép. 274</small><i></i></div>
+            <div class="nom" aria-hidden="true"><b>Adama</b><small>ép. 234</small><i></i></div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 4. APERÇU -->
+  <section class="apercu gated" aria-labelledby="h-ap">
+    <div class="wrap ap-grid">
+      <div>
+        <h2 id="h-ap" data-in>L'annonce qui manque.</h2>
+        <p data-in>La page du Club, dans votre voix, avec sa vidéo. Et vos membres dedans.</p>
+      </div>
+      <div class="maquette" data-in role="img" aria-label="Maquette floutée d'une page de vente du Club, avec une vidéo et des témoignages.">
+        <p class="t" aria-hidden="true">Le Club des Investisseurs Sereins</p>
+        <p class="st" aria-hidden="true">Classique, Premium, VIP</p>
+        <div class="flou" aria-hidden="true"><i class="w9"></i><i class="w8"></i><div class="vid"></div><i class="w6"></i><div class="q"></div><div class="q"></div><i class="w8"></i><div class="p"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FIN -->
+  <section class="fin gated" aria-labelledby="h-fin">
+    <div class="wrap">
+      <svg class="mini" viewBox="0 0 150 170" aria-hidden="true">
+        <path d="M18 34 L132 34 L144 52 L6 52 Z" fill="#2E4446"/>
+        <rect x="14" y="52" width="122" height="112" fill="#EADBC8"/>
+        <g fill="#F4A340"><rect x="30" y="38" width="14" height="12" rx="7"/><rect x="106" y="38" width="14" height="12" rx="7"/>
+        <rect x="28" y="60" width="18" height="20"/><rect x="66" y="60" width="18" height="20"/><rect x="104" y="60" width="18" height="20"/>
+        <rect x="28" y="88" width="18" height="20"/><rect x="66" y="88" width="18" height="20"/><rect x="104" y="88" width="18" height="20"/>
+        <rect x="28" y="116" width="18" height="20"/><rect x="66" y="116" width="18" height="20"/><rect x="104" y="116" width="18" height="20"/>
+        <rect x="24" y="142" width="26" height="22"/><rect x="100" y="142" width="26" height="22"/></g>
+        <path d="M66 164 L66 148 Q75 138 84 148 L84 164 Z" fill="#1E5A5D"/>
+      </svg>
+      <h2 id="h-fin" data-in>Vous connaissez les chiffres de l'immeuble 1. Maintenant, vous connaissez ceux-là aussi.</h2>
+      <p data-in>Si vous voulez qu'on regarde les trois autres lots ensemble, répondez à mon message.</p>
+      <p class="sign" data-in>Alexis</p>
+    </div>
+  </section>
+</main>
+
+<footer class="gated">
+  <div class="wrap">
+    Page préparée par Alexis pour Les Investisseurs Sereins. Ce n'est pas leur site officiel. Constats du 23/11/2026. Aucun résultat garanti. Tout investissement comporte un risque de perte en capital.
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('locked');
+
+  /* Arrivées au scroll */
+  var inEls=document.querySelectorAll('[data-in]');
+  if(!('IntersectionObserver' in window)||reduce){inEls.forEach(function(el){el.classList.add('in');});}
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.1});
+    inEls.forEach(function(el){io.observe(el);});
+  }
+
+  /* La façade : 5 lots à ouvrir */
+  var lots=document.querySelectorAll('.lot'),count=0,cnt=document.getElementById('cnt'),unlock=document.getElementById('unlock');
+  lots.forEach(function(li){
+    var b=li.querySelector('.lot-btn');
+    b.addEventListener('click',function(){
+      if(li.classList.contains('on'))return;
+      li.classList.add('on');b.setAttribute('aria-expanded','true');
+      count++;cnt.textContent=count;
+      if(count===lots.length){
+        unlock.hidden=false;root.classList.remove('locked');
+        unlock.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
