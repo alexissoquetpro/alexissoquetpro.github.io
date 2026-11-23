@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Caroline, cinq enveloppes pour vos inscrits</title>
+<meta name="description" content="Votre tunnel en cinq enveloppes de budget. Pour Caroline Rogers, par Alexis.">
+<meta property="og:title" content="Caroline, cinq enveloppes pour vos inscrits">
+<meta property="og:description" content="« Attribuez à chaque euro une destination. » Et à chaque inscrit ?">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Inter:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBF8F1; --table:#EEE5D2; --table-2:#E6DAC1;
+  --kraft:#D9BF94; --kraft-2:#CBAC7C; --kraft-dk:#8A6A3F; --card:#FFFDF7;
+  --ink:#1C2A28; --muted:#55605C;
+  --canard:#0D6359; --canard-dk:#0A3F39; --sun:#F6CB45; --stamp:#A83F2A;
+  --font-title:"Young Serif", Georgia, serif;
+  --font-body:"Inter", system-ui, sans-serif;
+  --font-hand:"Kalam", cursive;
+  --maxw:1120px; --gutter:20px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.65 var(--font-body);overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--font-title);font-weight:400;line-height:1.08;margin:0 0 .45em;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(2rem,7.6vw,4.1rem)}
+h2{font-size:clamp(1.7rem,5.6vw,3rem)}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+:focus-visible{outline:3px solid var(--canard);outline-offset:3px}
+.kicker{font:600 .78rem/1.3 var(--font-body);letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px;color:var(--muted)}
+.hand{font-family:var(--font-hand);font-weight:700}
+.src{display:inline-flex;align-items:center;min-height:48px;font-size:.88rem;font-weight:600;color:var(--canard);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere;margin-right:16px}
+.src:hover{color:var(--ink)}
+.btn{font:600 1rem var(--font-body);min-height:52px;display:inline-flex;align-items:center;justify-content:center;padding:0 26px;border-radius:999px;background:var(--canard);color:#fff;text-decoration:none;transition:transform .2s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+
+/* ---------- 1. La table et les 5 enveloppes ---------- */
+.scene{background:
+  repeating-linear-gradient(90deg,rgba(138,106,63,.035) 0 2px,transparent 2px 7px),
+  linear-gradient(180deg,var(--table) 0%,var(--table-2) 100%);
+  padding:44px 0 56px;min-height:100vh;min-height:100svh}
+.scene h1 q{quotes:"«\00a0" "\00a0»"}
+.scene h1 .and{display:block;color:var(--canard);margin-top:.2em}
+.lede{max-width:35em;font-size:1.05rem;color:#33403D}
+.lede .src{min-height:0;font-size:inherit;margin:0}
+.count-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin:26px 0 0}
+.note{font:700 1.45rem/1.15 var(--font-hand);color:var(--canard-dk);margin:0}
+.count{font:600 .9rem var(--font-body);color:var(--muted);margin:0}
+.count b{color:var(--ink)}
+.envs{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:6px}
+.env{border-top:1px dashed var(--kraft-dk)}
+.env-btn{width:100%;min-height:96px;display:flex;align-items:center;gap:18px;background:none;border:0;border-radius:14px;padding:12px 6px;cursor:pointer;color:inherit;text-align:left;font:inherit;-webkit-tap-highlight-color:transparent}
+@media (hover:hover){.env-btn:hover{background:rgba(255,253,247,.5)}.env-btn:hover .e{transform:translateY(-3px) rotate(-1deg)}}
+.e{flex:none;width:104px;overflow:visible;transition:transform .3s var(--ease)}
+.e-back{fill:var(--kraft-2)}
+.e-in{fill:#B99863}
+.e-void{fill:none;stroke:var(--kraft-dk);stroke-width:1.4;stroke-dasharray:4 4;opacity:0}
+.e-slip rect{fill:var(--card);stroke:#CDBB98;stroke-width:1}
+.e-slip .bill{fill:var(--canard);opacity:.85}
+.e-slip .bill2{fill:var(--sun)}
+.e-front{fill:var(--kraft);stroke:#BFA071;stroke-width:1}
+.e-flap{fill:#E2CBA4;stroke:#BFA071;stroke-width:1;transform-box:fill-box;transform-origin:50% 0;transition:transform .45s var(--ease)}
+.e-flap-in{fill:#C6A675;opacity:0;transition:opacity .2s .25s}
+.e-slip{transition:transform .55s .2s var(--ease)}
+.e-num{font:700 22px var(--font-hand);fill:var(--canard-dk)}
+.e-stamp{opacity:0;transition:opacity .3s .5s}
+.e-stamp circle{fill:none;stroke:var(--stamp);stroke-width:2.5}
+.e-stamp text{font:700 17px var(--font-hand);fill:var(--stamp)}
+.env-txt{flex:1;display:grid;gap:1px}
+.env-n{font:600 .74rem var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.env-name{font:400 1.2rem/1.2 var(--font-title)}
+.env-state{margin:0 0 14px;padding-left:128px;font-size:.95rem;color:#2E3A37}
+.tag{display:inline-block;font:700 1.12rem/1.1 var(--font-hand);padding:2px 10px 1px;border-radius:4px;margin:0 8px 4px 0}
+.env-state q{quotes:"«\00a0" "\00a0»"}
+.env[data-s="ok"] .tag{background:var(--canard);color:#fff}
+.env[data-s="case"] .tag{background:var(--sun);color:var(--ink)}
+.env[data-s="vide"] .tag{border:2px dashed var(--kraft-dk);color:var(--ink)}
+.env[data-s="adresse"] .tag{border:2px solid var(--stamp);color:var(--stamp)}
+.env[data-s="none"] .tag{background:var(--card);color:var(--muted)}
+.js .env:not(.on) .env-state{display:none}
+/* enveloppe ouverte (et toujours ouverte sans JS) */
+.env.on .e-flap,html:not(.js) .e-flap{transform:scaleY(0)}
+.env.on .e-flap-in,html:not(.js) .e-flap-in{opacity:1}
+.env.on .e-slip,html:not(.js) .e-slip{transform:translateY(-30px)}
+.env.on[data-s="case"] .e-slip,html:not(.js) [data-s="case"] .e-slip{transform:translate(14px,-22px) rotate(11deg)}
+.env.on .e-void,html:not(.js) .e-void{opacity:1}
+.env.on .e-stamp,html:not(.js) .e-stamp{opacity:1}
+.unlock{margin-top:22px;background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:20px 20px 22px;box-shadow:6px 6px 0 var(--kraft-dk)}
+.unlock .big{font:400 1.35rem/1.3 var(--font-title);margin:0 0 .8em}
+.js .unlock[hidden]{display:none}
+
+/* ---------- Arrivées ---------- */
+.locked .gated{display:none}
+.js [data-in]{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js [data-in="slide"]{transform:translateX(-36px) rotate(-2deg)}
+.js [data-in="zoom"]{transform:scale(.92)}
+.js [data-in].in{opacity:1;transform:none}
+.js [data-d="1"]{transition-delay:.12s}.js [data-d="2"]{transition-delay:.24s}.js [data-d="3"]{transition-delay:.36s}
+
+/* ---------- 2. Ce qui marche ---------- */
+.forces{padding:84px 0 56px}
+.forces h2 em{font-style:normal;color:var(--canard)}
+.f-list{display:grid;gap:18px;margin-top:28px}
+.f-item{padding:20px 0 6px;border-top:3px solid var(--canard)}
+.f-item q{display:block;font:400 clamp(1.4rem,4vw,2rem)/1.15 var(--font-title);quotes:none;margin-bottom:8px}
+.f-item p{color:var(--muted);margin:0}
+
+/* ---------- 3. Les 3 enveloppes ---------- */
+.pt{padding:90px 0;position:relative;overflow:hidden}
+.pt.kraft{background:var(--table)}
+.pt.first{border-top:10px solid var(--sun)}
+.grid2{display:grid;gap:36px}
+.tagline{display:inline-block;font:700 1.35rem/1.1 var(--font-hand);padding:3px 12px 2px;border-radius:4px;transform:rotate(-2deg);margin-bottom:14px}
+.tl-vide{border:2px dashed var(--kraft-dk)}
+.tl-adresse{border:2px solid var(--stamp);color:var(--stamp)}
+.tl-case{background:var(--sun)}
+.lab{font:600 .75rem var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:var(--canard);margin:0 0 6px}
+.quote{border-left:4px solid var(--kraft-2);padding:2px 0 2px 14px;margin:0 0 4px}
+.quote q{font-weight:600;quotes:"«\00a0" "\00a0»"}
+.cost{font:400 clamp(1.1rem,3vw,1.35rem)/1.4 var(--font-title);margin:18px 0}
+.change{background:var(--canard);color:#fff;border-radius:6px;padding:16px 18px;font-weight:500}
+.change .lab{color:#CFEAE5}
+.lock{display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px 14px;border:2px dashed var(--kraft-dk);border-radius:6px;font-weight:600;font-size:.95rem}
+.lock .bars{flex:1;display:grid;gap:6px;filter:blur(2.5px);opacity:.4}
+.lock .bars span{display:block;height:7px;border-radius:7px;background:var(--ink)}
+.lock .bars span:nth-child(2){width:65%}
+.lock-txt{flex:2}
+.v-note{text-align:center;font-size:.85rem;color:var(--muted);margin-top:12px}
+/* Visuel 1 : l'enveloppe vide et l'attente */
+.big-env{max-width:300px;margin:0 auto}
+.wait{display:flex;align-items:center;gap:10px;max-width:320px;margin:18px auto 0;font:700 1.15rem var(--font-hand)}
+.wait i{flex:1;border-top:2px dashed var(--kraft-dk)}
+.wait b{font-weight:700}
+.wait-mid{text-align:center;font-size:.88rem;color:var(--muted);margin:2px 0 0}
+/* Visuel 2 : l'adresse */
+.addr{position:relative;max-width:360px;margin:0 auto;background:var(--kraft);border-radius:4px;padding:26px 22px 30px;box-shadow:0 10px 24px rgba(60,40,10,.18);transform:rotate(-1.5deg)}
+.addr .stampbox{position:absolute;top:14px;right:16px;width:44px;height:54px;border:2px dashed var(--kraft-dk);border-radius:3px}
+.addr .to{font:700 1rem var(--font-hand);color:var(--kraft-dk);margin:0 0 6px}
+.addr ul{list-style:none;margin:0;padding:0;font:400 1.3rem/1.45 var(--font-hand);color:var(--ink)}
+.addr .rubber{position:absolute;right:12px;bottom:-14px;border:3px solid var(--stamp);color:var(--stamp);border-radius:6px;padding:2px 12px;font:700 1.3rem var(--font-hand);background:rgba(251,248,241,.85);transform:rotate(-8deg)}
+/* Visuel 3 : le trieur */
+.trieur{max-width:360px;margin:0 auto;display:grid;gap:10px}
+.slot{position:relative;background:var(--card);border:2px solid var(--ink);border-radius:4px 18px 4px 4px;padding:14px 16px;min-height:64px}
+.slot .slot-n{font:600 .72rem var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block}
+.slot .slot-t{font:700 1.2rem/1.3 var(--font-hand)}
+.slot.hot{background:var(--sun)}
+.slot.far{opacity:.75;border-style:dashed}
+.slot .mini{position:absolute;right:14px;top:-14px;width:54px}
+
+/* ---------- 4. Aperçu ---------- */
+.apercu{padding:90px 0;background:var(--paper)}
+.ap-grid{display:grid;gap:34px;align-items:center}
+.inbox{max-width:360px;margin:0 auto;background:var(--card);border:2px solid var(--ink);border-radius:6px;box-shadow:10px 10px 0 var(--kraft-2);overflow:hidden}
+.inbox .bar{background:var(--canard);color:#fff;font:600 .85rem var(--font-body);padding:10px 14px}
+.mail{display:flex;align-items:center;gap:12px;padding:12px 14px;border-top:1px solid #E3D9C5}
+.mail .env-ico{flex:none;width:36px}
+.mail .who{font:600 .85rem var(--font-body);display:block}
+.flou{flex:1;filter:blur(3.5px);user-select:none}
+.flou i{display:block;height:8px;border-radius:8px;background:#CDBB98;margin:6px 0 0}
+.flou .w6{width:60%}.flou .w8{width:82%}
+
+/* ---------- 5. Fin ---------- */
+.fin{padding:96px 0 84px;text-align:center;background:var(--canard-dk);color:#fff}
+.fin p{max-width:32em;margin-left:auto;margin-right:auto;color:#DCEDEA}
+.fin h2 em{font-style:normal;color:var(--sun)}
+.fin .closed{width:150px;margin:0 auto 24px}
+.sign{font:700 3rem var(--font-hand);margin:26px 0 0;color:#fff}
+footer{padding:24px 0 34px;font-size:.8rem;color:var(--muted)}
+
+@media (min-width:720px){
+  body{font-size:17px}
+  .scene{padding-top:64px}
+  .envs{grid-template-columns:repeat(5,1fr);gap:16px;margin-top:30px}
+  .env{border-top:0;display:flex;flex-direction:column}
+  .env-btn{flex-direction:column;align-items:center;text-align:center;gap:16px;padding:22px 8px 14px}
+  .e{width:132px}
+  .env-txt{justify-items:center}
+  .env-state{padding:0 6px;text-align:center}
+  .env-state .tag{display:table;margin:0 auto 8px}
+  .f-list{grid-template-columns:repeat(3,1fr);gap:30px}
+  .grid2{grid-template-columns:1.2fr .8fr;gap:64px;align-items:center}
+  .flip .grid2{grid-template-columns:.8fr 1.2fr}
+  .flip .visual{order:-1}
+  .ap-grid{grid-template-columns:1fr 1fr;gap:60px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<main>
+  <!-- 1. LA TABLE : 5 enveloppes à ouvrir -->
+  <section class="scene" aria-labelledby="h1">
+    <div class="wrap">
+      <p class="kicker">Pour Caroline · Simplement Caro</p>
+      <h1 id="h1"><q>Attribuez à chaque euro une destination.</q><span class="and">Et à chaque inscrit ?</span></h1>
+      <p class="lede">La phrase est sur <a class="src" href="https://carolinerogers.fr/app/" target="_blank" rel="noopener">la page de votre appli</a>. Alors j'ai rangé votre tunnel comme un budget : cinq enveloppes, une par étape. Ouvrez-les.</p>
+
+      <div class="count-row">
+        <p class="note" id="note">Commencez par celle que vous voulez.</p>
+        <p class="count" aria-live="polite"><b id="cnt">0</b> / 5 enveloppes ouvertes</p>
+      </div>
+
+      <ol class="envs">
+        <li class="env" data-s="case">
+          <button class="env-btn" type="button" aria-expanded="false" aria-controls="st1">
+            <svg class="e" viewBox="0 -40 120 124" aria-hidden="true"><rect class="e-back" x="4" y="10" width="112" height="70" rx="4"/><path class="e-flap-in" d="M4 10 L60 -26 L116 10Z"/><g class="e-slip"><rect x="14" y="14" width="92" height="56" rx="3"/><rect class="bill" x="22" y="20" width="76" height="8" rx="2"/><rect class="bill2" x="22" y="32" width="50" height="8" rx="2"/></g><path class="e-front" d="M4 22 L60 52 L116 22 V76 Q116 80 112 80 H8 Q4 80 4 76Z"/><path class="e-flap" d="M4 10 L60 50 L116 10Z"/><text class="e-num" x="16" y="74">1</text></svg>
+            <span class="env-txt"><span class="env-n">1 · Attirer</span><span class="env-name">YouTube</span></span>
+          </button>
+          <p class="env-state" id="st1"><span class="tag">Pleine, mauvaise case</span>48,8 k abonnés. Le premier lien sous votre dernière vidéo : Goodvest.</p>
+        </li>
+        <li class="env" data-s="ok">
+          <button class="env-btn" type="button" aria-expanded="false" aria-controls="st2">
+            <svg class="e" viewBox="0 -40 120 124" aria-hidden="true"><rect class="e-back" x="4" y="10" width="112" height="70" rx="4"/><path class="e-flap-in" d="M4 10 L60 -26 L116 10Z"/><g class="e-slip"><rect x="14" y="14" width="92" height="56" rx="3"/><rect class="bill" x="22" y="20" width="76" height="8" rx="2"/><rect class="bill" x="22" y="32" width="60" height="8" rx="2"/></g><path class="e-front" d="M4 22 L60 52 L116 22 V76 Q116 80 112 80 H8 Q4 80 4 76Z"/><path class="e-flap" d="M4 10 L60 50 L116 10Z"/><text class="e-num" x="16" y="74">2</text></svg>
+            <span class="env-txt"><span class="env-n">2 · Garder le contact</span><span class="env-name">La liste d'attente</span></span>
+          </button>
+          <p class="env-state" id="st2"><span class="tag">Pleine</span>Une date, un tarif réservé : 49 € au lieu de 69 €.</p>
+        </li>
+        <li class="env" data-s="vide">
+          <button class="env-btn" type="button" aria-expanded="false" aria-controls="st3">
+            <svg class="e" viewBox="0 -40 120 124" aria-hidden="true"><rect class="e-back" x="4" y="10" width="112" height="70" rx="4"/><path class="e-flap-in" d="M4 10 L60 -26 L116 10Z"/><rect class="e-void" x="14" y="14" width="92" height="40" rx="3"/><path class="e-front" d="M4 22 L60 52 L116 22 V76 Q116 80 112 80 H8 Q4 80 4 76Z"/><path class="e-flap" d="M4 10 L60 50 L116 10Z"/><text class="e-num" x="16" y="74">3</text></svg>
+            <span class="env-txt"><span class="env-n">3 · Accompagner</span><span class="env-name">Vos e-mails</span></span>
+          </button>
+          <p class="env-state" id="st3"><span class="tag">Vide</span>Pour avoir de vos nouvelles d'ici le 10 janvier, une seule porte : réserver l'appli.</p>
+        </li>
+        <li class="env" data-s="adresse">
+          <button class="env-btn" type="button" aria-expanded="false" aria-controls="st4">
+            <svg class="e" viewBox="0 -40 120 124" aria-hidden="true"><rect class="e-back" x="4" y="10" width="112" height="70" rx="4"/><path class="e-flap-in" d="M4 10 L60 -26 L116 10Z"/><g class="e-slip"><rect x="14" y="14" width="92" height="56" rx="3"/><rect class="bill" x="22" y="20" width="76" height="8" rx="2"/><rect class="bill2" x="22" y="32" width="40" height="8" rx="2"/></g><path class="e-front" d="M4 22 L60 52 L116 22 V76 Q116 80 112 80 H8 Q4 80 4 76Z"/><path class="e-flap" d="M4 10 L60 50 L116 10Z"/><text class="e-num" x="16" y="74">4</text><g class="e-stamp"><circle cx="96" cy="64" r="11"/><text x="91" y="70">?</text></g></svg>
+            <span class="env-txt"><span class="env-n">4 · Vendre</span><span class="env-name">La page de l'appli</span></span>
+          </button>
+          <p class="env-state" id="st4"><span class="tag">Mal adressée</span>Votre page parle de l'application. Celle qui la lit passe après.</p>
+        </li>
+        <li class="env" data-s="none">
+          <button class="env-btn" type="button" aria-expanded="false" aria-controls="st5">
+            <svg class="e" viewBox="0 -40 120 124" aria-hidden="true"><rect class="e-back" x="4" y="10" width="112" height="70" rx="4"/><path class="e-flap-in" d="M4 10 L60 -26 L116 10Z"/><path class="e-front" d="M4 22 L60 52 L116 22 V76 Q116 80 112 80 H8 Q4 80 4 76Z"/><path class="e-flap" d="M4 10 L60 50 L116 10Z"/><text class="e-num" x="16" y="74">5</text></svg>
+            <span class="env-txt"><span class="env-n">5 · Aller plus loin</span><span class="env-name">Après l'achat</span></span>
+          </button>
+          <p class="env-state" id="st5"><span class="tag">Pas encore étiquetée</span>Achat unique. Rien à remplir avant le 10 janvier.</p>
+        </li>
+      </ol>
+
+      <div class="unlock" id="unlock" hidden>
+        <p class="big">Deux pleines. Trois mal rangées. Et le 10 janvier approche.</p>
+        <a class="btn" href="#forces">Lire la suite</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CE QUI MARCHE -->
+  <section class="forces gated" id="forces" aria-labelledby="h-forces">
+    <div class="wrap">
+      <h2 id="h-forces" data-in>Ce qui est déjà <em>bien rangé.</em></h2>
+      <div class="f-list">
+        <div class="f-item" data-in>
+          <q>48,8 k</q>
+          <p>abonnés YouTube, et un rendez-vous tenu : les dimanches à 10 h 30. <a class="src" href="https://carolinerogers.fr/" target="_blank" rel="noopener">Votre site</a></p>
+        </div>
+        <div class="f-item" data-in data-d="1">
+          <q>Money Tree #336</q>
+          <p>Invitée pour raconter le CDI quitté pour YouTube. <a class="src" href="https://podcast.fr/episode/336-quitter-son-cdi-pour-youtube-quel-impact-sur-ses-investissements-immobiliers-caroline-rogers/" target="_blank" rel="noopener">L'épisode</a></p>
+        </div>
+        <div class="f-item" data-in data-d="2">
+          <q>Investir Day 2026</q>
+          <p>Parmi les intervenants. On vous écoute aussi hors de YouTube. <a class="src" href="https://www.instagram.com/p/Dew5PhUiQ_F/" target="_blank" rel="noopener">Votre post</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. LES 3 ENVELOPPES -->
+  <div class="gated">
+    <section class="pt kraft first" id="pt-1" aria-labelledby="h-p1">
+      <div class="wrap grid2">
+        <div>
+          <p class="kicker" data-in>Enveloppe 3 · Accompagner</p>
+          <span class="tagline tl-vide" data-in>L'enveloppe vide</span>
+          <h2 id="h-p1" data-in>Pour avoir de vos nouvelles, il faut réserver.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Sur tout votre site, un seul champ e-mail : <q>Réserver mon tarif de 49 €</q>. Ensuite : <q>Vous recevrez toutes les informations au lancement.</q> La sortie, c'est <q>dans 47 jours</q>.</p>
+            <a class="src" href="https://carolinerogers.fr/app/" target="_blank" rel="noopener">Votre page Simplement Budget</a><a class="src" href="https://carolinerogers.fr/ressources/" target="_blank" rel="noopener">vos ressources</a>
+          </div>
+          <p class="cost" data-in>Celles et ceux qui hésitent ne réservent pas encore. Alors jusqu'au lancement, ils n'entendent plus parler de l'appli.</p>
+          <div class="change" data-in="zoom"><p class="lab">Ce qui change</p>Des mails ouverts à tous, sans réserver, qui font monter l'attente jusqu'à la sortie.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si vous voulez.</span></div>
+        </div>
+        <div class="visual" data-in="zoom">
+          <svg class="big-env" viewBox="0 -40 120 124" role="img" aria-label="L'enveloppe Accompagner, ouverte et vide pour qui n'a pas réservé.">
+            <rect x="4" y="10" width="112" height="70" rx="4" fill="#CBAC7C"/>
+            <path d="M4 10 L60 -26 L116 10Z" fill="#C6A675"/>
+            <rect x="14" y="14" width="92" height="40" rx="3" fill="none" stroke="#8A6A3F" stroke-width="1.2" stroke-dasharray="4 4"/>
+            <path d="M4 22 L60 52 L116 22 V76 Q116 80 112 80 H8 Q4 80 4 76Z" fill="#D9BF94" stroke="#BFA071"/>
+            <text x="60" y="72" text-anchor="middle" font-family="Kalam, cursive" font-weight="700" font-size="11" fill="#0A3F39">Accompagner</text>
+          </svg>
+          <div class="wait" aria-hidden="true"><b>23 nov.</b><i></i><b>10 janv.</b></div>
+          <p class="wait-mid">Rien, sauf pour qui a réservé.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt flip" id="pt-2" aria-labelledby="h-p2">
+      <div class="wrap grid2">
+        <div>
+          <p class="kicker" data-in>Enveloppe 4 · Vendre</p>
+          <span class="tagline tl-adresse" data-in>L'enveloppe mal adressée</span>
+          <h2 id="h-p2" data-in>Votre page parle de l'appli. Pas à celle qui la lit.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Le titre : <q>Suivez votre argent sans abonnement</q>. Puis 3 engagements, 6 blocs de fonctionnalités, un tableau. Aucun témoignage. Vous, sous <q>Qui sommes-nous ?</q>, après tout ça. Et la FAQ : <q>Il n'y a pas de version d'essai.</q></p>
+            <a class="src" href="https://carolinerogers.fr/app/" target="_blank" rel="noopener">Votre page Simplement Budget</a>
+          </div>
+          <p class="cost" data-in>48,8 k personnes vous suivent pour vous, pas pour un logiciel. Sans essai ni avis, c'est vous qui faites acheter.</p>
+          <div class="change" data-in="zoom"><p class="lab">Ce qui change</p>Votre lectrice se reconnaît avant de lire la fiche technique.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si vous voulez.</span></div>
+        </div>
+        <div class="visual" data-in="slide">
+          <div class="addr" role="img" aria-label="Une enveloppe adressée à Simplement Budget, 3 engagements, 6 fonctionnalités, 1 tableau. Tampon : et la lectrice ?">
+            <span class="stampbox" aria-hidden="true"></span>
+            <p class="to" aria-hidden="true">À l'attention de :</p>
+            <ul aria-hidden="true"><li>Simplement Budget</li><li>3 engagements</li><li>6 fonctionnalités</li><li>1 tableau</li></ul>
+            <span class="rubber" aria-hidden="true">Et la lectrice ?</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt kraft" id="pt-3" aria-labelledby="h-p3">
+      <div class="wrap grid2">
+        <div>
+          <p class="kicker" data-in>Enveloppe 1 · Attirer</p>
+          <span class="tagline tl-case" data-in>La mauvaise case</span>
+          <h2 id="h-p3" data-in>Sur YouTube, votre appli passe après Goodvest.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Sous votre vidéo du 15/11, la première ligne : <q>Avec mon code CAROLINE, bénéficiez de 3 mois de frais de gestion offerts chez Goodvest…</q> Votre appli : 3e paragraphe. Votre bio Instagram ne la cite pas.</p>
+            <a class="src" href="https://www.youtube.com/watch?v=-B_NxBRjQH0" target="_blank" rel="noopener">Votre vidéo du 15/11</a><a class="src" href="https://www.instagram.com/simplement.caro/" target="_blank" rel="noopener">votre Instagram</a>
+          </div>
+          <p class="cost" data-in>Le premier lien que voit votre plus grande audience mène au produit d'un autre.</p>
+          <div class="change" data-in="zoom"><p class="lab">Ce qui change</p>D'ici le 10 janvier, chaque vidéo envoie d'abord chez vous.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si vous voulez.</span></div>
+        </div>
+        <div class="visual">
+          <div class="trieur" role="img" aria-label="Le trieur de votre description YouTube : case 1 Goodvest, case 2 les conditions, case 3 votre appli.">
+            <div class="slot hot" data-in="slide" aria-hidden="true"><span class="slot-n">Case 1</span><span class="slot-t">Goodvest, code CAROLINE</span>
+              <svg class="mini" viewBox="0 0 60 40"><rect x="2" y="4" width="56" height="34" rx="3" fill="#D9BF94" stroke="#8A6A3F"/><path d="M2 6 L30 24 L58 6" fill="none" stroke="#8A6A3F" stroke-width="1.5"/></svg></div>
+            <div class="slot" data-in="slide" data-d="1" aria-hidden="true"><span class="slot-n">Case 2</span><span class="slot-t">Les conditions de l'offre</span></div>
+            <div class="slot far" data-in="slide" data-d="2" aria-hidden="true"><span class="slot-n">Case 3</span><span class="slot-t">Votre appli</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 4. APERÇU -->
+  <section class="apercu gated" aria-labelledby="h-ap">
+    <div class="wrap ap-grid">
+      <div>
+        <h2 id="h-ap" data-in>Les enveloppes qui manquent.</h2>
+        <p data-in>Les mails qui font monter l'attente jusqu'au 10 janvier. Ouverts à tous, dans votre voix.</p>
+      </div>
+      <div class="inbox" data-in="zoom" role="img" aria-label="Maquette floutée d'une boîte de réception : des mails de Caroline avant la sortie de l'appli.">
+        <p class="bar" aria-hidden="true">Boîte de réception</p>
+        <div class="mail" aria-hidden="true"><svg class="env-ico" viewBox="0 0 60 40"><rect x="2" y="4" width="56" height="34" rx="3" fill="#D9BF94"/><path d="M2 6 L30 24 L58 6" fill="none" stroke="#8A6A3F" stroke-width="1.5"/></svg><div class="flou"><span class="who">Caroline</span><i class="w8"></i><i class="w6"></i></div></div>
+        <div class="mail" aria-hidden="true"><svg class="env-ico" viewBox="0 0 60 40"><rect x="2" y="4" width="56" height="34" rx="3" fill="#D9BF94"/><path d="M2 6 L30 24 L58 6" fill="none" stroke="#8A6A3F" stroke-width="1.5"/></svg><div class="flou"><span class="who">Caroline</span><i></i><i class="w6"></i></div></div>
+        <div class="mail" aria-hidden="true"><svg class="env-ico" viewBox="0 0 60 40"><rect x="2" y="4" width="56" height="34" rx="3" fill="#D9BF94"/><path d="M2 6 L30 24 L58 6" fill="none" stroke="#8A6A3F" stroke-width="1.5"/></svg><div class="flou"><span class="who">Caroline</span><i class="w6"></i><i class="w8"></i></div></div>
+        <div class="mail" aria-hidden="true"><svg class="env-ico" viewBox="0 0 60 40"><rect x="2" y="4" width="56" height="34" rx="3" fill="#F6CB45"/><path d="M2 6 L30 24 L58 6" fill="none" stroke="#8A6A3F" stroke-width="1.5"/></svg><div class="flou"><span class="who">Caroline</span><i class="w8"></i><i></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FIN -->
+  <section class="fin gated" aria-labelledby="h-fin">
+    <div class="wrap">
+      <svg class="closed" viewBox="0 0 120 84" aria-hidden="true"><rect x="4" y="10" width="112" height="70" rx="4" fill="#CBAC7C"/><path d="M4 22 L60 52 L116 22 V76 Q116 80 112 80 H8 Q4 80 4 76Z" fill="#D9BF94"/><path d="M4 10 L60 50 L116 10Z" fill="#E2CBA4" stroke="#BFA071"/><circle cx="60" cy="50" r="7" fill="#F6CB45"/></svg>
+      <h2 id="h-fin" data-in>Chaque inscrit a une <em>destination.</em></h2>
+      <p data-in>Maintenant, vous savez où trois enveloppes s'égarent. Envie qu'on les regarde ensemble avant le 10 janvier ? Répondez à mon message.</p>
+      <p class="sign" data-in>Alexis</p>
+    </div>
+  </section>
+</main>
+
+<footer class="gated">
+  <div class="wrap">
+    Page préparée par Alexis pour Caroline Rogers (Simplement Caro). Ce n'est pas son site officiel. Constats du 23/11/2026. Aucun résultat garanti. Tout investissement comporte un risque de perte en capital.
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('locked');
+
+  /* Arrivées au scroll */
+  var inEls=document.querySelectorAll('[data-in]');
+  if(!('IntersectionObserver' in window)||reduce){inEls.forEach(function(el){el.classList.add('in');});}
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.1});
+    inEls.forEach(function(el){io.observe(el);});
+  }
+
+  /* Les 5 enveloppes */
+  var NOTES={ok:'Pleine.',case:'Pleine, mais dans la mauvaise case.',vide:'Vide.',adresse:'Mal adressée.',none:'Pas encore étiquetée.'};
+  var items=document.querySelectorAll('.env'),count=0,cnt=document.getElementById('cnt'),note=document.getElementById('note'),unlock=document.getElementById('unlock');
+  items.forEach(function(li){
+    var b=li.querySelector('.env-btn');
+    b.addEventListener('click',function(){
+      if(li.classList.contains('on'))return;
+      li.classList.add('on');b.setAttribute('aria-expanded','true');
+      note.textContent=NOTES[li.getAttribute('data-s')];
+      count++;cnt.textContent=count;
+      if(count===items.length){
+        unlock.hidden=false;root.classList.remove('locked');
+        unlock.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
