@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Aymeric, les 5 clés de votre trousseau</title>
+<meta name="description" content="Du reel au mentorat, le parcours d'un médecin chez Mentor Immo en 5 clés à essayer. Pour Aymeric Rauch, par Alexis.">
+<meta property="og:title" content="Aymeric, les 5 clés de votre trousseau">
+<meta property="og:description" content="Deux clés tournent, deux coincent, une n'a pas de serrure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#15120E; --coal:#221D16; --coal-2:#2E271E;
+  --brass:#D8B36A; --brass-2:#B48D45; --brass-ink:#7A5A1E; --brass-soft:#F0DDB3;
+  --ivory:#F6F0E4; --paper:#EFE6D4; --ink:#1A1610; --muted:#5B5246; --soft:#E9E1D2;
+  --rust:#A9442C; --rust-soft:#F3C9B9;
+  --font-title:"Manrope", system-ui, sans-serif; --font-body:"Manrope", system-ui, sans-serif;
+  --font-tag:"IBM Plex Mono", ui-monospace, monospace;
+  --maxw:1120px; --gutter:20px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--ink);font:400 17px/1.6 var(--font-body);overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--font-title);font-weight:800;line-height:1.1;margin:0 0 .5em;letter-spacing:-.02em;text-wrap:balance}
+h1{font-size:clamp(1.9rem,7vw,3.3rem)}
+h2{font-size:clamp(1.55rem,5.2vw,2.6rem)}
+p{margin:0 0 1em}
+a{color:inherit}
+q{quotes:"«\00a0" "\00a0»"}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.src{display:inline-flex;align-items:center;min-height:48px;margin-right:18px;font-size:.92rem;font-weight:800;color:var(--brass-ink);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.src:hover{color:var(--ink)}
+.dark .src{color:var(--brass)}
+.dark .src:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:6px;background:var(--brass);color:var(--night);font:800 1.02rem var(--font-body);text-decoration:none}
+.btn:hover{background:var(--brass-soft)}
+.tagline{font:600 .86rem/1.3 var(--font-tag);letter-spacing:.04em;text-transform:uppercase;color:var(--brass-ink);margin:0 0 10px}
+.dark .tagline{color:var(--brass)}
+
+/* ---------- 1. Le trousseau ---------- */
+.scene{background:radial-gradient(120% 80% at 80% 0%,var(--coal-2) 0%,var(--night) 60%);color:#fff;padding:40px 0 10px}
+.scene-grid{display:grid;gap:26px;grid-template-areas:"txt" "keys" "unl"}
+.s-txt{grid-area:txt}
+.said{font:600 1.05rem/1.45 var(--font-body);color:var(--brass-soft);margin:0 0 2px}
+.said-src{margin:0 0 16px;display:flex;flex-wrap:wrap;column-gap:18px}
+.said-src a{display:inline-flex;align-items:center;min-height:48px;color:var(--brass);font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.lede{color:#E6DECF;max-width:31em;font-size:1.06rem}
+.legend{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:6px;font-size:.98rem;color:#E6DECF}
+.legend b{display:inline-block;min-width:118px;font:600 .8rem/1 var(--font-tag);text-transform:uppercase;letter-spacing:.04em;padding:6px 8px;border-radius:3px;margin-right:8px;text-align:center}
+.st-t{background:var(--brass);color:var(--night)}
+.st-c{background:var(--rust);color:#fff}
+.st-s{background:transparent;color:#fff;outline:2px dashed #E6DECF;outline-offset:-2px}
+.count{font:600 .95rem var(--font-tag);color:var(--brass);margin:0}
+.count b{color:#fff;font-size:1.2rem}
+
+.trousseau{grid-area:keys;position:relative;width:100%;max-width:600px;margin:0 auto;padding-left:34px}
+.anneau{position:absolute;left:0;top:6px;bottom:6px;width:58px;border:7px solid var(--brass-2);border-right-color:transparent;border-radius:60px 0 0 60px;box-shadow:inset 3px 0 0 rgba(255,255,255,.18)}
+.keys{list-style:none;margin:0;padding:0;display:grid;gap:10px;position:relative}
+.key{position:relative}
+.key-btn{width:100%;display:grid;grid-template-columns:1fr 56px;grid-template-areas:"tag tag" "shaft plate";align-items:center;column-gap:8px;row-gap:4px;min-height:96px;padding:10px 12px 10px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(216,179,106,.28);border-radius:8px;color:inherit;font:inherit;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .3s var(--ease),border-color .3s var(--ease)}
+@media (hover:hover){.js .key:not(.on) .key-btn:hover{background:rgba(216,179,106,.1);border-color:var(--brass)}}
+.etiq{grid-area:tag;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.etiq-n{font:600 .78rem var(--font-tag);color:#CFC5B3}
+.etiq-name{font:800 1.02rem/1.2 var(--font-body);color:#fff}
+.etat{font:600 .74rem/1 var(--font-tag);text-transform:uppercase;letter-spacing:.04em;padding:5px 7px;border-radius:3px}
+.k-svg{grid-area:shaft;width:100%;max-width:300px;height:38px;transition:transform .9s var(--ease)}
+.plate{grid-area:plate;justify-self:end;position:relative;width:48px;height:62px;border-radius:24px;background:linear-gradient(160deg,#3A3127,#2A231B);border:2px solid #5C4E3B;transition:border-color .4s var(--ease),background .4s var(--ease)}
+.hole{position:absolute;left:50%;top:50%;width:12px;height:24px;margin:-12px 0 0 -6px;transition:transform .6s var(--ease) .7s}
+.hole::before{content:"";position:absolute;left:0;top:0;width:12px;height:12px;border-radius:50%;background:#0B0907}
+.hole::after{content:"";position:absolute;left:3px;top:8px;width:6px;height:15px;border-radius:0 0 2px 2px;background:#0B0907}
+.key-say{margin:0;padding:8px 14px 4px 18px;font-size:.98rem;line-height:1.5;color:#EFE7D8}
+.js .key:not(.on) .etat,.js .key:not(.on) .key-say{display:none}
+/* états, une fois la clé essayée */
+.key.on[data-s="tourne"] .k-svg{transform:translateX(var(--in,40px))}
+.key.on[data-s="tourne"] .plate{border-color:var(--brass);background:linear-gradient(160deg,#4A3D28,#33291C)}
+.key.on[data-s="tourne"] .hole{transform:rotate(90deg)}
+.key.on[data-s="coince"] .k-svg{transform:translateX(calc(var(--in,40px) * .45))}
+.key.on[data-s="coince"] .plate{border-color:var(--rust)}
+.key.on[data-s="sans"] .k-svg{transform:translateX(calc(var(--in,40px) * .2))}
+.key.on[data-s="sans"] .plate{background:transparent;border:2px dashed #E6DECF}
+.key.on[data-s="sans"] .hole{opacity:0}
+.key.on .key-btn{cursor:default}
+[data-s="tourne"] .etat{background:var(--brass);color:var(--night)}
+[data-s="coince"] .etat{background:var(--rust);color:#fff}
+[data-s="sans"] .etat{outline:2px dashed #E6DECF;outline-offset:-2px;color:#fff}
+.unlock{grid-area:unl;background:var(--ivory);color:var(--ink);border-radius:8px;padding:20px 20px 22px;margin-bottom:36px;border-top:8px solid var(--brass)}
+.unlock .big{font:800 1.25rem/1.3 var(--font-title);margin:0 0 .3em}
+.js .unlock[hidden]{display:none}
+
+/* ---------- Arrivées au scroll ---------- */
+.locked .gated{display:none}
+.js [data-in]{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js [data-in].in{opacity:1;transform:none}
+.js [data-d="1"]{transition-delay:.12s}.js [data-d="2"]{transition-delay:.24s}
+
+/* ---------- 2. Ce qui tourne ---------- */
+.forces{padding:80px 0 56px}
+.f-list{display:grid;gap:8px;margin-top:22px}
+.f-item{padding:20px 0 4px;border-top:2px solid var(--brass-2)}
+.f-item q{display:block;font:800 clamp(1.1rem,3.2vw,1.4rem)/1.3 var(--font-title);margin-bottom:8px}
+.f-item p{color:var(--muted);margin:0}
+
+/* ---------- 3. Les 3 clés ---------- */
+.k-sec{padding:84px 0;overflow:hidden}
+.k-sec.dark{background:var(--night);color:#fff}
+.k-sec.paper{background:var(--paper)}
+.grid2{display:grid;gap:36px}
+.stamp{display:inline-block;font:600 .82rem/1 var(--font-tag);text-transform:uppercase;letter-spacing:.04em;padding:7px 10px;border-radius:3px;margin-bottom:14px}
+.lab{font:800 .9rem var(--font-body);color:var(--brass-ink);margin:0 0 6px}
+.dark .lab{color:var(--brass)}
+.quote{border-left:4px solid var(--brass);padding:2px 0 2px 14px;margin:0 0 2px}
+.quote q{font-weight:800}
+.cost{font:800 clamp(1.05rem,2.8vw,1.25rem)/1.45 var(--font-title);margin:18px 0}
+.change{background:var(--brass);color:var(--night);border-radius:6px;padding:16px 18px;font-weight:600}
+.change .lab{color:var(--night)}
+.lock{display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px 14px;border:2px dashed currentColor;border-radius:6px;opacity:.85;font-weight:600}
+.lock .bars{flex:1;display:grid;gap:6px;filter:blur(2.5px);opacity:.45}
+.lock .bars span{display:block;height:7px;border-radius:7px;background:currentColor}
+.lock .bars span:nth-child(2){width:65%}
+.lock-txt{flex:2}
+.visual svg{width:100%;max-width:340px;margin:0 auto}
+.visual svg text{font-family:var(--font-tag)}
+
+/* ---------- 4. Aperçu ---------- */
+.apercu{padding:84px 0;background:var(--ivory)}
+.ap-grid{display:grid;gap:34px;align-items:center}
+.boite{max-width:340px;margin:0 auto;background:#fff;border:2px solid var(--ink);border-radius:8px;overflow:hidden;box-shadow:10px 10px 0 var(--brass)}
+.b-head{background:var(--night);color:var(--brass);font:600 .85rem var(--font-tag);padding:10px 14px}
+.b-row{display:grid;grid-template-columns:62px 1fr;gap:10px;align-items:center;padding:12px 14px;border-top:1px solid var(--soft)}
+.b-row b{font:600 .8rem var(--font-tag);color:var(--muted)}
+.b-row.hot{background:#FBF4E4}
+.b-row.hot b{color:var(--brass-ink)}
+.flou{filter:blur(4px);user-select:none;pointer-events:none;display:grid;gap:6px}
+.flou i{display:block;height:8px;border-radius:8px;background:#D9CDBB}
+.flou i:nth-child(2){width:70%}
+
+/* ---------- 5. Fin ---------- */
+.fin{padding:88px 0 80px;text-align:center;background:var(--night);color:#fff}
+.fin p{max-width:32em;margin-left:auto;margin-right:auto;color:#E6DECF}
+.mini{width:180px;margin:0 auto 26px}
+.sign{font:800 2.2rem var(--font-title);margin:24px 0 0;color:var(--brass)}
+footer{padding:24px 0 34px;font-size:.85rem;color:var(--muted)}
+
+@media (min-width:720px){
+  body{font-size:18px}
+  .scene{padding-top:60px}
+  .trousseau{padding-left:44px}
+  .key-btn{grid-template-columns:1fr 64px;padding:12px 16px 12px 24px}
+  .plate{width:54px;height:70px}
+  .key{--in:70px}
+  .key-say{padding-left:24px}
+  .f-list{grid-template-columns:repeat(3,1fr);gap:30px}
+  .grid2{grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}
+  .flip .grid2{grid-template-columns:.75fr 1.25fr}
+  .flip .visual{order:-1}
+  .ap-grid{grid-template-columns:1fr 1fr;gap:60px}
+}
+@media (min-width:1000px){
+  .scene-grid{grid-template-columns:1fr 580px;grid-template-areas:"txt keys" "unl keys";column-gap:56px;align-items:start}
+  .s-txt{padding-top:20px}
+  .unlock{align-self:start}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cle" viewBox="0 0 300 38" preserveAspectRatio="xMinYMid meet">
+      <circle cx="19" cy="19" r="16" fill="#D8B36A"/><circle cx="19" cy="19" r="6.5" fill="#15120E"/>
+      <rect x="33" y="14" width="200" height="10" rx="2" fill="#D8B36A"/>
+      <rect x="40" y="12" width="6" height="14" rx="1" fill="#B48D45"/>
+      <path d="M196 24 h37 v6 h-6 v6 h-7 v-4 h-6 v6 h-8 v-5 h-5 v3 h-5 Z" fill="#D8B36A"/>
+      <rect x="35" y="15" width="196" height="2" fill="#F0DDB3" opacity=".6"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main>
+  <!-- 1. LE TROUSSEAU : 5 clés à essayer -->
+  <section class="scene" aria-labelledby="h1">
+    <div class="wrap scene-grid">
+      <div class="s-txt">
+        <p class="said">« 24 jours. 24 clés indispensables pour sécuriser votre avenir… »</p>
+        <p class="said-src"><a href="https://calendrier2026.mentorimmo.fr/" target="_blank" rel="noopener">Votre calendrier de l'Avent</a><a href="https://www.instagram.com/mentorimmo_/" target="_blank" rel="noopener">@mentorimmo_</a></p>
+        <h1 id="h1">Aymeric, vos 24 clés partent le 1er décembre. Voici les 5 de votre trousseau.</h1>
+        <p class="lede">Du reel au mentorat, en 5 clés. Essayez-les.</p>
+        <ul class="legend">
+          <li><b class="st-t">Tourne</b>la porte s'ouvre.</li>
+          <li><b class="st-c">Coince</b>la porte existe, ça bloque.</li>
+          <li><b class="st-s">Sans serrure</b>rien n'est prévu derrière.</li>
+        </ul>
+        <p class="count" aria-live="polite"><b id="cnt">0</b> / 5 clés essayées</p>
+      </div>
+
+      <div class="trousseau">
+        <span class="anneau" aria-hidden="true"></span>
+        <ol class="keys">
+          <li class="key" data-s="tourne">
+            <button class="key-btn" type="button" aria-expanded="false" aria-controls="k1">
+              <span class="etiq"><span class="etiq-n">N°1</span><span class="etiq-name">Le reel</span><span class="etat">Tourne</span></span>
+              <svg class="k-svg" aria-hidden="true"><use href="#cle"/></svg>
+              <span class="plate" aria-hidden="true"><span class="hole"></span></span>
+            </button>
+            <p class="key-say" id="k1">12 reels du 8 au 23 novembre. Des confrères racontent, jusqu'à 1&nbsp;704 vues.</p>
+          </li>
+          <li class="key" data-s="coince">
+            <button class="key-btn" type="button" aria-expanded="false" aria-controls="k2">
+              <span class="etiq"><span class="etiq-n">N°2</span><span class="etiq-name">Le lien en bio</span><span class="etat">Coince</span></span>
+              <svg class="k-svg" aria-hidden="true"><use href="#cle"/></svg>
+              <span class="plate" aria-hidden="true"><span class="hole"></span></span>
+            </button>
+            <p class="key-say" id="k2">Deux reels annoncent le lien de candidature en bio. Il ouvre le calendrier.</p>
+          </li>
+          <li class="key" data-s="coince">
+            <button class="key-btn" type="button" aria-expanded="false" aria-controls="k3">
+              <span class="etiq"><span class="etiq-n">N°3</span><span class="etiq-name">Le calendrier</span><span class="etat">Coince</span></span>
+              <svg class="k-svg" aria-hidden="true"><use href="#cle"/></svg>
+              <span class="plate" aria-hidden="true"><span class="hole"></span></span>
+            </button>
+            <p class="key-say" id="k3">Une page claire, le premier mail en aperçu. Pas un confrère pour en parler.</p>
+          </li>
+          <li class="key" data-s="sans">
+            <button class="key-btn" type="button" aria-expanded="false" aria-controls="k4">
+              <span class="etiq"><span class="etiq-n">N°4</span><span class="etiq-name">Le 25 décembre</span><span class="etat">Sans serrure</span></span>
+              <svg class="k-svg" aria-hidden="true"><use href="#cle"/></svg>
+              <span class="plate" aria-hidden="true"><span class="hole"></span></span>
+            </button>
+            <p class="key-say" id="k4">Après le J24, la page n'annonce rien. Ni la suite, ni le mentorat.</p>
+          </li>
+          <li class="key" data-s="tourne">
+            <button class="key-btn" type="button" aria-expanded="false" aria-controls="k5">
+              <span class="etiq"><span class="etiq-n">N°5</span><span class="etiq-name">Le mentorat</span><span class="etat">Tourne</span></span>
+              <svg class="k-svg" aria-hidden="true"><use href="#cle"/></svg>
+              <span class="plate" aria-hidden="true"><span class="hole"></span></span>
+            </button>
+            <p class="key-say" id="k5">Ceux qui y entrent en parlent. Julien&nbsp;: «&nbsp;0 à 3,5M d'euros&nbsp;».</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="unlock" id="unlock" hidden>
+        <p class="big">2 clés tournent. 2 coincent. 1 n'a pas de serrure.</p>
+        <p>Les trois qui bloquent entourent votre calendrier.</p>
+        <a class="btn" href="#forces">Voir les trois clés</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CE QUI TOURNE -->
+  <section class="forces gated" id="forces" aria-labelledby="h-f">
+    <div class="wrap">
+      <h2 id="h-f" data-in>Ce qui tourne déjà.</h2>
+      <div class="f-list">
+        <div class="f-item" data-in>
+          <q>[J1] Où vous situez-vous dans le Quadrant de Kiyosaki&nbsp;?</q>
+          <p>Montrer le premier mail avant l'inscription&nbsp;: rare, et rassurant. <a class="src" href="https://calendrier2026.mentorimmo.fr/" target="_blank" rel="noopener">Votre page</a></p>
+        </div>
+        <div class="f-item" data-in data-d="1">
+          <q>Une grande partie de ce que l'on gagne dépend des actes que l'on réalise.</q>
+          <p>La phrase d'un confrère, pas d'un vendeur. <a class="src" href="https://calendrier2026.mentorimmo.fr/" target="_blank" rel="noopener">Votre premier mail</a></p>
+        </div>
+        <div class="f-item" data-in data-d="2">
+          <q>Signature dans 15 jours, et déjà des pièges évités.</q>
+          <p>Des preuves concrètes, presque chaque jour. <a class="src" href="https://www.instagram.com/p/Df1xljuAtwJ/" target="_blank" rel="noopener">Votre reel du 17/11</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. LES 3 CLÉS QUI BLOQUENT -->
+  <div class="gated">
+    <section class="k-sec dark" id="cle-2" aria-labelledby="h-k2">
+      <div class="wrap grid2">
+        <div>
+          <p class="tagline" data-in>Clé n°2 · Le lien en bio</p>
+          <span class="stamp st-c" data-in>Coince</span>
+          <h2 id="h-k2" data-in>Vos reels promettent une porte. Votre bio en ouvre une autre.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Le 21 novembre&nbsp;: <q>Le Mentorat se fait sur candidature. Le lien est en bio.</q> Le 23, pareil. Le seul lien de votre bio ouvre le calendrier. Le mot «&nbsp;candidature&nbsp;» n'y apparaît pas.</p>
+            <a class="src" href="https://www.instagram.com/p/DgAEr3rA3TF/" target="_blank" rel="noopener">Reel du 21/11</a><a class="src" href="https://www.instagram.com/p/DgFOWVpAMoD/" target="_blank" rel="noopener">Reel du 23/11</a><a class="src" href="https://bit.ly/4jrrgWZ" target="_blank" rel="noopener">Votre lien en bio</a>
+          </div>
+          <p class="cost" data-in>Le médecin le plus décidé repart au jour&nbsp;1 d'un calendrier.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Chaque reel ouvre la porte qu'il annonce.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si vous voulez.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <svg viewBox="0 0 340 300" role="img" aria-label="Deux serrures côte à côte. Celle marquée Candidature attend. La clé du lien en bio entre dans celle marquée Calendrier.">
+            <rect x="20" y="30" width="130" height="210" rx="65" fill="#2E271E" stroke="#5C4E3B" stroke-width="3"/>
+            <rect x="190" y="30" width="130" height="210" rx="65" fill="#2E271E" stroke="#A9442C" stroke-width="3"/>
+            <circle cx="85" cy="125" r="12" fill="#0B0907"/><rect x="79" y="132" width="12" height="30" rx="2" fill="#0B0907"/>
+            <circle cx="255" cy="125" r="12" fill="#0B0907"/><rect x="249" y="132" width="12" height="30" rx="2" fill="#0B0907"/>
+            <text x="85" y="270" text-anchor="middle" font-size="14" font-weight="600" fill="#F0DDB3">CANDIDATURE</text>
+            <text x="255" y="270" text-anchor="middle" font-size="14" font-weight="600" fill="#F0DDB3">CALENDRIER</text>
+            <g transform="translate(255 40) rotate(90)">
+              <circle cx="0" cy="0" r="18" fill="#D8B36A"/><circle cx="0" cy="0" r="7" fill="#15120E"/>
+              <rect x="16" y="-5" width="70" height="10" rx="2" fill="#D8B36A"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="k-sec flip" id="cle-4" aria-labelledby="h-k4">
+      <div class="wrap grid2">
+        <div>
+          <p class="tagline" data-in>Clé n°4 · Le 25 décembre</p>
+          <span class="stamp" style="outline:2px dashed var(--ink);outline-offset:-2px" data-in>Sans serrure</span>
+          <h2 id="h-k4" data-in>Le calendrier s'arrête le 24. Le 25, ils vont où&nbsp;?</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Pour J18 à J24, votre page annonce&nbsp;: <q>Relier les sujets abordés et préparer les prochaines étapes.</q> Sans dire lesquelles. Le mentorat n'y est jamais nommé. Les mails eux-mêmes, je ne les ai pas lus.</p>
+            <a class="src" href="https://calendrier2026.mentorimmo.fr/" target="_blank" rel="noopener">Votre page d'inscription</a>
+          </div>
+          <p class="cost" data-in>24 matins d'attention de médecins. Puis les fêtes, au moment où ils sont le plus prêts.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Les derniers jours mènent quelque part. Et ceux qui ne sont pas prêts le 24 continuent de vous lire en janvier.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si vous voulez.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <svg viewBox="0 0 340 300" role="img" aria-label="Une porte numérotée 24, avec sa serrure. À côté, une porte numérotée 25, sans serrure.">
+            <rect x="20" y="40" width="130" height="230" rx="6" fill="#221D16"/>
+            <text x="85" y="90" text-anchor="middle" font-size="30" font-weight="600" fill="#D8B36A">24</text>
+            <circle cx="125" cy="160" r="7" fill="#D8B36A"/><rect x="122" y="164" width="6" height="16" rx="1" fill="#D8B36A"/>
+            <rect x="190" y="40" width="130" height="230" rx="6" fill="none" stroke="#1A1610" stroke-width="3" stroke-dasharray="9 7"/>
+            <text x="255" y="90" text-anchor="middle" font-size="30" font-weight="600" fill="#1A1610">25</text>
+            <text x="255" y="170" text-anchor="middle" font-size="13" font-weight="600" fill="#5B5246">PAS DE SERRURE</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="k-sec paper" id="cle-3" aria-labelledby="h-k3">
+      <div class="wrap grid2">
+        <div>
+          <p class="tagline" data-in>Clé n°3 · Le calendrier</p>
+          <span class="stamp st-c" data-in>Coince</span>
+          <h2 id="h-k3" data-in>Une clé sans dents&nbsp;: vos preuves sont partout, sauf sur la page d'inscription.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Sur Instagram, un confrère témoigne presque chaque jour. Sur votre site, Julien&nbsp;: <q>0 à 3,5M d'euros</q>, et deux interviews vidéo. Sur la page du calendrier&nbsp;: aucun témoignage.</p>
+            <a class="src" href="https://www.instagram.com/mentorimmo_/" target="_blank" rel="noopener">Votre Instagram</a><a class="src" href="https://www.mentorimmo.fr/" target="_blank" rel="noopener">Votre site</a><a class="src" href="https://calendrier2026.mentorimmo.fr/" target="_blank" rel="noopener">La page du calendrier</a>
+          </div>
+          <p class="cost" data-in>Celui qui arrive par votre site doit vous croire sur parole.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Le médecin qui hésite voit qu'un confrère l'a déjà fait, avant de laisser son mail.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si vous voulez.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <svg viewBox="0 0 340 270" role="img" aria-label="Deux clés. Celle d'Instagram et du site a des dents : Julien, Charlotte, Aurélien et Madlyne, Audrey et Benoît. Celle de la page d'inscription est lisse.">
+            <text x="20" y="28" font-size="13" font-weight="600" fill="#5B5246">INSTAGRAM ET SITE</text>
+            <circle cx="40" cy="70" r="22" fill="#D8B36A"/><circle cx="40" cy="70" r="8" fill="#EFE6D4"/>
+            <rect x="60" y="63" width="250" height="14" rx="2" fill="#D8B36A"/>
+            <g fill="#B48D45"><rect x="95" y="77" width="22" height="16"/><rect x="155" y="77" width="22" height="22"/><rect x="215" y="77" width="22" height="14"/><rect x="275" y="77" width="22" height="20"/></g>
+            <g font-size="11" font-weight="600" fill="#1A1610" text-anchor="middle"><text x="106" y="112">Julien</text><text x="166" y="134">Charlotte</text><text x="226" y="112">Aurélien</text><text x="226" y="125">&amp; Madlyne</text><text x="286" y="140">Audrey</text><text x="286" y="153">&amp; Benoît</text></g>
+            <text x="20" y="196" font-size="13" font-weight="600" fill="#A9442C">PAGE D'INSCRIPTION</text>
+            <circle cx="40" cy="236" r="22" fill="#D8B36A"/><circle cx="40" cy="236" r="8" fill="#EFE6D4"/>
+            <rect x="60" y="229" width="250" height="14" rx="2" fill="#D8B36A"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 4. APERÇU -->
+  <section class="apercu gated" aria-labelledby="h-ap">
+    <div class="wrap ap-grid">
+      <div>
+        <h2 id="h-ap" data-in>La serrure du 25.</h2>
+        <p data-in>La fin du calendrier et ce qui vient après, dans votre voix.</p>
+      </div>
+      <div class="boite" data-in role="img" aria-label="Maquette floutée d'une boîte de réception : les mails J23, J24, puis un mail du 25 décembre et un mail de janvier.">
+        <div class="b-head" aria-hidden="true">Mentor Immo · boîte de réception</div>
+        <div class="b-row" aria-hidden="true"><b>[J23]</b><span class="flou"><i></i><i></i></span></div>
+        <div class="b-row" aria-hidden="true"><b>[J24]</b><span class="flou"><i></i><i></i></span></div>
+        <div class="b-row hot" aria-hidden="true"><b>25 déc.</b><span class="flou"><i></i><i></i></span></div>
+        <div class="b-row hot" aria-hidden="true"><b>janv.</b><span class="flou"><i></i><i></i></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FIN -->
+  <section class="fin gated" aria-labelledby="h-fin">
+    <div class="wrap">
+      <svg class="mini" viewBox="0 0 180 90" aria-hidden="true">
+        <circle cx="30" cy="45" r="24" fill="none" stroke="#B48D45" stroke-width="6"/>
+        <g fill="#D8B36A">
+          <g transform="translate(46 22) rotate(-20)"><circle r="9"/><rect x="7" y="-3" width="58" height="6"/></g>
+          <g transform="translate(52 45)"><circle r="9"/><rect x="7" y="-3" width="62" height="6"/></g>
+          <g transform="translate(46 68) rotate(20)"><circle r="9"/><rect x="7" y="-3" width="58" height="6"/></g>
+        </g>
+      </svg>
+      <h2 id="h-fin" data-in>Vous avez écrit 24 clés. Maintenant, vous connaissez aussi ces trois-là.</h2>
+      <p data-in>Le calendrier part le 1er décembre. Si vous voulez qu'on regarde les serrures avant, répondez à mon message.</p>
+      <p class="sign" data-in>Alexis</p>
+    </div>
+  </section>
+</main>
+
+<footer class="gated">
+  <div class="wrap">
+    Page préparée par Alexis pour Aymeric Rauch (Mentor Immo). Ce n'est pas son site officiel. Constats du 23/11/2026. Aucun résultat garanti. Tout investissement comporte un risque de perte en capital.
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('locked');
+
+  /* Arrivées au scroll */
+  var inEls=document.querySelectorAll('[data-in]');
+  if(!('IntersectionObserver' in window)||reduce){inEls.forEach(function(el){el.classList.add('in');});}
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.1});
+    inEls.forEach(function(el){io.observe(el);});
+  }
+
+  /* Le trousseau : 5 clés à essayer */
+  var keys=document.querySelectorAll('.key'),count=0,cnt=document.getElementById('cnt'),unlock=document.getElementById('unlock');
+  keys.forEach(function(li){
+    var b=li.querySelector('.key-btn');
+    b.addEventListener('click',function(){
+      if(li.classList.contains('on'))return;
+      li.classList.add('on');b.setAttribute('aria-expanded','true');
+      count++;cnt.textContent=count;
+      if(count===keys.length){
+        unlock.hidden=false;root.classList.remove('locked');
+        unlock.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
