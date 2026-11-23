@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Bianca, ta courbe</title>
+<meta name="description" content="Ta courbe en 5 points, puis 2 points sur la page Déclic Finance de Bianca. Par Alexis.">
+<meta property="og:title" content="Bianca, ta courbe">
+<meta property="og:description" content="Un petit jeu, puis 2 points sur ta page Déclic Finance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F8F0E6; --surface:#FFFAF3; --sand:#EEDFCB; --line:#DCC9B2;
+  --ink:#2F2219; --muted:#6E5A4A;
+  --night:#161F2A; --night-2:#1F2B39;
+  --accent:#E25A22; --accent-2:#F28A4E; --accent-soft:#F7D3BC; --cream:#F1E4D2;
+  --font-title:"Outfit", system-ui, sans-serif; --font-body:"Figtree", system-ui, sans-serif;
+  --maxw:1120px; --gutter:20px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--font-body);overflow-x:hidden}
+img,svg,canvas{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--font-title);line-height:1.02;margin:0 0 .45em;letter-spacing:-.02em;text-wrap:balance}
+h1{font-weight:900;font-size:clamp(2.4rem,10vw,5.4rem)}
+h2{font-weight:800;font-size:clamp(2rem,7.5vw,4rem)}
+h3{font-weight:700;font-size:1.2rem}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.skip{position:absolute;left:8px;top:-60px;z-index:50;background:var(--ink);color:var(--bg);padding:10px 14px}
+.skip:focus{top:8px}
+.btn{font:800 1.02rem var(--font-title);min-height:52px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 28px;border-radius:999px;border:0;background:var(--accent);color:#fff;text-decoration:none;cursor:pointer;box-shadow:0 10px 26px -10px rgba(226,90,34,.8);transition:transform .2s var(--ease),background .2s}
+.btn:hover{transform:translateY(-2px);background:#cf4c17}
+.btn.ghost{background:transparent;color:inherit;box-shadow:none;border:2px solid currentColor}
+.kicker{font:800 .78rem/1.3 var(--font-title);letter-spacing:.12em;text-transform:uppercase;margin:0 0 14px;color:var(--muted)}
+.kicker b{color:var(--accent)}
+.hl{color:var(--accent)}
+.src{display:inline-block;font-size:.8rem;color:var(--muted);margin-top:6px;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.src:hover{color:var(--accent)}
+
+/* Barre de progression */
+.progress{position:fixed;left:0;top:0;height:4px;width:100%;transform-origin:left;transform:scaleX(var(--read,0));background:var(--accent);z-index:40}
+
+/* ---------- 1. Le jeu ---------- */
+.game{position:relative;min-height:100vh;min-height:100svh;background:radial-gradient(120% 70% at 50% 0%,#2A3747 0%,var(--night) 55%,#0F161F 100%);color:#fff;display:flex;flex-direction:column;overflow:hidden}
+.game-head{position:relative;z-index:2;padding:34px var(--gutter) 0;max-width:var(--maxw);margin:0 auto;width:100%}
+.game-head .kicker{color:#C8BBAE}
+.game-head h1{max-width:12em}
+.game-head p{max-width:34em;color:#E9DED2;font-size:1.08rem}
+.game-stage{position:relative;flex:1;min-height:480px;margin-top:8px}
+#sparks{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y}
+.playing #sparks{touch-action:none;cursor:none}
+.hud{position:absolute;left:0;right:0;top:10px;display:flex;justify-content:space-between;padding:0 var(--gutter);font:800 .95rem var(--font-title);pointer-events:none;opacity:0;transition:opacity .3s}
+.playing .hud,.ended .hud{opacity:1}
+.hud span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px 14px}
+.hud .ok{color:var(--accent-2)}
+.timer{position:absolute;left:var(--gutter);right:var(--gutter);top:52px;height:4px;border-radius:4px;background:rgba(255,255,255,.12);opacity:0;transition:opacity .3s}
+.playing .timer{opacity:1}
+.timer i{display:block;height:100%;border-radius:4px;background:#fff;transform-origin:left;transform:scaleX(var(--left,1))}
+.overlay{position:absolute;inset:0;display:grid;place-items:center;padding:20px;z-index:3;transition:opacity .4s var(--ease)}
+.overlay[hidden]{display:none}
+.panel{max-width:520px;width:100%;text-align:center;background:rgba(22,31,42,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:26px 22px}
+.panel p{color:#E9DED2}
+.panel .big{font:900 clamp(1.7rem,6vw,2.6rem)/1.05 var(--font-title);color:#fff;margin-bottom:.4em}
+.panel .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:16px}
+#ov-end .panel{padding:20px 18px}
+#ov-end .panel p{font-size:.95rem;margin-bottom:.6em}
+.panel .btn.ghost{color:#fff}
+.legend{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;font-size:.9rem;color:#E9DED2;margin:4px 0 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.legend .r{background:var(--accent-2);box-shadow:0 0 10px var(--accent)}
+.legend .l{background:#F4EEE6}
+.nojs-note{display:none}
+.no-js .nojs-note{display:block;padding:0 var(--gutter) 40px;max-width:var(--maxw);margin:0 auto;color:#E9DED2}
+.no-js .game-stage{display:none}
+
+/* ---------- La courbe statique ---------- */
+.locked .gated{display:none}
+.chart-wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:18px var(--gutter) 48px;width:100%}
+.chart{position:relative;width:100%;aspect-ratio:1000/640;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1)}
+.chart svg{position:absolute;inset:0;width:100%;height:100%}
+.chart .grid line{stroke:rgba(255,255,255,.08);stroke-width:1;vector-effect:non-scaling-stroke}
+.chart .area{fill:url(#aire)}
+.chart .curve{fill:none;stroke:rgba(255,255,255,.75);stroke-width:2.5;vector-effect:non-scaling-stroke}
+.pt{position:absolute;width:48px;height:48px;margin:-24px 0 0 -24px;padding:0;border:0;border-radius:50%;background:transparent;cursor:pointer;display:grid;place-items:center;color:#fff}
+.pt::before{content:"";width:22px;height:22px;border-radius:50%;background:#F4EEE6;border:3px solid var(--night);box-shadow:0 0 0 4px rgba(244,238,230,.25)}
+.pt:hover::before{box-shadow:0 0 0 7px rgba(244,238,230,.3)}
+.pt .num{position:absolute;top:-12px;font:900 .85rem var(--font-title);color:#E9DED2}
+.pt .name{display:none}
+.pt.on[data-s="ok"]::before{background:var(--accent);box-shadow:0 0 0 6px rgba(226,90,34,.35)}
+.pt.on[data-s="faible"]::before{background:var(--accent-soft);border-color:var(--accent)}
+.pt.on[data-s="vide"]::before{background:var(--night);border:3px dashed #9AA6B4;box-shadow:none}
+.pt.cur::before{outline:2px solid #fff;outline-offset:6px}
+.count{font:800 .95rem var(--font-title);color:#C8BBAE;margin:14px 0 0}
+.count b{color:#fff}
+.info{margin-top:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:16px 18px;min-height:92px}
+.info p{margin:0;color:#E9DED2}
+.info .step-n{font:800 .74rem var(--font-title);letter-spacing:.12em;text-transform:uppercase;color:#C8BBAE;margin-bottom:4px}
+.info h3{color:#fff;margin:0 0 4px}
+.tag[data-s="ok"]{background:var(--accent);color:#fff}
+.tag[data-s="faible"]{background:var(--accent-soft);color:var(--ink)}
+.tag[data-s="vide"]{background:#2C3846;color:#C8BBAE}
+.unlock{margin-top:14px;background:var(--accent);border-radius:20px;padding:20px 22px;color:#fff}
+.unlock p{margin:0 0 .6em}
+.unlock .big{font:900 clamp(1.4rem,5vw,2rem)/1.1 var(--font-title)}
+.unlock .btn{background:var(--night);box-shadow:none;margin-top:6px}
+
+/* ---------- Arrivées ---------- */
+.js [data-in]{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js [data-in="left"]{transform:translateX(-40px)}
+.js [data-in="right"]{transform:translateX(40px)}
+.js [data-in="zoom"]{transform:scale(.92)}
+.js [data-in].in{opacity:1;transform:none}
+.js [data-d="1"]{transition-delay:.12s}.js [data-d="2"]{transition-delay:.24s}.js [data-d="3"]{transition-delay:.36s}.js [data-d="4"]{transition-delay:.48s}
+
+/* ---------- 2. Ce qui marche ---------- */
+.forces{padding:90px 0 40px}
+.force-row{display:grid;gap:6px;padding:26px 0;border-top:1px solid var(--line)}
+.force-row:last-child{border-bottom:1px solid var(--line)}
+.force-row .n{font:900 1rem var(--font-title);color:var(--accent)}
+.force-row q{font:800 clamp(1.4rem,4.6vw,2.3rem)/1.1 var(--font-title);quotes:"«\00a0" "\00a0»"}
+.force-row p{color:var(--muted);margin:6px 0 0;max-width:40em}
+
+/* ---------- 3. Le fil ---------- */
+.fil{padding:80px 0}
+.track{position:relative;margin-top:36px;--p:0}
+.track .rail{position:absolute;left:19px;top:20px;bottom:20px;width:4px;border-radius:4px;background:var(--line)}
+.track .rail i{position:absolute;inset:0;border-radius:4px;background:var(--accent);transform-origin:top;transform:scaleY(var(--p))}
+.track ol{list-style:none;margin:0;padding:0;display:grid;gap:26px;position:relative}
+.track li{position:relative;padding-left:60px;min-height:44px}
+.dot{position:absolute;left:0;top:0;width:42px;height:42px;border-radius:50%;background:var(--surface);border:3px solid var(--line);display:grid;place-items:center;font:900 .9rem var(--font-title);color:var(--muted);transition:all .4s var(--ease)}
+.track li.lit[data-s="ok"] .dot{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 0 7px var(--accent-soft)}
+.track li.lit[data-s="faible"] .dot{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);animation:flick 2.6s steps(1) infinite}
+.track li.lit[data-s="vide"] .dot{border-style:dashed}
+@keyframes flick{0%,100%{opacity:1}44%{opacity:.35}47%{opacity:1}70%{opacity:.5}73%{opacity:1}}
+.track h3{margin:6px 0 2px}
+.track p{margin:0;color:var(--muted);font-size:.96rem}
+.tag{display:inline-block;font:800 .7rem var(--font-title);letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 10px;margin-left:8px;vertical-align:2px}
+[data-s="ok"] .tag{background:var(--accent);color:#fff}
+[data-s="faible"] .tag{background:var(--accent-soft)}
+[data-s="vide"] .tag{background:var(--sand);color:var(--muted)}
+.leak{margin-top:34px;background:var(--night);color:#fff;border-radius:20px;padding:20px 22px;font-size:1.05rem}
+.leak strong{color:var(--accent-2)}
+
+/* ---------- 4. Les points ---------- */
+.point{padding:96px 0;position:relative;overflow:hidden}
+.point.dark{background:var(--night);color:#fff}
+.point.dark .kicker{color:#C8BBAE}
+.point .big-n{position:absolute;right:-10px;top:30px;font:900 clamp(9rem,40vw,22rem)/.8 var(--font-title);color:var(--accent);opacity:.12;pointer-events:none;user-select:none}
+.point-grid{display:grid;gap:36px;position:relative}
+.block{margin:0 0 26px}
+.block .lab{font:800 .76rem var(--font-title);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+.quote{font-size:1.05rem;border-left:4px solid var(--accent);padding:2px 0 2px 16px;margin:0 0 14px}
+.quote q{font-weight:700}
+.dark .quote{color:#F1E8DE}
+.dark .src{color:#C8BBAE}
+.cost{font:700 clamp(1.15rem,3.4vw,1.45rem)/1.35 var(--font-title)}
+.change{background:var(--accent);color:#fff;border-radius:20px;padding:20px 22px;font-size:1.06rem}
+.change .lab{color:#FFE7D8}
+.lock{display:flex;align-items:center;gap:12px;margin-top:18px;padding:14px 16px;border:2px dashed currentColor;border-radius:16px;opacity:.85;font-weight:700}
+.lock .bars{flex:1;display:grid;gap:6px;filter:blur(2.5px);opacity:.5}
+.lock .bars span{display:block;height:7px;border-radius:7px;background:currentColor}
+.lock .bars span:nth-child(2){width:70%}
+.lock-txt{flex:2}
+/* Visuel 1 : ses boutons */
+.btn-stack{display:grid;gap:16px;max-width:380px;margin:0 auto}
+.her-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;border-radius:999px;padding:14px 20px;background:linear-gradient(90deg,#E86A2C,#D8432B);color:#fff;font:700 1rem var(--font-title);box-shadow:0 10px 24px -12px rgba(216,67,43,.9)}
+.her-btn small{font:600 .75rem var(--font-body);opacity:.85}
+.slot{border:2px dashed rgba(255,255,255,.45);border-radius:999px;padding:14px 20px;text-align:center;color:#E9DED2;font-weight:700}
+.slot.ping{animation:ping 2.2s var(--ease) infinite}
+@keyframes ping{0%,100%{border-color:rgba(255,255,255,.45)}50%{border-color:var(--accent-2);color:#fff}}
+.fall-note{font-size:.9rem;color:#C8BBAE;text-align:center;margin-top:10px}
+/* Visuel 2 : ses vidéos */
+.vids{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:420px;margin:0 auto;position:relative}
+.vid{aspect-ratio:4/5;border-radius:18px;background:linear-gradient(160deg,var(--sand),#E3CFB5);position:relative;display:grid;place-items:center;overflow:hidden}
+.vid .play{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.7);display:grid;place-items:center}
+.vid .play::after{content:"";border-left:16px solid var(--muted);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+.vid .dur{position:absolute;right:10px;bottom:10px;font:700 .8rem var(--font-title);background:rgba(47,34,25,.7);color:#fff;border-radius:6px;padding:2px 6px}
+.vid .who{position:absolute;left:10px;top:10px;font:700 .72rem var(--font-title);color:var(--muted);background:rgba(255,250,243,.8);border-radius:6px;padding:2px 6px}
+.scanline{position:absolute;left:-6px;right:-6px;top:0;height:3px;border-radius:3px;background:var(--accent);box-shadow:0 0 14px var(--accent);opacity:0}
+.motion .run .scanline{animation:scan 3.2s linear infinite}
+@keyframes scan{0%{opacity:0;transform:translateY(0)}8%{opacity:.9}88%{opacity:.9}100%{opacity:0;transform:translateY(var(--h,480px))}}
+.vid-note{text-align:center;font-size:.9rem;color:var(--muted);margin-top:12px}
+
+/* ---------- 5. Aperçu ---------- */
+.apercu{padding:96px 0}
+.apercu-grid{display:grid;gap:36px;align-items:center}
+.phone{width:260px;max-width:100%;margin:0 auto;border:3px solid var(--night);border-radius:34px;background:var(--surface);padding:16px 16px 26px;box-shadow:0 26px 50px -26px rgba(22,31,42,.7);transform:rotate(-3deg)}
+.notch{width:72px;height:8px;border-radius:8px;background:var(--night);margin:0 auto 16px}
+.phone .t{font:900 1.15rem/1.1 var(--font-title);margin:0 0 12px}
+.phone .t span{color:var(--accent)}
+.flou{filter:blur(4px);user-select:none;pointer-events:none}
+.flou i{display:block;height:9px;border-radius:9px;background:#C9B49C;margin:0 0 8px}
+.flou .w8{width:80%}.flou .w6{width:60%}.flou .w9{width:90%}
+.flou .b{height:64px;border-radius:12px;background:var(--accent-soft);margin:12px 0}
+.flou .f{height:42px;border-radius:10px;border:2px solid #C9B49C;background:#fff;margin-top:12px}
+.flou .p{height:44px;border-radius:999px;background:var(--accent);margin-top:10px}
+
+/* ---------- 6. Fin ---------- */
+.fin{padding:100px 0 90px;text-align:center;background:var(--night);color:#fff;position:relative;overflow:hidden}
+.fin .bulb{width:120px;margin:0 auto 22px}
+.fin .glass{fill:#26313E;stroke:#E9DED2;stroke-width:3;transition:fill 1s var(--ease),filter 1s var(--ease)}
+.fin.run .glass,.final .fin .glass{fill:var(--accent);filter:drop-shadow(0 0 26px var(--accent))}
+.fin p{max-width:32em;margin-left:auto;margin-right:auto;color:#E9DED2}
+.sign{font:900 2.6rem var(--font-title);margin:28px 0 0;color:#fff}
+.ps{text-align:left;max-width:32em;margin:30px auto 0;font-size:.98rem}
+.ps strong{color:#fff}
+footer{padding:26px 0 34px;font-size:.8rem;color:var(--muted)}
+footer a{color:inherit}
+
+@media (min-width:720px){
+  body{font-size:18px}
+  .chart{aspect-ratio:1000/440}
+  .pt .name{display:block;position:absolute;top:46px;white-space:nowrap;font:700 .8rem var(--font-title);color:#E9DED2;opacity:0}
+  .pt.on .name{opacity:1}
+  .game-head{padding-top:56px}
+  .game-stage{min-height:440px}
+  .force-row{grid-template-columns:80px 1fr 1fr;gap:28px;align-items:baseline}
+  .force-row p{margin:0}
+  .track .rail{left:0;right:0;top:19px;bottom:auto;width:auto;height:4px}
+  .track .rail i{transform-origin:left;transform:scaleX(var(--p))}
+  .track ol{grid-template-columns:repeat(5,1fr);gap:18px}
+  .track li{padding:62px 0 0}
+  .tag{margin-left:0;margin-top:6px;display:table}
+  .point-grid{grid-template-columns:1.15fr .85fr;gap:64px;align-items:center}
+  .point.flip .point-grid{grid-template-columns:.85fr 1.15fr}
+  .point.flip .visual{order:-1}
+  .apercu-grid{grid-template-columns:1fr 1fr;gap:64px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body class="no-js">
+<script>document.body.classList.remove('no-js');document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion');</script>
+<div class="progress" aria-hidden="true"></div>
+
+<main>
+  <!-- 1. LA COURBE : 5 points à cliquer pour débloquer la suite -->
+  <section class="game" id="jeu" aria-labelledby="h-jeu">
+    <div class="game-head">
+      <p class="kicker">Pour Bianca · ta courbe en 5 points</p>
+      <h1 id="h-jeu">Bianca, voici ta <span class="hl">courbe.</span></h1>
+      <p>De ton reel à ton académie, 5 étapes. Clique sur chaque point pour voir où ça passe, et où ça fuit.</p>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart" id="chart">
+        <svg viewBox="0 0 1000 420" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="aire" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E25A22" stop-opacity=".28"/><stop offset="1" stop-color="#E25A22" stop-opacity="0"/></linearGradient></defs>
+          <g class="grid"><line x1="0" y1="84" x2="1000" y2="84"/><line x1="0" y1="168" x2="1000" y2="168"/><line x1="0" y1="252" x2="1000" y2="252"/><line x1="0" y1="336" x2="1000" y2="336"/><line x1="0" y1="419" x2="1000" y2="419"/></g>
+          <path class="area" d="M0,360 C50,340 70,190 110,170 C170,140 260,250 320,270 C380,290 470,335 530,320 C600,300 660,150 740,130 C800,115 860,150 910,150 C950,150 980,140 1000,135 L1000,420 L0,420 Z"/>
+          <path class="curve" d="M0,360 C50,340 70,190 110,170 C170,140 260,250 320,270 C380,290 470,335 530,320 C600,300 660,150 740,130 C800,115 860,150 910,150 C950,150 980,140 1000,135"/>
+        </svg>
+        <button class="pt" type="button" data-i="0" data-s="ok" style="left:11%;top:40.5%" aria-label="Point 1 sur 5"><span class="num" aria-hidden="true">1</span><span class="name">Attirer</span></button>
+        <button class="pt" type="button" data-i="1" data-s="faible" style="left:32%;top:64.3%" aria-label="Point 2 sur 5"><span class="num" aria-hidden="true">2</span><span class="name">Garder le contact</span></button>
+        <button class="pt" type="button" data-i="2" data-s="vide" style="left:53%;top:76.2%" aria-label="Point 3 sur 5"><span class="num" aria-hidden="true">3</span><span class="name">Accompagner</span></button>
+        <button class="pt" type="button" data-i="3" data-s="ok" style="left:74%;top:31%" aria-label="Point 4 sur 5"><span class="num" aria-hidden="true">4</span><span class="name">Vendre</span></button>
+        <button class="pt" type="button" data-i="4" data-s="vide" style="left:91%;top:35.7%" aria-label="Point 5 sur 5"><span class="num" aria-hidden="true">5</span><span class="name">Aller plus loin</span></button>
+      </div>
+      <p class="count"><b id="cnt">0</b> / 5 points</p>
+      <div class="info" id="info" aria-live="polite"><p>Commence par le point que tu veux.</p></div>
+      <div class="unlock" id="unlock" hidden>
+        <p class="big">Ça fuit aux points 2 et 3.</p>
+        <p>Entre « intéressée » et « prête à t'appeler », rien ne la retient.</p>
+        <a class="btn" href="#forces" id="go">Voir la suite</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CE QUI MARCHE -->
+  <section class="forces gated" id="forces" aria-labelledby="h-forces">
+    <div class="wrap">
+      <h2 id="h-forces" data-in>Ce qui marche déjà.</h2>
+      <div class="force-row" data-in="left">
+        <span class="n">01</span>
+        <q>Bianca est-elle conseillère financière ? Non.</q>
+        <p>Ta FAQ ose cette question. C'est rare dans ta niche. <a class="src" href="https://www.declicfinance.com/31738e1b" target="_blank" rel="noopener">Ta page</a></p>
+      </div>
+      <div class="force-row" data-in="left" data-d="1">
+        <span class="n">02</span>
+        <q>3 580 € par mois. Je te montre où va chaque euro.</q>
+        <p>Tu montres ton propre budget. Ça rend tout le reste crédible. <a class="src" href="https://www.instagram.com/p/Df12XFDvSQF/" target="_blank" rel="noopener">Ton reel</a></p>
+      </div>
+      <div class="force-row" data-in="left" data-d="2">
+        <span class="n">03</span>
+        <q>65 commentaires sous GUIDE.</q>
+        <p>Ton audience lève la main. L'énergie est là. <a class="src" href="https://www.instagram.com/p/DfSh_uiIt5B/" target="_blank" rel="noopener">Ton reel</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. LES POINTS -->
+  <div id="points" class="gated">
+    <section class="point dark" id="point-1" data-step="p1" aria-labelledby="h-p1">
+      <span class="big-n" aria-hidden="true">01</span>
+      <div class="wrap point-grid">
+        <div>
+          <p class="kicker" data-in><b>Point 01</b></p>
+          <h2 id="h-p1" data-in>Un seul ordre : l'appel.</h2>
+          <div class="block" data-in="left">
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote"><q>Réserver un appel gratuit</q>, 3 fois. Aucun guide, aucune inscription. Sur Instagram, ton guide part en DM, sans email.<br><a class="src" href="https://www.declicfinance.com/31738e1b" target="_blank" rel="noopener">Ta page</a> · <a class="src" href="https://www.instagram.com/p/DfSh_uiIt5B/" target="_blank" rel="noopener">ton reel GUIDE</a></p>
+          </div>
+          <div class="block" data-in="left" data-d="1">
+            <p class="lab">Ce que ça te coûte</p>
+            <p class="cost">Ta page le dit : tes lectrices ont « peur de me tromper ». 30 minutes au téléphone, c'est une grosse première marche. Celles qui hésitent partent pour de bon.</p>
+          </div>
+          <div class="change" data-in="zoom" data-d="2">
+            <p class="lab">Ce qui change</p>
+            Celles qui hésitent restent avec toi, et t'appellent quand elles sont prêtes.
+          </div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, on en parle si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in="right" data-d="1">
+          <div class="btn-stack" role="img" aria-label="Tes trois boutons Réserver un appel gratuit, puis une case vide pour celle qui hésite.">
+            <div class="her-btn" aria-hidden="true">Réserver un appel gratuit <small>en haut</small></div>
+            <div class="her-btn" aria-hidden="true">Réserver un appel gratuit <small>au milieu</small></div>
+            <div class="her-btn" aria-hidden="true">Réserver un appel gratuit <small>en bas</small></div>
+            <div class="slot ping" aria-hidden="true">Et pour celle qui hésite ?</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="point flip" id="point-2" data-step="p2" aria-labelledby="h-p2">
+      <span class="big-n" aria-hidden="true">02</span>
+      <div class="wrap point-grid">
+        <div>
+          <p class="kicker" data-in><b>Point 02</b></p>
+          <h2 id="h-p2" data-in>Tes preuves sont là. Éteintes.</h2>
+          <div class="block" data-in="right">
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">4 vidéos d'élèves, sans prénom ni phrase écrite. Ton <q>200 000 € à 25 ans</q> est noyé au milieu de ton histoire.<br><a class="src" href="https://www.declicfinance.com/31738e1b" target="_blank" rel="noopener">Ta page</a></p>
+          </div>
+          <div class="block" data-in="right" data-d="1">
+            <p class="lab">Ce que ça te coûte</p>
+            <p class="cost">Ta lectrice a peur de « se faire arnaquer ». Elle fait défiler, ne lance pas les vidéos, et ne croise aucune élève qui lui ressemble.</p>
+            <p><a class="src" href="https://www.instagram.com/p/DfrpMNWADxp/" target="_blank" rel="noopener">Ton post de présentation</a></p>
+          </div>
+          <div class="change" data-in="zoom" data-d="2">
+            <p class="lab">Ce qui change</p>
+            Tes élèves sautent aux yeux, même à celle qui fait défiler.
+          </div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, on en parle si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in="left" data-d="1">
+          <div class="vids" id="vids" role="img" aria-label="Tes 4 vidéos d'élèves, sans prénom. Un trait orange, le regard de la lectrice, passe dessus sans s'arrêter.">
+            <div class="vid" aria-hidden="true"><span class="who">élève ?</span><span class="play"></span><span class="dur">1:16</span></div>
+            <div class="vid" aria-hidden="true"><span class="who">élève ?</span><span class="play"></span><span class="dur">1:10</span></div>
+            <div class="vid" aria-hidden="true"><span class="who">élève ?</span><span class="play"></span><span class="dur">1:45</span></div>
+            <div class="vid" aria-hidden="true"><span class="who">élève ?</span><span class="play"></span><span class="dur">1:12</span></div>
+            <span class="scanline" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 5. APERÇU -->
+  <section class="apercu gated" id="apercu" aria-labelledby="h-apercu">
+    <div class="wrap apercu-grid">
+      <div>
+        <h2 id="h-apercu" data-in>Le deuxième ordre qui manque.</h2>
+        <p data-in>Une première marche plus basse que l'appel, dans ta voix.</p>
+      </div>
+      <div class="phone" data-in="zoom" data-d="1" role="img" aria-label="Maquette floutée d'une page mobile Déclic Finance">
+        <div class="notch"></div>
+        <p class="t" aria-hidden="true">Déclic <span>Finance</span></p>
+        <div class="flou" aria-hidden="true"><i class="w9"></i><i class="w8"></i><i class="w6"></i><div class="b"></div><i class="w8"></i><i class="w6"></i><div class="f"></div><div class="p"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FIN -->
+  <section class="fin gated" id="fin" data-step="fin" aria-labelledby="h-fin">
+    <div class="wrap">
+      <svg class="bulb" viewBox="0 0 120 150" aria-hidden="true">
+        <path class="glass" d="M60 8 a44 44 0 0 1 26 80 c-6 5 -8 10 -8 18 H42 c0 -8 -2 -13 -8 -18 A44 44 0 0 1 60 8z"/>
+        <path d="M50 70 l10 -16 v12 h10 l-10 18 v-12 z" fill="#fff"/>
+        <rect x="42" y="110" width="36" height="8" rx="2" fill="#E9DED2"/><rect x="45" y="122" width="30" height="8" rx="2" fill="#E9DED2"/><rect x="50" y="134" width="20" height="8" rx="3" fill="#E9DED2"/>
+      </svg>
+      <h2 id="h-fin" data-in>Ton contenu fait déjà le plus dur.</h2>
+      <p data-in>Il crée le déclic. Si tu veux garder celles qui hésitent, réponds simplement à mon message.</p>
+      <p class="sign" data-in>Alexis</p>
+    </div>
+  </section>
+</main>
+
+<footer class="gated">
+  <div class="wrap">
+    Page préparée par Alexis pour Bianca (@bianca_finance). Ce n'est pas son site officiel. La courbe illustre ton parcours, ce n'est pas une mesure.<br>
+    Constats au 23 novembre 2026, sur ce qui est public : <a href="https://www.instagram.com/bianca_finance/" target="_blank" rel="noopener">Instagram</a>, <a href="https://linktr.ee/Bianca__finance" target="_blank" rel="noopener">Linktree</a>, <a href="https://www.declicfinance.com/31738e1b" target="_blank" rel="noopener">ta page Déclic Finance</a>, actu.fr. Aucun résultat garanti.<br>
+    Tout investissement comporte un risque de perte en capital.
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('locked');
+
+  /* ---------- Arrivées au scroll ---------- */
+  var inEls=document.querySelectorAll('[data-in]');
+  var io=null;
+  if(!('IntersectionObserver' in window)||reduce){inEls.forEach(function(el){el.classList.add('in');});root.classList.add('final');}
+  else{
+    io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    inEls.forEach(function(el){io.observe(el);});
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting)e.target.classList.add('run');else if(e.target.id!=='fin')e.target.classList.remove('run');
+    });},{rootMargin:'-25% 0px -25% 0px'});
+    document.querySelectorAll('[data-step]').forEach(function(el){so.observe(el);});
+  }
+
+  /* ---------- Barre de lecture ---------- */
+  var bar=document.querySelector('.progress'),vids=document.getElementById('vids');
+  function onScroll(){
+    var h=document.documentElement.scrollHeight-innerHeight;
+    bar.style.setProperty('--read',h>0?(scrollY/h).toFixed(4):0);
+    if(vids)vids.style.setProperty('--h',vids.offsetHeight+'px');
+  }
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+
+  /* ---------- La courbe : 5 points à cliquer ---------- */
+  var STEPS=[
+    {n:'Attirer',s:'Ça passe',t:"Reels réguliers, jusqu'à 13 296 vues. Un article dans actu.fr."},
+    {n:'Garder le contact',s:'Ça grésille',t:"Ton guide part en DM. Ta page ne propose rien d'autre que l'appel."},
+    {n:'Accompagner',s:'Non trouvé',t:"Ni newsletter ni séquence email trouvées."},
+    {n:'Vendre',s:'Ça passe',t:"Ta page Déclic Finance et l'appel de 30 minutes."},
+    {n:'Aller plus loin',s:'Non vérifié',t:"Un futur module « Investissement Actif » est annoncé."}
+  ];
+  var seen={},count=0,cnt=document.getElementById('cnt'),info=document.getElementById('info'),unlock=document.getElementById('unlock');
+  document.querySelectorAll('.pt').forEach(function(b){
+    b.addEventListener('click',function(){
+      var i=+b.getAttribute('data-i'),d=STEPS[i];
+      b.classList.add('on');b.setAttribute('aria-label','Point '+(i+1)+' : '+d.n+', '+d.s.toLowerCase());
+      document.querySelectorAll('.pt').forEach(function(x){x.classList.remove('cur');});b.classList.add('cur');
+      info.innerHTML='<p class="step-n">Point '+(i+1)+'</p><h3>'+d.n+' <span class="tag" data-s="'+b.getAttribute('data-s')+'">'+d.s+'</span></h3><p>'+d.t+'</p>';
+      if(!seen[i]){seen[i]=true;count++;cnt.textContent=count;}
+      if(count===STEPS.length&&unlock.hidden){unlock.hidden=false;root.classList.remove('locked');onScroll();unlock.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});}
+    });
+  });
+})();
+</script>
+</body>
+</html>
