@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Damien, tout se joue au kumikata</title>
+<meta name="description" content="Ton tunnel en 5 prises, du reel au Club Privé. Pour Damien, par Alexis.">
+<meta property="og:title" content="Damien, tout se joue au kumikata">
+<meta property="og:description" content="5 prises. Trois qui glissent.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1A33; --navy-2:#11264A; --mat:#16305A; --mat-2:#1A3866; --edge:#5E2346;
+  --cloth:#F6F3EC; --cloth-2:#ECE6DA; --seam:#D6CEBE;
+  --ink:#0A1A33; --muted:#4A5770;
+  --rose:#F06A98; --rose-ink:#B81F5C; --rose-soft:#FBD9E5;
+  --font-title:"Oswald", "Arial Narrow", sans-serif;
+  --font-body:"Raleway", system-ui, sans-serif;
+  --maxw:1120px; --gutter:20px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--cloth);color:var(--ink);font:500 16px/1.65 var(--font-body);overflow-x:hidden;font-variant-numeric:lining-nums}
+img,svg{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--font-title);font-weight:600;line-height:1.05;margin:0 0 .45em;letter-spacing:.005em;text-wrap:balance}
+h1{font-size:clamp(2.4rem,9.6vw,5.2rem);text-transform:uppercase}
+h2{font-size:clamp(1.9rem,6.4vw,3.4rem);text-transform:uppercase}
+p{margin:0 0 1em}
+a{color:inherit}
+q{quotes:"«\00a0" "\00a0»"}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+.kick{font:600 .82rem/1.3 var(--font-title);letter-spacing:.16em;text-transform:uppercase;margin:0 0 14px;color:var(--muted)}
+.src{display:inline-flex;align-items:center;min-height:48px;min-width:44px;font-weight:700;font-size:.88rem;color:var(--rose-ink);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere;margin-right:16px}
+.src:hover{color:var(--ink)}
+.btn{font:600 1.05rem var(--font-title);letter-spacing:.06em;text-transform:uppercase;min-height:52px;display:inline-flex;align-items:center;justify-content:center;padding:0 26px;border-radius:4px;border:0;background:var(--rose);color:var(--navy);text-decoration:none;cursor:pointer;transition:transform .2s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:#fff;border:2px solid currentColor}
+
+/* ---------- 1. Le tatami ---------- */
+.scene{background:var(--navy);color:#fff;padding:40px 0 56px;min-height:100vh;min-height:100svh}
+.scene .kick{color:#B9C4D8}
+.scene h1 em{font-style:normal;color:var(--rose)}
+.lede{max-width:36em;color:#DCE3EF;font-size:1.05rem}
+.lede q{color:#fff;font-weight:800}
+.stage{display:grid;gap:26px;margin-top:26px}
+.tatami{position:relative;width:100%;aspect-ratio:600/520;border-radius:6px;overflow:hidden;box-shadow:0 24px 50px rgba(0,0,0,.35)}
+.tatami svg{position:absolute;inset:0;width:100%;height:100%}
+.grip{position:absolute;width:48px;height:48px;margin:-24px 0 0 -24px;padding:0;border:0;border-radius:50%;background:transparent;cursor:pointer;display:grid;place-items:center;-webkit-tap-highlight-color:transparent}
+.grip::before{content:"";width:24px;height:24px;border-radius:50%;background:var(--navy);border:3px solid var(--rose);box-shadow:0 0 0 5px rgba(240,106,152,.25)}
+@media (hover:hover){.grip:hover::before{box-shadow:0 0 0 9px rgba(240,106,152,.32)}}
+.grip .n{position:absolute;top:-14px;font:700 .8rem var(--font-title);color:var(--navy);background:var(--cloth);border-radius:3px;padding:0 5px;line-height:1.4}
+.grip.on[data-s="ferme"]::before{background:var(--rose);border-color:#fff;box-shadow:0 0 0 5px rgba(255,255,255,.3)}
+.grip.on[data-s="glisse"]::before{background:var(--rose-soft);border-style:dashed}
+.grip.on[data-s="vide"]::before{background:transparent;border:3px dashed #8D99AE;box-shadow:none}
+.grip.cur::before{outline:2px solid #fff;outline-offset:7px}
+
+.log-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid rgba(255,255,255,.22);padding-bottom:8px;margin-bottom:6px}
+.log-head p{margin:0;font:600 .82rem var(--font-title);letter-spacing:.14em;text-transform:uppercase;color:#B9C4D8}
+.count b{color:#fff;font-size:1.2rem}
+.log{list-style:none;margin:0;padding:0}
+.log li{border-bottom:1px solid rgba(255,255,255,.12)}
+.row{width:100%;min-height:56px;display:flex;align-items:center;gap:14px;background:none;border:0;padding:8px 4px;color:#fff;text-align:left;font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+@media (hover:hover){.row:hover .r-name{color:var(--rose)}}
+.r-n{flex:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--rose);display:grid;place-items:center;font:700 .85rem var(--font-title)}
+.r-txt{display:grid}
+.r-step{font:600 .74rem var(--font-title);letter-spacing:.12em;text-transform:uppercase;color:#B9C4D8}
+.r-name{font:700 1.05rem var(--font-body)}
+.state{margin:0 0 12px 48px;font-size:.95rem;color:#DCE3EF}
+.tag{display:inline-block;font:600 .74rem var(--font-title);letter-spacing:.1em;text-transform:uppercase;border-radius:3px;padding:2px 8px;margin-right:6px;vertical-align:1px}
+[data-s="ferme"] .tag{background:var(--rose);color:var(--navy)}
+[data-s="glisse"] .tag{background:var(--rose-soft);color:var(--navy)}
+[data-s="vide"] .tag{border:1px dashed #B9C4D8;color:#DCE3EF}
+.state .src{color:var(--rose);min-height:44px;margin-right:0}
+.js .log li:not(.on) .state{display:none}
+.log li.on[data-s="ferme"] .r-n{background:var(--rose);color:var(--navy)}
+.log li.on[data-s="glisse"] .r-n{background:var(--rose-soft);color:var(--navy);border-style:dashed}
+.log li.on[data-s="vide"] .r-n{border:2px dashed #8D99AE;color:#B9C4D8}
+.unlock{margin-top:18px;background:var(--navy-2);border-left:4px solid var(--rose);padding:16px 18px 18px}
+.unlock .big{font:600 1.35rem/1.2 var(--font-title);text-transform:uppercase;margin:0 0 .7em}
+.unlock .acts{display:flex;flex-wrap:wrap;gap:10px}
+.js .unlock[hidden]{display:none}
+
+/* ---------- Arrivées ---------- */
+.js.locked .gated{display:none}
+.js.motion [data-in]{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js.motion [data-in="side"]{transform:translateX(-34px)}
+.js.motion [data-in="zoom"]{transform:scale(.93)}
+.js.motion [data-in].in{opacity:1;transform:none}
+.js.motion [data-d="1"]{transition-delay:.12s}.js.motion [data-d="2"]{transition-delay:.24s}.js.motion [data-d="3"]{transition-delay:.36s}
+
+/* ---------- 2. Ce qui tient ---------- */
+.tient{padding:84px 0 56px}
+.tient h2 em{font-style:normal;color:var(--rose-ink)}
+.t-list{display:grid;gap:22px;margin-top:26px}
+.t-item{padding-top:16px;border-top:3px solid var(--ink)}
+.t-item b{display:block;font:600 clamp(1.7rem,5vw,2.4rem)/1.1 var(--font-title);margin-bottom:6px}
+.t-item p{color:var(--muted);margin:0}
+
+/* ---------- 3. Les prises qui glissent ---------- */
+.slip{padding:88px 0;position:relative;overflow:hidden}
+.slip.dark{background:var(--navy);color:#fff}
+.slip.dark .kick{color:#B9C4D8}
+.slip.dark .src{color:var(--rose)}
+.slip.dark .lab{color:var(--rose)}
+.slip.alt{background:var(--cloth-2)}
+.grid2{display:grid;gap:36px}
+.lab{font:600 .8rem var(--font-title);letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink);margin:0 0 6px}
+.quote{border-left:4px solid var(--rose);padding:2px 0 2px 14px;margin:0 0 4px}
+.quote q{font-weight:800}
+.cost{font:600 clamp(1.1rem,3vw,1.35rem)/1.4 var(--font-body);margin:18px 0}
+.change{border:2px solid currentColor;border-radius:4px;padding:14px 16px;font-weight:700}
+.lock{display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px 14px;border:2px dashed currentColor;border-radius:4px;font-weight:700;font-size:.95rem;opacity:.9}
+.lock .bars{flex:1;display:grid;gap:6px;filter:blur(2.5px);opacity:.45}
+.lock .bars span{display:block;height:7px;border-radius:7px;background:currentColor}
+.lock .bars span:nth-child(2){width:62%}
+.lock-txt{flex:2}
+/* Visuel 1 : tableau d'affichage */
+.board{max-width:360px;margin:0 auto;background:var(--navy);color:#fff;border-radius:6px;padding:20px 20px 16px;border-top:6px solid var(--rose)}
+.board .t{font:600 .8rem var(--font-title);letter-spacing:.14em;text-transform:uppercase;color:#B9C4D8;margin:0 0 8px}
+.b-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.b-row span{font-size:.9rem;color:#DCE3EF}
+.b-row b{font:600 1.7rem var(--font-title);letter-spacing:.02em}
+.b-row.void b{font-size:1.1rem;color:var(--rose)}
+.b-row:last-child{border-bottom:0}
+/* Visuel 2 : quatre dossards */
+.zekken{display:grid;gap:12px;max-width:380px;margin:0 auto}
+.zk{background:var(--cloth);color:var(--ink);border-radius:3px;padding:12px 14px;outline:2px dashed var(--seam);outline-offset:-7px}
+.zk:nth-child(odd){transform:rotate(-1.2deg)}.zk:nth-child(even){transform:rotate(1deg)}
+.zk b{display:block;font:600 1.15rem/1.2 var(--font-title);text-transform:uppercase}
+.zk span{font-size:.82rem;color:var(--muted)}
+.zk-note{text-align:center;font:600 .9rem var(--font-title);letter-spacing:.1em;text-transform:uppercase;color:#B9C4D8;margin:14px 0 0}
+/* Visuel 3 : deux colonnes */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:400px;margin:0 auto}
+.col{border-radius:4px;padding:14px 12px}
+.col .t{font:600 .78rem var(--font-title);letter-spacing:.12em;text-transform:uppercase;margin:0 0 10px}
+.col ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.col li{font-weight:700;font-size:.92rem;line-height:1.3}
+.col.has{background:var(--navy);color:#fff}
+.col.has .t{color:var(--rose)}
+.col.has li{border-left:3px solid var(--rose);padding-left:8px}
+.col.empty{border:2px dashed var(--muted);color:var(--muted)}
+.col.empty .t{color:var(--rose-ink)}
+.col.empty li{border-left:3px dashed var(--seam);padding-left:8px}
+
+/* ---------- 4. Aperçu ---------- */
+.apercu{padding:88px 0}
+.ap-grid{display:grid;gap:34px;align-items:center}
+.mock{max-width:300px;margin:0 auto;background:#fff;border:2px solid var(--ink);border-radius:6px;padding:20px 18px 22px;box-shadow:10px 10px 0 var(--rose)}
+.mock .t{font:600 1.2rem/1.1 var(--font-title);text-transform:uppercase;margin:0 0 12px}
+.flou{filter:blur(4px);user-select:none;pointer-events:none}
+.flou i{display:block;height:9px;border-radius:9px;background:#CBD2DE;margin:0 0 8px}
+.flou .w8{width:80%}.flou .w6{width:60%}.flou .w9{width:92%}
+.flou .v{height:110px;border-radius:4px;background:var(--navy);margin:12px 0;display:grid;place-items:center}
+.flou .v::after{content:"";border-left:22px solid #fff;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px}
+.flou .s{height:30px;border-radius:4px;background:var(--rose-soft);margin:6px 0}
+.flou .p{height:44px;border-radius:4px;background:var(--rose);margin-top:12px}
+
+/* ---------- 5. Fin ---------- */
+.fin{padding:96px 0 84px;text-align:center;background:var(--navy);color:#fff}
+.fin p{max-width:32em;margin-left:auto;margin-right:auto;color:#DCE3EF}
+.fin h2 em{font-style:normal;color:var(--rose)}
+.rei{width:84px;margin:0 auto 22px}
+.sign{font:600 2.8rem var(--font-title);margin:26px 0 0;color:#fff;letter-spacing:.04em}
+footer{padding:24px 0 34px;font-size:.8rem;color:var(--muted)}
+
+@media (min-width:720px){
+  body{font-size:17px}
+  .scene{padding-top:60px}
+  .stage{grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
+  .t-list{grid-template-columns:repeat(3,1fr);gap:30px}
+  .grid2{grid-template-columns:1.2fr .8fr;gap:64px;align-items:center}
+  .flip .grid2{grid-template-columns:.8fr 1.2fr}
+  .flip .visual{order:-1}
+  .ap-grid{grid-template-columns:1fr 1fr;gap:60px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion');</script>
+
+<main>
+  <!-- 1. LE TATAMI : 5 prises à saisir -->
+  <section class="scene" aria-labelledby="h1">
+    <div class="wrap">
+      <p class="kick">Pour Damien · Judo 4e dan · ton tunnel en 5 prises</p>
+      <h1 id="h1">Damien, tout se joue au <em>kumikata.</em></h1>
+      <p class="lede">Ta bio dit <q>Judo 4e dan</q>. Une projection se gagne d'abord à la saisie. J'ai regardé ton tunnel pareil : 5 prises, du reel au Club Privé. Touche-les toutes.</p>
+
+      <div class="stage">
+        <div class="tatami" role="group" aria-label="Un kimono posé sur le tatami, 5 points de prise">
+          <svg viewBox="0 0 600 520" aria-hidden="true">
+            <defs>
+              <pattern id="weave" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#F4F1E8"/><circle cx="2" cy="2" r=".9" fill="#E2DBCC"/><circle cx="6" cy="6" r=".9" fill="#E2DBCC"/></pattern>
+            </defs>
+            <rect width="600" height="520" fill="#5E2346"/>
+            <rect x="34" y="34" width="532" height="452" fill="#16305A"/>
+            <g stroke="#0E2546" stroke-width="2">
+              <line x1="140" y1="34" x2="140" y2="486"/><line x1="246" y1="34" x2="246" y2="486"/><line x1="352" y1="34" x2="352" y2="486"/><line x1="458" y1="34" x2="458" y2="486"/>
+              <line x1="34" y1="147" x2="566" y2="147"/><line x1="34" y1="260" x2="566" y2="260"/><line x1="34" y1="373" x2="566" y2="373"/>
+            </g>
+            <g stroke="#4D1C3A" stroke-width="2"><line x1="0" y1="17" x2="600" y2="17"/><line x1="0" y1="503" x2="600" y2="503"/><line x1="17" y1="0" x2="17" y2="520"/><line x1="583" y1="0" x2="583" y2="520"/></g>
+            <!-- ombre -->
+            <path d="M263,82 L353,82 L403,102 L538,227 L483,292 L396,212 L400,482 L216,482 L220,212 L133,292 L78,227 L213,102 Z" fill="#081833" opacity=".55"/>
+            <!-- veste -->
+            <path d="M255,70 L345,70 L395,90 L530,215 L475,280 L388,200 L392,470 L208,470 L212,200 L125,280 L70,215 L205,90 Z" fill="url(#weave)" stroke="#CFC7B6" stroke-width="2" stroke-linejoin="round"/>
+            <!-- poignets -->
+            <path d="M70,215 L125,280" stroke="#D6CEBE" stroke-width="10" stroke-linecap="round"/>
+            <path d="M530,215 L475,280" stroke="#D6CEBE" stroke-width="10" stroke-linecap="round"/>
+            <!-- coutures -->
+            <g stroke="#D6CEBE" stroke-width="1.5" stroke-dasharray="4 5" fill="none"><path d="M212,200 L205,90"/><path d="M388,200 L395,90"/><path d="M300,250 L300,468"/></g>
+            <!-- col et revers -->
+            <path d="M255,70 Q300,98 345,70" fill="none" stroke="#C9C0AE" stroke-width="24" stroke-linecap="round"/>
+            <path d="M255,70 Q300,98 345,70" fill="none" stroke="#FBF9F3" stroke-width="18" stroke-linecap="round"/>
+            <path d="M257,72 L366,336" stroke="#C9C0AE" stroke-width="30"/>
+            <path d="M257,72 L366,336" stroke="#F1EDE3" stroke-width="24"/>
+            <path d="M343,72 L234,336" stroke="#C9C0AE" stroke-width="30"/>
+            <path d="M343,72 L234,336" stroke="#FBF9F3" stroke-width="24"/>
+            <!-- ceinture noire -->
+            <rect x="208" y="330" width="184" height="26" fill="#141414"/>
+            <path d="M290,352 L262,432 L282,436 L304,358 Z" fill="#141414"/>
+            <path d="M310,352 L346,428 L326,436 L298,360 Z" fill="#1E1E1E"/>
+            <rect x="286" y="326" width="30" height="34" rx="4" fill="#232323"/>
+          </svg>
+          <button class="grip" type="button" data-i="0" style="left:16.7%;top:47.3%" aria-label="Prise 1 sur 5 : la manche"><span class="n" aria-hidden="true">1</span></button>
+          <button class="grip" type="button" data-i="1" style="left:45.6%;top:46.2%" aria-label="Prise 2 sur 5 : le revers"><span class="n" aria-hidden="true">2</span></button>
+          <button class="grip" type="button" data-i="2" style="left:50%;top:15.4%" aria-label="Prise 3 sur 5 : le col"><span class="n" aria-hidden="true">3</span></button>
+          <button class="grip" type="button" data-i="3" style="left:50%;top:66%" aria-label="Prise 4 sur 5 : la ceinture"><span class="n" aria-hidden="true">4</span></button>
+          <button class="grip" type="button" data-i="4" style="left:83.3%;top:47.3%" aria-label="Prise 5 sur 5 : l'autre manche"><span class="n" aria-hidden="true">5</span></button>
+        </div>
+
+        <div>
+          <div class="log-head"><p>Tes 5 prises</p><p class="count" aria-live="polite"><b id="cnt">0</b> / 5</p></div>
+          <ol class="log">
+            <li data-s="ferme">
+              <button class="row" type="button" data-i="0" aria-expanded="false" aria-controls="st1"><span class="r-n" aria-hidden="true">1</span><span class="r-txt"><span class="r-step">Attirer</span><span class="r-name">La manche : tes reels</span></span></button>
+              <p class="state" id="st1"><span class="tag">Prise ferme</span>Ton reel retraite : 838 040 lectures. <a class="src" href="https://www.instagram.com/p/DdHarOuISnP/" target="_blank" rel="noopener">Le reel</a></p>
+            </li>
+            <li data-s="glisse">
+              <button class="row" type="button" data-i="1" aria-expanded="false" aria-controls="st2"><span class="r-n" aria-hidden="true">2</span><span class="r-txt"><span class="r-step">Garder le contact</span><span class="r-name">Le revers : ton simulateur</span></span></button>
+              <p class="state" id="st2"><span class="tag">Prise qui glisse</span>Il capte l'email. Mais ni ta bio ni tes reels retraite n'y mènent. <a class="src" href="https://www.focusandyou.fr/simulateur-retraite/" target="_blank" rel="noopener">Le simulateur</a></p>
+            </li>
+            <li data-s="ferme">
+              <button class="row" type="button" data-i="2" aria-expanded="false" aria-controls="st3"><span class="r-n" aria-hidden="true">3</span><span class="r-txt"><span class="r-step">Accompagner</span><span class="r-name">Le col : ta newsletter</span></span></button>
+              <p class="state" id="st3"><span class="tag">Prise ferme</span>Chaque samedi, plus de 53 000 abonnés. <a class="src" href="https://damienlahmi.substack.com/" target="_blank" rel="noopener">Focus Patrimoine</a></p>
+            </li>
+            <li data-s="glisse">
+              <button class="row" type="button" data-i="3" aria-expanded="false" aria-controls="st4"><span class="r-n" aria-hidden="true">4</span><span class="r-txt"><span class="r-step">Vendre</span><span class="r-name">La ceinture : ta masterclass</span></span></button>
+              <p class="state" id="st4"><span class="tag">Prise qui glisse</span>Elle change de nom selon la porte d'entrée. <a class="src" href="https://formation.focusandyou.fr/masterclass-live" target="_blank" rel="noopener">La page</a></p>
+            </li>
+            <li data-s="vide">
+              <button class="row" type="button" data-i="4" aria-expanded="false" aria-controls="st5"><span class="r-n" aria-hidden="true">5</span><span class="r-txt"><span class="r-step">Aller plus loin</span><span class="r-name">L'autre manche : ton Club Privé</span></span></button>
+              <p class="state" id="st5"><span class="tag">Pas de saisie</span>Ton offre la plus chère : une page de 2023, sans un témoignage. <a class="src" href="https://www.focusandyou.fr/club-prive-immobilier-rentable-et-securise/" target="_blank" rel="noopener">La page</a></p>
+            </li>
+          </ol>
+          <div class="unlock" id="unlock" hidden>
+            <p class="big">Deux prises fermes. Deux qui glissent. Une sans saisie.</p>
+            <div class="acts"><a class="btn" href="#tient">Lire la suite</a><a class="btn ghost" href="#p-1">Aller aux 3 prises</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CE QUI TIENT -->
+  <section class="tient gated" id="tient" aria-labelledby="h-t">
+    <div class="wrap">
+      <h2 id="h-t" data-in>Ce qui tient <em>déjà.</em></h2>
+      <div class="t-list">
+        <div class="t-item" data-in>
+          <b>838 040 lectures</b>
+          <p>La phrase de la télé, puis le calcul qui manque. <a class="src" href="https://www.instagram.com/p/DdHarOuISnP/" target="_blank" rel="noopener">Le reel</a></p>
+        </div>
+        <div class="t-item" data-in data-d="1">
+          <b>Un livre chez Dunod</b>
+          <p>Deuxième édition. <a class="src" href="https://www.dunod.com/livres-damien-lahmi" target="_blank" rel="noopener">Dunod</a></p>
+        </div>
+        <div class="t-item" data-in data-d="2">
+          <b>53 000 abonnés</b>
+          <p>Chaque samedi, des titres concrets. <a class="src" href="https://damienlahmi.substack.com/" target="_blank" rel="noopener">Focus Patrimoine</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. LES 3 PRISES QUI GLISSENT -->
+  <div class="gated">
+    <section class="slip" id="p-1" aria-labelledby="h-p1">
+      <div class="wrap grid2">
+        <div>
+          <p class="kick" data-in>Prise 2 · Le revers · Garder le contact</p>
+          <h2 id="h-p1" data-in>Ton aimant à prospects n'est pas sur le chemin.</h2>
+          <div data-in="side">
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Reel retraite, 838 040 lectures. Ton appel : <q>Dis-moi en commentaire : toi, tu comptais bosser à la retraite ?</q> Ton simulateur retraite, lui, capte l'email. Ta page bio n'y mène pas.</p>
+            <a class="src" href="https://www.instagram.com/p/DdHarOuISnP/" target="_blank" rel="noopener">Le reel</a><a class="src" href="https://www.focusandyou.fr/simulateur-retraite/" target="_blank" rel="noopener">le simulateur</a><a class="src" href="https://www.damienlahmi.fr/bio" target="_blank" rel="noopener">ta page bio</a>
+          </div>
+          <p class="cost" data-in>Ton audience la plus chaude repart sans laisser son email.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Ceux qui s'arrêtent sur la retraite te laissent leur adresse.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, on en parle si tu veux.</span></div>
+        </div>
+        <div class="visual">
+          <div class="board" data-in="zoom" role="img" aria-label="Tableau : reel retraite, 838 040 lectures, 1 272 commentaires, lien vers ton simulateur : aucun.">
+            <p class="t" aria-hidden="true">Reel retraite · 12/09/2026</p>
+            <div class="b-row" aria-hidden="true"><span>Lectures</span><b>838 040</b></div>
+            <div class="b-row" aria-hidden="true"><span>Commentaires</span><b>1 272</b></div>
+            <div class="b-row void" aria-hidden="true"><span>Lien vers ton simulateur</span><b>aucun</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slip dark flip" id="p-2" aria-labelledby="h-p2">
+      <div class="wrap grid2">
+        <div>
+          <p class="kick" data-in>Prise 4 · La ceinture · Vendre</p>
+          <h2 id="h-p2" data-in>Ta masterclass change de nom à chaque porte.</h2>
+          <div data-in="side">
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Quatre noms. Sur la même page : <q>Pas de replay prévu</q> et <q>Accès immédiat</q>, sans date. <q>Plusieurs centaines de personnes</q>, puis <q>+1000 investisseurs accompagnés</q>.</p>
+            <a class="src" href="https://formation.focusandyou.fr/masterclass-live" target="_blank" rel="noopener">La page masterclass</a>
+          </div>
+          <p class="cost" data-in>Tes lecteurs, tu les entraînes à repérer le chiffre qui cloche. Ici, ils en trouvent deux.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Un nom, une promesse, de ta bio jusqu'au live.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, on en parle si tu veux.</span></div>
+        </div>
+        <div class="visual">
+          <div data-in="zoom">
+            <div class="zekken" role="img" aria-label="Quatre dossards pour la même masterclass : sur ta page bio, sur Substack, sur ton site et sur la page elle-même.">
+              <div class="zk" aria-hidden="true"><b>Se créer sa retraite privée</b><span>ta page bio</span></div>
+              <div class="zk" aria-hidden="true"><b>Ma formation 100% offerte</b><span>Substack</span></div>
+              <div class="zk" aria-hidden="true"><b>Formation gratuite</b><span>ton site</span></div>
+              <div class="zk" aria-hidden="true"><b>Conférence en ligne</b><span>la page elle-même</span></div>
+            </div>
+            <p class="zk-note" aria-hidden="true">Un seul judoka, quatre dossards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slip alt" id="p-3" aria-labelledby="h-p3">
+      <div class="wrap grid2">
+        <div>
+          <p class="kick" data-in>Prise 5 · L'autre manche · Aller plus loin</p>
+          <h2 id="h-p3" data-in>Ton offre la plus chère a ta page la plus courte.</h2>
+          <div data-in="side">
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Page modifiée le 27/09/2023. Six titres, aucun témoignage. Un bouton : <q>Prendre un rendez-vous avec un conseiller</q>. Sur ton site : 98 avis à 4,6/5, 821+ coachés.</p>
+            <a class="src" href="https://www.focusandyou.fr/club-prive-immobilier-rentable-et-securise/" target="_blank" rel="noopener">La page du Club</a><a class="src" href="https://www.focusandyou.fr/" target="_blank" rel="noopener">ton site</a>
+          </div>
+          <p class="cost" data-in>Ton prospect arrive au rendez-vous sans être convaincu. Ou il n'y arrive pas.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>La page fait le travail avant l'appel, avec tes propres preuves.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, on en parle si tu veux.</span></div>
+        </div>
+        <div class="visual">
+          <div class="split" data-in="zoom" role="img" aria-label="À gauche, ce que tu as : 98 avis à 4,6 sur 5, 821 personnes coachées et plus, un livre chez Dunod, Forbes. À droite, sur la page du Club : aucun témoignage, aucune histoire.">
+            <div class="col has" aria-hidden="true"><p class="t">Chez toi</p><ul><li>98 avis · 4,6/5</li><li>821+ coachés</li><li>Dunod</li><li>Forbes</li></ul></div>
+            <div class="col empty" aria-hidden="true"><p class="t">Page du Club</p><ul><li>Témoignage : aucun</li><li>Histoire : aucune</li><li>Mise à jour : 2023</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 4. APERÇU -->
+  <section class="apercu gated" aria-labelledby="h-ap">
+    <div class="wrap ap-grid">
+      <div>
+        <h2 id="h-ap" data-in>Le mouvement à finir.</h2>
+        <p data-in>La page du Club Privé, et sa vidéo, qui font le travail avant l'appel.</p>
+      </div>
+      <div class="mock" data-in="zoom" role="img" aria-label="Maquette floutée d'une page de vente du Club Privé avec une vidéo">
+        <p class="t" aria-hidden="true">Club Privé</p>
+        <div class="flou" aria-hidden="true"><i class="w9"></i><i class="w6"></i><div class="v"></div><i class="w8"></i><i class="w9"></i><div class="s"></div><div class="s"></div><div class="p"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FIN -->
+  <section class="fin gated" aria-labelledby="h-fin">
+    <div class="wrap">
+      <svg class="rei" viewBox="0 0 84 60" aria-hidden="true"><rect x="2" y="20" width="80" height="20" fill="#141414" stroke="#F06A98" stroke-width="2"/><rect x="34" y="14" width="16" height="32" rx="3" fill="#232323" stroke="#F06A98" stroke-width="2"/><path d="M36 46 L26 58 M48 46 L58 58" stroke="#F06A98" stroke-width="4" stroke-linecap="round"/></svg>
+      <h2 id="h-fin" data-in>Maintenant, tu sais <em>où ça glisse.</em></h2>
+      <p data-in>Tes reels saisissent. Ta newsletter tient. Restent trois prises. Si tu veux qu'on les regarde ensemble, réponds à mon message.</p>
+      <p class="sign" data-in>Alexis</p>
+    </div>
+  </section>
+</main>
+
+<footer class="gated">
+  <div class="wrap">
+    Page préparée par Alexis pour Damien Lahmi, ce n'est pas son site officiel. Constats du 23/11/2026. Aucun résultat garanti. Tout investissement comporte un risque de perte en capital.
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('locked');
+
+  /* Arrivées au scroll */
+  var inEls=document.querySelectorAll('[data-in]');
+  if(!('IntersectionObserver' in window)||reduce){inEls.forEach(function(el){el.classList.add('in');});}
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.1});
+    inEls.forEach(function(el){io.observe(el);});
+  }
+
+  /* Les 5 prises */
+  var items=document.querySelectorAll('.log li'),grips=document.querySelectorAll('.grip');
+  var NAMES=['la manche','le revers','le col','la ceinture',"l'autre manche"];
+  var STATES={ferme:'prise ferme',glisse:'prise qui glisse',vide:'pas de saisie'};
+  var count=0,cnt=document.getElementById('cnt'),unlock=document.getElementById('unlock');
+  grips.forEach(function(g,i){g.setAttribute('data-s',items[i].getAttribute('data-s'));});
+  function take(i){
+    var li=items[i],g=grips[i],s=li.getAttribute('data-s');
+    grips.forEach(function(x){x.classList.remove('cur');});
+    g.classList.add('cur');
+    if(!li.classList.contains('on')){
+      li.classList.add('on');g.classList.add('on');count++;cnt.textContent=count;
+      li.querySelector('.row').setAttribute('aria-expanded','true');
+      g.setAttribute('aria-label','Prise '+(i+1)+' sur 5 : '+NAMES[i]+', '+STATES[s]);
+    }
+    if(count===items.length&&unlock.hidden){
+      unlock.hidden=false;root.classList.remove('locked');
+      unlock.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+    }
+  }
+  grips.forEach(function(g,i){g.addEventListener('click',function(){take(i);});});
+  items.forEach(function(li,i){li.querySelector('.row').addEventListener('click',function(){take(i);});});
+})();
+</script>
+</body>
+</html>
