@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Clément, le bilan de ton tunnel</title>
+<meta name="description" content="Tu offres un bilan à chaque prof'lib. Celui-ci est pour toi. Pour Clément, par Alexis.">
+<meta property="og:title" content="Clément, le bilan de ton tunnel">
+<meta property="og:description" content="Un genou, 5 zones à palper. Trois sont à rééduquer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;800&family=Geist+Mono:wght@500;600&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F1F2E8; --sheet:#FBFBF5; --rule:#D5D8C6;
+  --ink:#0C2619; --ink-2:#183A2A; --muted:#4D5A51;
+  --gold:#E4B935; --gold-soft:#F4E3A6;
+  --mint:#0C7A50; --mint-bright:#3CC28C;
+  --red:#B3261E; --amber:#9A5B00;
+  --bone:#FCF8EC; --muscle:#E3B3A0; --muscle-line:#C98E7A; --tendon:#EFE2C2;
+  --font:"Geist", system-ui, sans-serif;
+  --mono:"Geist Mono", ui-monospace, monospace;
+  --hand:"Kalam", cursive;
+  --maxw:1120px; --gutter:20px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.65 var(--font);overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+h1,h2,h3{line-height:1.05;margin:0 0 .45em;letter-spacing:-.035em;font-weight:800;text-wrap:balance}
+h1{font-size:clamp(2.3rem,9.5vw,4.8rem)}
+h2{font-size:clamp(1.8rem,6.4vw,3.3rem)}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.kicker{font:600 .76rem/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;margin:0 0 14px;color:var(--muted)}
+.src{display:inline-flex;align-items:center;min-height:48px;font-size:.86rem;color:var(--mint);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere;margin-right:14px}
+.src:hover{color:var(--ink)}
+.btn{font:600 1rem var(--font);min-height:52px;display:inline-flex;align-items:center;justify-content:center;padding:0 24px;border-radius:10px;border:0;background:var(--ink);color:#fff;text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+
+/* ---------- 1. La fiche de bilan ---------- */
+.scene{background:var(--ink);color:#fff;padding:40px 0 56px;min-height:100vh;min-height:100svh}
+.scene .kicker{color:#A8C9B6}
+.scene h1 em{font-style:normal;color:var(--gold)}
+.lede{max-width:34em;color:#D8E6DD;font-size:1.05rem}
+.lede a{color:var(--gold)}
+.sheet{margin-top:26px;background:var(--sheet);color:var(--ink);border-radius:6px;padding:18px 16px 22px;box-shadow:0 18px 40px rgba(0,0,0,.35);position:relative}
+.sheet-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 18px;border-bottom:2px solid var(--ink);padding-bottom:10px;font:500 .76rem/1.5 var(--mono);color:var(--muted)}
+.sheet-head b{color:var(--ink);font-weight:600}
+.sheet-body{display:grid;gap:18px;margin-top:16px}
+.plate{position:relative;width:100%;max-width:330px;margin:0 auto}
+.plate svg{width:100%;height:auto}
+.plate .lbl{font:500 9.5px var(--mono);fill:var(--muted)}
+.plate .ttl{font:600 10px var(--mono);fill:var(--ink);letter-spacing:.08em}
+.ghost-pat{opacity:0}
+.js .z2-on .ghost-pat,html:not(.js) .ghost-pat{opacity:1}
+.hot{position:absolute;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;border:2.5px dashed var(--ink);background:rgba(251,251,245,.35);cursor:pointer;padding:0;color:var(--ink);-webkit-tap-highlight-color:transparent}
+.hot span{position:absolute;right:-8px;top:-8px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font:600 .72rem/22px var(--mono);text-align:center}
+@media (hover:hover){.hot:hover{background:rgba(228,185,53,.35)}}
+.hot.on{border-style:solid;background:transparent}
+.hot.on[data-s="ok"]{border-color:var(--mint)}
+.hot.on[data-s="ok"] span{background:var(--mint)}
+.hot.on[data-s="les"]{border-color:var(--red)}
+.hot.on[data-s="les"] span{background:var(--red)}
+.hot.on[data-s="reed"]{border-color:var(--amber)}
+.hot.on[data-s="reed"] span{background:var(--amber)}
+.hot.on[data-s="nv"]{border-color:var(--muted)}
+.hot.on[data-s="nv"] span{background:var(--muted)}
+.notes-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 0 6px}
+.prompt{font:700 1.3rem/1.2 var(--hand);color:var(--ink);margin:0}
+.count{font:600 .8rem var(--mono);color:var(--muted);margin:0;white-space:nowrap}
+.notes{list-style:none;margin:0;padding:0}
+.n{border-top:1px solid var(--rule);padding:10px 0 8px;display:grid;grid-template-columns:30px 1fr;gap:0 10px}
+.n-num{font:600 .8rem/1.9 var(--mono);color:var(--muted)}
+.n-head{font:600 .95rem/1.4 var(--font)}
+.n-head small{font:500 .74rem var(--mono);color:var(--muted);display:block;letter-spacing:.04em;text-transform:uppercase}
+.n-st{grid-column:2;margin:4px 0 0;font:400 1.08rem/1.35 var(--hand)}
+.n-st b{font-weight:700;padding:0 6px;border-radius:4px;margin-right:6px}
+.n[data-s="ok"] .n-st b{color:var(--mint);border:1.5px solid var(--mint)}
+.n[data-s="les"] .n-st b{color:var(--red);border:1.5px solid var(--red)}
+.n[data-s="reed"] .n-st b{color:var(--amber);border:1.5px solid var(--amber)}
+.n[data-s="nv"] .n-st b{color:var(--muted);border:1.5px dashed var(--muted)}
+.n-wait{grid-column:2;margin:4px 0 0;font:400 1rem var(--hand);color:#8A9488;display:none}
+.js .n:not(.on) .n-st{display:none}
+.js .n:not(.on) .n-wait{display:block}
+.unlock{margin-top:16px;background:var(--gold);color:var(--ink);border-radius:8px;padding:16px 16px 18px}
+.unlock .big{font:800 1.25rem/1.25 var(--font);margin:0 0 .7em;letter-spacing:-.02em}
+.unlock .acts{display:flex;flex-wrap:wrap;gap:10px}
+.js .unlock[hidden]{display:none}
+
+/* ---------- Arrivées ---------- */
+.locked .gated{display:none}
+.js [data-in]{opacity:0;transform:translateX(-22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js [data-in="up"]{transform:translateY(34px)}
+.js [data-in="zoom"]{transform:scale(.94)}
+.js [data-in].in{opacity:1;transform:none}
+.js [data-d="1"]{transition-delay:.12s}.js [data-d="2"]{transition-delay:.24s}.js [data-d="3"]{transition-delay:.36s}
+
+/* ---------- 2. Ce qui tient ---------- */
+.forces{padding:84px 0 56px}
+.forces h2 em{font-style:normal;color:var(--mint)}
+.f-list{display:grid;gap:18px;margin-top:26px}
+.f-item{padding:20px 0 6px;border-top:3px solid var(--ink)}
+.f-item q{display:block;font:800 clamp(1.3rem,4vw,1.85rem)/1.15 var(--font);letter-spacing:-.025em;quotes:"«\00a0" "\00a0»";margin-bottom:8px}
+.f-item p{color:var(--muted);margin:0}
+
+/* ---------- 3. Zones à rééduquer ---------- */
+.z-sec{padding:88px 0;position:relative;overflow:hidden}
+.z-sec.dark{background:var(--ink);color:#fff}
+.z-sec.dark .kicker{color:#A8C9B6}
+.z-sec.dark .src{color:var(--gold)}
+.z-sec.dark .lab{color:var(--gold)}
+.z-sec.dark .quote{color:#E3EDE6}
+.grid2{display:grid;gap:34px}
+.dx{display:inline-block;font:700 1.35rem/1 var(--hand);padding:4px 12px;border-radius:5px;margin-bottom:12px;border:2px solid currentColor}
+.dx.les{color:var(--red)}.dark .dx.les{color:#FF8A80}
+.dx.reed{color:var(--amber)}
+.lab{font:600 .74rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mint);margin:0 0 6px}
+.quote{border-left:4px solid var(--gold);padding:2px 0 2px 14px;margin:0 0 4px}
+.quote q{font-weight:600;quotes:"«\00a0" "\00a0»"}
+.todo{background:var(--gold-soft);color:var(--ink);padding:0 4px;font-weight:600}
+.cost{font:600 clamp(1.05rem,3vw,1.28rem)/1.42 var(--font);margin:18px 0}
+.change{background:var(--gold);color:var(--ink);border-radius:8px;padding:16px 18px;font-weight:600}
+.change .lab,.z-sec.dark .change .lab{color:var(--ink-2)}
+.lock{display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px 14px;border:2px dashed currentColor;border-radius:8px;opacity:.85;font-weight:600;font-size:.95rem}
+.lock .bars{flex:1;display:grid;gap:6px;filter:blur(2.5px);opacity:.45}
+.lock .bars span{display:block;height:7px;border-radius:7px;background:currentColor}
+.lock .bars span:nth-child(2){width:62%}
+.lock-txt{flex:2}
+/* Visuel : la boîte vide */
+.inbox{max-width:360px;margin:0 auto;background:var(--sheet);color:var(--ink);border-radius:8px;overflow:hidden;font-size:.9rem}
+.inbox-h{background:#DDE3D6;padding:10px 14px;font:600 .78rem var(--mono);color:var(--ink-2)}
+.inbox-r{display:flex;gap:10px;align-items:center;padding:12px 14px;border-top:1px solid var(--rule)}
+.inbox-r i{flex:none;width:28px;height:28px;border-radius:50%;background:var(--mint)}
+.inbox-r.empty i{background:none;border:2px dashed #9AA39A}
+.inbox-r.empty span{font:400 1.05rem var(--hand);color:var(--muted)}
+/* Visuel : la vidéo */
+.reel{max-width:380px;margin:0 auto}
+.screen{background:#071A11;border-radius:8px;aspect-ratio:16/9;display:grid;place-items:center;color:#A8C9B6;font:500 .8rem var(--mono)}
+.bar{position:relative;height:10px;border-radius:10px;background:#D5D8C6;margin:16px 0 6px}
+.bar i{position:absolute;left:0;top:0;bottom:0;width:100%;border-radius:10px;background:repeating-linear-gradient(90deg,var(--muted) 0 6px,#8A9488 6px 12px)}
+.bar b{position:absolute;right:0;top:-8px;width:4px;height:26px;background:var(--red);border-radius:2px}
+.bar-l{display:flex;justify-content:space-between;font:500 .78rem var(--mono);color:var(--muted)}
+.bar-l span:last-child{color:var(--red);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chips span{font:600 .82rem var(--font);border:1.5px solid var(--ink);border-radius:999px;padding:6px 12px}
+.v-note{font-size:.85rem;color:var(--muted);margin-top:10px}
+/* Visuel : rotule mal centrée */
+.align{max-width:360px;margin:0 auto;display:grid;gap:0}
+.card{background:var(--sheet);color:var(--ink);border-radius:8px;padding:14px 16px;font-size:.92rem}
+.card small{display:block;font:500 .72rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.card b{font-size:1.02rem}
+.card.b{margin:10px 0 0 34px;transform:rotate(2.5deg);border:2px dashed var(--red)}
+.axis{height:30px;border-left:2px dashed #A8C9B6;margin-left:50%}
+.dark .v-note{color:#B9CFC1}
+
+/* ---------- 4. Aperçu ---------- */
+.apercu{padding:88px 0;background:#E6E9DA}
+.ap-grid{display:grid;gap:34px;align-items:center}
+.mail{max-width:320px;margin:0 auto;background:var(--sheet);border-radius:8px;box-shadow:10px 10px 0 var(--ink);padding:18px 18px 22px}
+.mail .from{font:500 .76rem var(--mono);color:var(--muted);margin:0 0 4px}
+.mail .obj{font:800 1.05rem var(--font);margin:0 0 14px}
+.flou{filter:blur(4px);user-select:none;pointer-events:none}
+.flou i{display:block;height:9px;border-radius:9px;background:#C9CDB9;margin:0 0 8px}
+.flou .w8{width:80%}.flou .w6{width:58%}.flou .w9{width:93%}
+.flou .q{height:44px;border-radius:6px;border-left:5px solid var(--gold);background:#EEF0E4;margin:12px 0}
+.flou .p{height:42px;border-radius:8px;background:var(--gold);margin-top:14px;width:70%}
+
+/* ---------- 5. Fin ---------- */
+.fin{padding:96px 0 84px;text-align:center;background:var(--ink);color:#fff}
+.fin p{max-width:32em;margin-left:auto;margin-right:auto;color:#D8E6DD}
+.fin h2 em{font-style:normal;color:var(--gold)}
+.sign{font:700 3rem var(--hand);margin:26px 0 0;color:#fff}
+footer{padding:24px 0 34px;font-size:.8rem;color:var(--muted)}
+
+@media (min-width:720px){
+  body{font-size:17px}
+  .scene{padding-top:60px}
+  .sheet{padding:24px 30px 30px}
+  .sheet-body{grid-template-columns:minmax(300px,380px) 1fr;gap:40px;align-items:start}
+  .plate{max-width:380px}
+  .f-list{grid-template-columns:repeat(3,1fr);gap:28px}
+  .grid2{grid-template-columns:1.2fr .8fr;gap:60px;align-items:center}
+  .flip .grid2{grid-template-columns:.8fr 1.2fr}
+  .flip .visual{order:-1}
+  .ap-grid{grid-template-columns:1fr 1fr;gap:60px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<main>
+  <!-- 1. LE BILAN : 5 zones à palper -->
+  <section class="scene" aria-labelledby="h1">
+    <div class="wrap">
+      <p class="kicker">Pour Clément · Le Kiné Financier</p>
+      <h1 id="h1">Clément, ton tunnel a mal <em>au genou.</em></h1>
+      <p class="lede">Tu offres un <a href="https://www.clementbravo.com/strategie-spaq" target="_blank" rel="noopener">bilan</a> à chaque prof'lib. Celui-ci est pour toi. 5 zones, une par étape de ton tunnel. Palpe-les.</p>
+
+      <div class="sheet" id="sheet">
+        <div class="sheet-head"><span>Fiche de bilan · <b>Le Kiné Financier</b></span><span>Motif : <b>le tunnel</b></span><span>Relevé le <b>23/11/2026</b></span></div>
+        <div class="sheet-body">
+          <div class="plate" id="plate">
+            <svg viewBox="0 0 300 400" role="img" aria-label="Planche anatomique d'un genou droit, vue de face : quadriceps, rotule, ménisques, tendon rotulien, tibia et péroné.">
+              <text class="ttl" x="8" y="14">GENOU DROIT · VUE ANTÉRIEURE</text>
+              <!-- femur -->
+              <path d="M124 24 L176 24 L182 122 C198 140 222 150 224 172 C226 190 212 198 196 196 L160 190 L150 195 L140 190 L104 196 C88 198 74 190 76 172 C78 150 102 140 118 122 Z" fill="var(--bone)" stroke="var(--ink)" stroke-width="2"/>
+              <!-- tibia -->
+              <path d="M80 210 C84 202 216 202 220 210 L218 226 C212 240 196 246 186 264 L180 392 L128 392 L122 264 C112 246 90 240 82 226 Z" fill="var(--bone)" stroke="var(--ink)" stroke-width="2"/>
+              <!-- fibula -->
+              <path d="M214 246 C226 246 230 256 226 266 L218 392 L204 392 L206 264 C204 254 206 246 214 246 Z" fill="var(--bone)" stroke="var(--ink)" stroke-width="2"/>
+              <!-- menisci -->
+              <path d="M82 207 C92 197 122 197 142 203 L140 209 C120 206 98 207 86 212 Z" fill="var(--tendon)" stroke="var(--ink)" stroke-width="1.5"/>
+              <path d="M218 207 C208 197 178 197 158 203 L160 209 C180 206 202 207 214 212 Z" fill="var(--tendon)" stroke="var(--ink)" stroke-width="1.5"/>
+              <!-- collateral ligaments -->
+              <path d="M76 168 L82 166 L88 238 L82 240 Z" fill="var(--tendon)" stroke="var(--ink)" stroke-width="1.2"/>
+              <path d="M224 168 L218 166 L214 246 L220 247 Z" fill="var(--tendon)" stroke="var(--ink)" stroke-width="1.2"/>
+              <!-- quadriceps -->
+              <path d="M98 24 L202 24 C208 64 200 98 182 118 L170 126 L130 126 L118 118 C100 98 92 64 98 24 Z" fill="var(--muscle)" fill-opacity=".85" stroke="var(--muscle-line)" stroke-width="1.5"/>
+              <path d="M120 30 C118 70 124 100 136 120 M150 28 L150 122 M180 30 C182 70 176 100 164 120 M108 36 C106 66 112 92 124 112 M192 36 C194 66 188 92 176 112" fill="none" stroke="var(--muscle-line)" stroke-width="1" opacity=".8"/>
+              <path d="M132 124 L168 124 L166 136 L134 136 Z" fill="var(--tendon)" stroke="var(--ink)" stroke-width="1.2"/>
+              <!-- patella : légèrement décentrée -->
+              <ellipse class="ghost-pat" cx="150" cy="156" rx="27" ry="31" fill="none" stroke="var(--mint)" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <ellipse cx="157" cy="157" rx="27" ry="31" fill="var(--bone)" stroke="var(--ink)" stroke-width="2"/>
+              <!-- patellar tendon -->
+              <path d="M141 186 L169 186 L163 254 L145 254 Z" fill="var(--tendon)" stroke="var(--ink)" stroke-width="1.5"/>
+              <!-- labels -->
+              <g class="lbl">
+                <text x="212" y="60">Quadriceps</text>
+                <text x="232" y="150">Rotule</text>
+                <text x="230" y="214">Ménisque</text>
+                <text x="8" y="282">Tendon</text><text x="8" y="294">rotulien</text>
+                <text x="8" y="352">Tibia</text>
+                <text x="234" y="320">Péroné</text>
+              </g>
+              <g stroke="var(--muted)" stroke-width=".8" fill="none">
+                <path d="M210 57 L198 60"/><path d="M230 147 L186 152"/><path d="M228 211 L214 206"/><path d="M48 286 L144 236"/><path d="M34 348 L130 340"/><path d="M232 316 L222 316"/>
+              </g>
+            </svg>
+            <button class="hot" type="button" data-z="1" data-s="ok" style="left:50%;top:15%" aria-label="Palper la zone 1, le quadriceps : attirer"><span>1</span></button>
+            <button class="hot" type="button" data-z="2" data-s="reed" style="left:52.3%;top:39%" aria-label="Palper la zone 2, la rotule : garder le contact"><span>2</span></button>
+            <button class="hot" type="button" data-z="3" data-s="les" style="left:64%;top:50%" aria-label="Palper la zone 3, le ménisque : accompagner"><span>3</span></button>
+            <button class="hot" type="button" data-z="4" data-s="les" style="left:51.5%;top:59.5%" aria-label="Palper la zone 4, le tendon rotulien : vendre"><span>4</span></button>
+            <button class="hot" type="button" data-z="5" data-s="nv" style="left:51%;top:82%" aria-label="Palper la zone 5, le tibia : aller plus loin"><span>5</span></button>
+          </div>
+
+          <div>
+            <div class="notes-top"><p class="prompt" id="prompt">Commence où tu veux.</p><p class="count" aria-live="polite"><b id="cnt">0</b> / 5 palpées</p></div>
+            <ol class="notes">
+              <li class="n" id="n1" data-s="ok"><span class="n-num">01</span><span class="n-head"><small>Attirer</small>Quadriceps · tes contenus</span><p class="n-wait">à palper</p><p class="n-st"><b>Souple</b>Reels chaque semaine, ton podcast Le Cab', 17 082 abonnés.</p></li>
+              <li class="n" id="n2" data-s="reed"><span class="n-num">02</span><span class="n-head"><small>Garder le contact</small>Rotule · ton lien en bio</span><p class="n-wait">à palper</p><p class="n-st"><b>À rééduquer</b>Mal centrée : ta bio parle aux prof'lib, ton lien aux « investisseurs ».</p></li>
+              <li class="n" id="n3" data-s="les"><span class="n-num">03</span><span class="n-head"><small>Accompagner</small>Ménisque · ta newsletter</span><p class="n-wait">à palper</p><p class="n-st"><b>Lésion</b>Inscrit à ta newsletter, je n'ai reçu aucun mail.</p></li>
+              <li class="n" id="n4" data-s="les"><span class="n-num">04</span><span class="n-head"><small>Vendre</small>Tendon rotulien · ta vidéo</span><p class="n-wait">à palper</p><p class="n-st"><b>Raideur</b>Le programme arrive après 40 minutes de vidéo.</p></li>
+              <li class="n" id="n5" data-s="nv"><span class="n-num">05</span><span class="n-head"><small>Aller plus loin</small>Tibia · l'après-achat</span><p class="n-wait">à palper</p><p class="n-st"><b>Non vérifié</b>Après l'achat, rien n'est visible de l'extérieur.</p></li>
+            </ol>
+            <div class="unlock" id="unlock" hidden>
+              <p class="big">Trois zones à rééduquer. Le reste tient debout.</p>
+              <div class="acts"><a class="btn" href="#forces">Lire le bilan</a><a class="btn ghost" href="#z-1">Les 3 zones</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CE QUI TIENT -->
+  <section class="forces gated" id="forces" aria-labelledby="h-forces">
+    <div class="wrap">
+      <h2 id="h-forces" data-in>Ce qui tient <em>déjà.</em></h2>
+      <div class="f-list">
+        <div class="f-item" data-in="up">
+          <q>4,9/5 sur 137 avis.</q>
+          <p>Des avis publics, pas seulement des captures. <a class="src" href="https://fr.trustpilot.com/review/clementbravo.com" target="_blank" rel="noopener">Trustpilot</a></p>
+        </div>
+        <div class="f-item" data-in="up" data-d="1">
+          <q>Fitia, Dany, Hugo…</q>
+          <p>8 témoignages vidéo, chacun avec un prénom. <a class="src" href="https://www.clementbravo.com/strategie-spaq" target="_blank" rel="noopener">Ta page SPAQ</a></p>
+        </div>
+        <div class="f-item" data-in="up" data-d="2">
+          <q>Le Kiné Financier.</q>
+          <p>Une niche qu'on comprend en une seconde. <a class="src" href="https://www.instagram.com/clement_bravo_/" target="_blank" rel="noopener">Ton Instagram</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. LES 3 ZONES -->
+  <div class="gated">
+    <section class="z-sec dark" id="z-1" aria-labelledby="h-z1">
+      <div class="wrap grid2">
+        <div>
+          <p class="kicker" data-in>Zone 3 · Accompagner · Ménisque</p>
+          <span class="dx les" data-in>Lésion</span>
+          <h2 id="h-z1" data-in>Ta newsletter ne parle jamais.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Je me suis inscrit à ta newsletter le 16/11/2026. Depuis, aucun mail.</p>
+            <a class="src" href="https://www.clementbravo.com/?src=instabio" target="_blank" rel="noopener">Ta page d'inscription</a>
+          </div>
+          <p class="cost" data-in>Le kiné qui s'inscrit n'est pas prêt ce soir. Sans nouvelles, il oublie qui lui a offert la formation.</p>
+          <div class="change" data-in="zoom"><p class="lab">Ce qui change</p>Celui qui met du temps à se décider entend parler de toi jusqu'au jour où il est prêt.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le protocole, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in="up">
+          <div class="inbox" role="img" aria-label="Ma boîte mail après l'inscription : aucun message de ta part.">
+            <div class="inbox-h" aria-hidden="true">Boîte de réception · Clément Bravo</div>
+            <div class="inbox-r empty" aria-hidden="true"><i></i><span>rien</span></div>
+            <div class="inbox-r empty" aria-hidden="true"><i></i><span>rien</span></div>
+            <div class="inbox-r empty" aria-hidden="true"><i></i><span>toujours rien</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="z-sec flip" id="z-2" aria-labelledby="h-z2">
+      <div class="wrap grid2">
+        <div>
+          <p class="kicker" data-in>Zone 4 · Vendre · Tendon rotulien</p>
+          <span class="dx les" data-in>Raideur</span>
+          <h2 id="h-z2" data-in>Ta vidéo est une introduction.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Le programme arrive après 40 minutes de vidéo. Sur la page, il tient dans une parenthèse : <q>(modules, coaching, formation, analyses à disposition…)</q>. Pas de FAQ, pas de prix. Et le même appel porte 4 noms.</p>
+            <a class="src" href="https://www.clementbravo.com/strategie-spaq" target="_blank" rel="noopener">Ta page SPAQ</a>
+          </div>
+          <p class="cost" data-in>Un dentiste entre deux patients ne regarde pas 40 minutes. Il repart avec ses questions.</p>
+          <div class="change" data-in="zoom"><p class="lab">Ce qui change</p>Il sait tôt ce qu'il achète. Il arrive à l'appel avec moins de doutes.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le protocole, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in="up">
+          <div class="reel" role="img" aria-label="Ta vidéo : le programme n'arrive qu'à 40 minutes. Le même appel porte 4 noms : bilan offert, appel sélection, diagnostic 100 % offert, réserver mon appel.">
+            <div class="screen" aria-hidden="true">Ta vidéo</div>
+            <div class="bar" aria-hidden="true"><i></i><b></b></div>
+            <div class="bar-l" aria-hidden="true"><span>0 min</span><span>40 min : le programme</span></div>
+            <div class="chips" aria-hidden="true"><span>Bilan offert</span><span>Appel Sélection</span><span>Diagnostic 100% offert</span><span>Réserver mon appel</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="z-sec dark" id="z-3" aria-labelledby="h-z3">
+      <div class="wrap grid2">
+        <div>
+          <p class="kicker" data-in>Zone 2 · Garder le contact · Rotule</p>
+          <span class="dx reed" data-in style="color:var(--gold)">À rééduquer</span>
+          <h2 id="h-z3" data-in>Ton lien en bio oublie le kiné.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Ta bio : <q>J'aide les prof'lib à bien INVESTIR leur épargne</q>. Ton lien : <q>la stratégie SPAQ qui permet à 324 investisseurs…</q>. Ni libéral, ni cabinet.</p>
+            <a class="src" href="https://www.instagram.com/clement_bravo_/" target="_blank" rel="noopener">Ta bio</a><a class="src" href="https://www.clementbravo.com/?src=instabio" target="_blank" rel="noopener">ton lien en bio</a>
+          </div>
+          <p class="cost" data-in>Le kiné qui veut ralentir au cabinet tombe sur une page pour n'importe quel investisseur. Ta différence s'arrête au clic.</p>
+          <div class="change" data-in="zoom"><p class="lab">Ce qui change</p>Le prof'lib se reconnaît dès le titre, avec ses mots.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le protocole, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in="up">
+          <div class="align" role="img" aria-label="Ta bio Instagram parle aux prof'lib. La page du lien en bio, décalée, parle à 324 investisseurs.">
+            <div class="card" aria-hidden="true"><small>Instagram</small><b>Le Kiné Financier</b><br>J'aide les prof'lib…</div>
+            <div class="axis" aria-hidden="true"></div>
+            <div class="card b" aria-hidden="true"><small>Lien en bio</small><b>324 investisseurs</b><br>Ni libéral, ni cabinet</div>
+          </div>
+          <p class="v-note">La rotule ne glisse plus dans l'axe.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 4. APERÇU -->
+  <section class="apercu gated" aria-labelledby="h-ap">
+    <div class="wrap ap-grid">
+      <div>
+        <h2 id="h-ap" data-in>Le mail qui manque encore.</h2>
+        <p data-in>Une newsletter pour ceux qui mettent du temps à passer à l'action. Dans ta voix, pour les prof'lib.</p>
+      </div>
+      <div class="mail" data-in="zoom" role="img" aria-label="Maquette floutée d'un mail de ta newsletter">
+        <p class="from" aria-hidden="true">De : Clément Bravo</p>
+        <p class="obj" aria-hidden="true">Le Kiné Financier</p>
+        <div class="flou" aria-hidden="true"><i class="w9"></i><i class="w8"></i><i class="w6"></i><div class="q"></div><i class="w9"></i><i class="w8"></i><i class="w6"></i><div class="p"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FIN -->
+  <section class="fin gated" aria-labelledby="h-fin">
+    <div class="wrap">
+      <h2 id="h-fin" data-in>Le bilan <em>est fait.</em></h2>
+      <p data-in>Tu le dis toi-même : la finance est moins complexe que le corps humain. Un tunnel, ça se rééduque : trois zones, pas tout le genou. Si tu veux qu'on regarde le protocole ensemble, réponds à mon message.</p>
+      <p class="sign" data-in>Alexis</p>
+    </div>
+  </section>
+</main>
+
+<footer class="gated">
+  <div class="wrap">
+    Page préparée par Alexis pour Clément Bravo. Ce n'est pas son site officiel. Constats du 23/11/2026. Aucun résultat garanti. Tout investissement comporte un risque de perte en capital.
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('locked');
+
+  /* Arrivées au scroll */
+  var inEls=document.querySelectorAll('[data-in]');
+  if(!('IntersectionObserver' in window)||reduce){inEls.forEach(function(el){el.classList.add('in');});}
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.1});
+    inEls.forEach(function(el){io.observe(el);});
+  }
+
+  /* Le bilan : 5 zones à palper */
+  var NOTES={ok:'Souple.',reed:'Mal centrée.',les:'Ça accroche ici.',nv:'Rien à palper d\'ici.'};
+  var hots=document.querySelectorAll('.hot'),count=0,cnt=document.getElementById('cnt'),prompt=document.getElementById('prompt'),unlock=document.getElementById('unlock'),plate=document.getElementById('plate');
+  hots.forEach(function(b){
+    b.setAttribute('aria-pressed','false');
+    b.addEventListener('click',function(){
+      var z=b.getAttribute('data-z'),n=document.getElementById('n'+z),first=!b.classList.contains('on');
+      b.classList.add('on');n.classList.add('on');b.setAttribute('aria-pressed','true');
+      if(z==='2')plate.classList.add('z2-on');
+      prompt.textContent=NOTES[b.getAttribute('data-s')];
+      if(first){count++;cnt.textContent=count;}
+      if(count===hots.length&&unlock.hidden){
+        unlock.hidden=false;root.classList.remove('locked');
+        unlock.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
