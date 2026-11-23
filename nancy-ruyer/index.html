@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Nancy, il manque des pierres à ta couronne</title>
+<meta name="description" content="Ton tunnel en couronne : 5 pierres à toucher. Pour Nancy (Money Queen), par Alexis.">
+<meta property="og:title" content="Nancy, il manque des pierres à ta couronne">
+<meta property="og:description" content="5 pierres, de tes reels à Money Queen. Trois ne tiennent pas encore.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --velvet:#4A1020; --velvet-2:#661A2F; --velvet-3:#2E0913;
+  --cream:#F6F0EA; --paper:#FBF8F4; --blush:#EADBD9;
+  --ink:#2A1018; --muted:#5E4A50;
+  --gold:#D4AF5A; --gold-2:#B88F35; --gold-ink:#7A5C1A; --gold-soft:#F1DFAE;
+  --emerald:#2F7A5B; --emerald-2:#7FC4A3; --ruby:#B3243F; --ruby-2:#E36A80;
+  --font-title:"Playfair Display", Georgia, serif;
+  --font-body:"Poppins", system-ui, sans-serif;
+  --maxw:1120px; --gutter:20px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.65 var(--font-body);overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--font-title);font-weight:800;line-height:1.12;margin:0 0 .5em;text-wrap:balance}
+h1{font-size:clamp(2rem,7.6vw,3.5rem)}
+h2{font-size:clamp(1.6rem,5.4vw,2.6rem)}
+p{margin:0 0 1em}
+a{color:inherit}
+q{quotes:"«\00a0" "\00a0»"}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.src{display:inline-flex;align-items:center;min-height:48px;margin-right:16px;font-size:.9rem;font-weight:600;color:var(--velvet-2);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.src:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:12px;background:var(--gold);color:var(--velvet-3);font:700 1rem var(--font-body);text-decoration:none}
+.btn:hover{background:var(--gold-soft)}
+
+/* ---------- 1. La couronne ---------- */
+.scene{background:radial-gradient(120% 80% at 70% 10%,var(--velvet-2) 0%,var(--velvet) 50%,var(--velvet-3) 100%);color:var(--cream);padding:40px 0 48px}
+.scene-grid{display:grid;gap:28px;grid-template-areas:"txt" "crown" "list" "unl"}
+.s-txt{grid-area:txt}
+.said{font:italic 600 1.08rem/1.45 var(--font-title);color:var(--gold-soft);margin:0}
+.said-src a{display:inline-flex;align-items:center;min-height:48px;color:#E9C9CF;font-size:.9rem;text-decoration:underline;text-underline-offset:3px}
+.lede{color:#F1E2E4;max-width:30em}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;margin:0 0 14px;padding:0;font-size:.92rem;color:#F1E2E4}
+.legend li{display:flex;align-items:center;gap:8px}
+.legend i{width:16px;height:16px;border-radius:50%;flex:none}
+.count{font:700 1rem var(--font-body);color:var(--gold-soft);margin:0}
+.count b{color:#fff;font-size:1.25rem}
+
+.crown{grid-area:crown;position:relative;width:100%;max-width:600px;margin:0 auto}
+.crown svg{width:100%;height:auto}
+.gem{position:absolute;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;border:4px solid var(--gold);background:radial-gradient(circle at 35% 30%,#FFF6DC 0%,var(--gold-soft) 30%,var(--gold-2) 100%);box-shadow:0 0 0 3px var(--velvet-3),0 3px 8px rgba(0,0,0,.45);cursor:pointer;padding:0;color:var(--velvet-3);font:700 1rem var(--font-body);-webkit-tap-highlight-color:transparent;overflow:hidden}
+.gem span{position:relative;z-index:1}
+@media (hover:hover){.gem:not(.on):hover{transform:scale(1.08)}}
+.gem.on span{display:none}
+.gem.on[data-s="sertie"]{background:radial-gradient(circle at 34% 28%,#D9F5E8 0%,var(--emerald-2) 22%,var(--emerald) 62%,#1A4D38 100%)}
+.gem.on[data-s="felee"]{background:radial-gradient(circle at 34% 28%,#FFD9E0 0%,var(--ruby-2) 24%,var(--ruby) 62%,#6E1022 100%)}
+.gem.on[data-s="felee"]::after{content:"";position:absolute;left:14%;top:46%;width:72%;height:3px;background:#FFF4F6;transform:rotate(-38deg);box-shadow:6px 6px 0 -1px rgba(255,244,246,.7)}
+.gem.on[data-s="vide"]{background:radial-gradient(circle,#12040A 0%,#25080F 60%,#3A0E19 100%);box-shadow:0 0 0 3px var(--velvet-3),inset 0 4px 10px rgba(0,0,0,.9)}
+.js .gem:not(.on){animation:none}
+
+.stones{grid-area:list;list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.stone{background:rgba(255,255,255,.06);border:1px solid rgba(212,175,90,.35);border-radius:12px;padding:12px 16px}
+.stone-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font:600 1rem/1.3 var(--font-title)}
+.stone-h .n{font:700 .85rem var(--font-body);color:var(--gold-soft)}
+.tag{font:700 .78rem/1 var(--font-body);padding:5px 9px;border-radius:999px}
+[data-s="sertie"] .tag{background:var(--emerald-2);color:#0E2E20}
+[data-s="felee"] .tag{background:var(--ruby-2);color:#3A0712}
+[data-s="vide"] .tag{background:#12040A;color:#fff;border:1px solid var(--gold)}
+.stone p{margin:6px 0 0;font-size:.95rem;color:#F1E2E4}
+.js .stone:not(.on){opacity:.85}
+.js .stone:not(.on) .tag,.js .stone:not(.on) p{display:none}
+.js .stone:not(.on) .stone-h::after{content:"à toucher";font:600 .8rem var(--font-body);color:#E9C9CF}
+.unlock{grid-area:unl;background:var(--cream);color:var(--ink);border-radius:12px;padding:20px;border-left:8px solid var(--gold)}
+.unlock .big{font:800 1.25rem/1.3 var(--font-title);margin:0 0 .3em}
+.js .unlock[hidden]{display:none}
+
+/* ---------- Arrivées ---------- */
+.locked .gated{display:none}
+.js [data-in]{opacity:0;transform:translateY(26px) scale(.98);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js [data-in].in{opacity:1;transform:none}
+.js [data-d="1"]{transition-delay:.12s}.js [data-d="2"]{transition-delay:.24s}
+
+/* ---------- 2. Ce qui brille ---------- */
+.forces{padding:76px 0 56px;background:var(--paper)}
+.f-list{display:grid;gap:8px;margin-top:20px}
+.f-item{padding:18px 0 4px;border-top:2px solid var(--gold)}
+.f-item q{display:block;font:600 clamp(1.15rem,3.4vw,1.5rem)/1.25 var(--font-title);margin-bottom:8px}
+.f-item p{color:var(--muted);margin:0}
+
+/* ---------- 3. Les pierres ---------- */
+.p-sec{padding:80px 0;overflow:hidden}
+.p-sec.velvet{background:var(--velvet);color:var(--cream)}
+.p-sec.velvet .src{color:var(--gold-soft)}
+.p-sec.velvet .src:hover{color:#fff}
+.p-sec.velvet .lab{color:var(--gold-soft)}
+.p-sec.blush{background:var(--blush)}
+.grid2{display:grid;gap:34px}
+.stamp{display:inline-flex;align-items:center;gap:10px;font:700 .9rem/1 var(--font-body);margin-bottom:14px}
+.stamp i{width:22px;height:22px;border-radius:50%;border:3px solid var(--gold)}
+.stamp.vide i{background:#12040A}
+.stamp.felee i{background:var(--ruby)}
+.lab{font:700 .85rem var(--font-body);color:var(--gold-ink);margin:0 0 6px;text-transform:uppercase;letter-spacing:.06em}
+.quote{border-left:4px solid var(--gold);padding:2px 0 2px 14px;margin:0 0 2px}
+.quote q{font-weight:600}
+.cost{font:600 clamp(1.05rem,2.8vw,1.25rem)/1.45 var(--font-title);margin:18px 0}
+.change{background:var(--gold-soft);color:var(--ink);border-radius:12px;padding:16px 18px;font-weight:600}
+.change .lab{color:var(--gold-ink)}
+.lock{display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px 14px;border:2px dashed currentColor;border-radius:12px;opacity:.85;font-weight:600}
+.lock .bars{flex:1;display:grid;gap:6px;filter:blur(2.5px);opacity:.45}
+.lock .bars span{display:block;height:7px;border-radius:7px;background:currentColor}
+.lock .bars span:nth-child(2){width:65%}
+.lock-txt{flex:2}
+/* visuel 1 : son bouton */
+.v-btn{max-width:340px;margin:0 auto;background:#fff;color:var(--ink);border-radius:12px;padding:18px;box-shadow:10px 10px 0 var(--velvet-3)}
+.v-cta{background:#7D1730;color:#fff;border-radius:8px;padding:14px;text-align:center;font:700 .95rem/1.25 var(--font-body)}
+.v-no{margin:14px 0 0;padding:0;list-style:none;font-size:.92rem}
+.v-no li{padding:6px 0;border-top:1px solid #EADBD9}
+.v-no b{color:var(--ruby)}
+.v-foot{margin:12px 0 0;font-size:.85rem;color:var(--muted);text-align:center}
+/* visuel 2 : les deux fiches */
+.fiches{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:380px;margin:0 auto}
+.fiche{background:#fff;border-radius:10px;padding:14px 12px;box-shadow:0 6px 0 rgba(74,16,32,.18)}
+.fiche h3{font:700 .8rem var(--font-body);color:var(--muted);margin:0 0 8px;overflow-wrap:anywhere}
+.fiche dl{margin:0}
+.fiche dt{font-size:.78rem;color:var(--muted)}
+.fiche dd{margin:0 0 8px;font:800 1.1rem/1.2 var(--font-title)}
+.fiche dd.x{color:var(--ruby)}
+.fiches-note{grid-column:1/-1;text-align:center;font-size:.9rem;margin:4px 0 0}
+/* visuel 3 : le post */
+.v-post{max-width:320px;margin:0 auto;background:#fff;color:var(--ink);border-radius:12px;overflow:hidden;box-shadow:10px 10px 0 var(--gold-2)}
+.v-post-top{display:flex;align-items:center;gap:10px;padding:10px 12px;font-weight:600;font-size:.9rem}
+.v-post-top i{width:30px;height:30px;border-radius:50%;background:var(--velvet-2);border:2px solid var(--gold)}
+.v-post-img{background:var(--velvet);color:var(--gold-soft);padding:28px 18px;text-align:center;font:800 1.5rem/1.2 var(--font-title)}
+.v-post-img small{display:block;font:600 .85rem var(--font-body);color:#F1E2E4;margin-top:8px}
+.v-post-b{padding:10px 12px 14px;font-size:.88rem}
+.v-post-b b{font-weight:700}
+
+/* ---------- 4. Aperçu ---------- */
+.apercu{padding:80px 0;background:var(--paper)}
+.ap-grid{display:grid;gap:30px;align-items:center}
+.maquette{max-width:320px;margin:0 auto;background:#fff;border:2px solid var(--velvet);border-radius:12px;padding:20px 18px 22px;box-shadow:10px 10px 0 var(--gold)}
+.maquette .t{font:800 1.15rem/1.2 var(--font-title);margin:0 0 4px}
+.maquette .st{font-weight:600;color:var(--velvet-2);margin:0 0 12px;font-size:.92rem}
+.flou{filter:blur(4px);user-select:none;pointer-events:none}
+.flou i{display:block;height:9px;border-radius:9px;background:#E3D3D1;margin:0 0 8px}
+.flou .w8{width:80%}.flou .w6{width:60%}.flou .w9{width:92%}
+.flou .f{height:44px;border-radius:8px;border:2px solid #E3D3D1;margin:12px 0 8px}
+.flou .p{height:44px;border-radius:8px;background:var(--velvet-2)}
+.flou .m{height:30px;border-radius:6px;background:#F3EAE8;margin:8px 0}
+
+/* ---------- 5. Fin ---------- */
+.fin{padding:84px 0 76px;text-align:center;background:radial-gradient(120% 90% at 50% 0%,var(--velvet-2) 0%,var(--velvet-3) 100%);color:#fff}
+.fin p{max-width:32em;margin-left:auto;margin-right:auto;color:#F1E2E4}
+.mini{width:170px;margin:0 auto 26px}
+.sign{font:italic 600 2.4rem var(--font-title);margin:24px 0 18px;color:var(--gold-soft)!important}
+.ps{font-size:.95rem}
+footer{padding:24px 0 34px;font-size:.85rem;color:var(--muted)}
+
+@media (min-width:720px){
+  body{font-size:17px}
+  .scene{padding:56px 0 64px}
+  .stones{grid-template-columns:1fr 1fr}
+  .stones li:last-child{grid-column:1/-1}
+  .f-list{grid-template-columns:repeat(3,1fr);gap:30px}
+  .grid2{grid-template-columns:1.2fr .8fr;gap:60px;align-items:center}
+  .flip .grid2{grid-template-columns:.8fr 1.2fr}
+  .flip .visual{order:-1}
+  .ap-grid{grid-template-columns:1fr 1fr;gap:60px}
+}
+@media (min-width:1000px){
+  .scene-grid{grid-template-columns:1fr 1fr;grid-template-areas:"txt crown" "list list" "unl unl";column-gap:56px;align-items:center}
+  .stones{grid-template-columns:repeat(5,1fr)}
+  .stones li:last-child{grid-column:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<main>
+  <!-- 1. LA COURONNE : 5 pierres à toucher -->
+  <section class="scene" aria-labelledby="h1">
+    <div class="wrap scene-grid">
+      <div class="s-txt">
+        <p class="said">« +300 épargnantes bloquées à investisseuses autonomes »</p>
+        <p class="said-src"><a href="https://www.instagram.com/nancy.financr/" target="_blank" rel="noopener">Ta bio Instagram, @nancy.financr</a></p>
+        <h1 id="h1">Nancy, il manque des pierres à ta couronne.</h1>
+        <p class="lede">Cinq pierres. Touche-les une par une.</p>
+        <ul class="legend">
+          <li><i style="background:var(--emerald)"></i><span><b>Sertie</b> : elle tient.</span></li>
+          <li><i style="background:var(--ruby)"></i><span><b>Fêlée</b> : elle est là, mais se voit mal.</span></li>
+          <li><i style="background:#12040A;border:2px solid var(--gold)"></i><span><b>Vide</b> : rien n'est posé.</span></li>
+        </ul>
+        <p class="count" aria-live="polite"><b id="cnt">0</b> / 5 pierres touchées</p>
+      </div>
+
+      <div class="crown">
+        <svg viewBox="0 0 600 380" aria-hidden="true">
+          <defs>
+            <linearGradient id="g-or" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1DFAE"/><stop offset=".45" stop-color="#D4AF5A"/><stop offset="1" stop-color="#8E6A22"/></linearGradient>
+            <linearGradient id="g-band" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7C778"/><stop offset=".5" stop-color="#C39A42"/><stop offset="1" stop-color="#7E5C1C"/></linearGradient>
+          </defs>
+          <ellipse cx="300" cy="350" rx="250" ry="20" fill="#1C050B" opacity=".55"/>
+          <path d="M40 250 L70 70 L165 170 L235 40 L300 150 L365 40 L435 170 L530 70 L560 250 Z" fill="url(#g-or)" stroke="#7E5C1C" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M80 236 L96 120 L170 196 L236 92 L300 186 L364 92 L430 196 L504 120 L520 236 Z" fill="#661A2F" opacity=".55"/>
+          <g fill="#F1DFAE" stroke="#7E5C1C" stroke-width="3">
+            <circle cx="70" cy="62" r="13"/><circle cx="235" cy="32" r="13"/><circle cx="365" cy="32" r="13"/><circle cx="530" cy="62" r="13"/>
+          </g>
+          <path d="M290 150 L300 132 L310 150 L300 168 Z" fill="#F1DFAE" stroke="#7E5C1C" stroke-width="3"/>
+          <rect x="30" y="246" width="540" height="88" rx="14" fill="url(#g-band)" stroke="#7E5C1C" stroke-width="4"/>
+          <rect x="30" y="256" width="540" height="6" fill="#F1DFAE" opacity=".55"/>
+          <rect x="30" y="318" width="540" height="6" fill="#5E4314" opacity=".45"/>
+          <g fill="none" stroke="#7E5C1C" stroke-width="3">
+            <circle cx="90" cy="290" r="34"/><circle cx="195" cy="290" r="34"/><circle cx="300" cy="290" r="34"/><circle cx="405" cy="290" r="34"/><circle cx="510" cy="290" r="34"/>
+          </g>
+        </svg>
+        <button class="gem" type="button" data-g="1" data-s="sertie" style="left:15%;top:76.3%" aria-label="Pierre 1 : Les reels"><span>1</span></button>
+        <button class="gem" type="button" data-g="2" data-s="vide" style="left:32.5%;top:76.3%" aria-label="Pierre 2 : Celles qui ne sont pas prêtes"><span>2</span></button>
+        <button class="gem" type="button" data-g="3" data-s="sertie" style="left:50%;top:76.3%" aria-label="Pierre 3 : Le diagnostic de 20 minutes"><span>3</span></button>
+        <button class="gem" type="button" data-g="4" data-s="felee" style="left:67.5%;top:76.3%" aria-label="Pierre 4 : Money Queen"><span>4</span></button>
+        <button class="gem" type="button" data-g="5" data-s="felee" style="left:85%;top:76.3%" aria-label="Pierre 5 : La réouverture du 2 novembre"><span>5</span></button>
+      </div>
+
+      <ol class="stones">
+        <li class="stone" data-g="1" data-s="sertie"><div class="stone-h"><span class="n">1</span>Les reels <span class="tag">Sertie</span></div><p>Dix posts en novembre, jusqu'à 6&nbsp;270 vues. On te trouve.</p></li>
+        <li class="stone" data-g="2" data-s="vide"><div class="stone-h"><span class="n">2</span>Celles qui ne sont pas prêtes <span class="tag">Vide</span></div><p>Ta page en bio les écarte. Rien ne les attend.</p></li>
+        <li class="stone" data-g="3" data-s="sertie"><div class="stone-h"><span class="n">3</span>Le diagnostic de 20 minutes <span class="tag">Sertie</span></div><p>Une page qui sait à qui elle parle, et six témoignages.</p></li>
+        <li class="stone" data-g="4" data-s="felee"><div class="stone-h"><span class="n">4</span>Money Queen <span class="tag">Fêlée</span></div><p>9 modules ici, 13 là. Et pas de prix.</p></li>
+        <li class="stone" data-g="5" data-s="felee"><div class="stone-h"><span class="n">5</span>La réouverture du 2 novembre <span class="tag">Fêlée</span></div><p>Annoncée par un post et un mot en commentaire.</p></li>
+      </ol>
+
+      <div class="unlock" id="unlock" hidden>
+        <p class="big">2 serties, 2 fêlées, 1 chaton vide.</p>
+        <p>Les trois qui ne tiennent pas, de près.</p>
+        <a class="btn" href="#forces">Voir les 3 pierres</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CE QUI BRILLE -->
+  <section class="forces gated" id="forces" aria-labelledby="h-forces">
+    <div class="wrap">
+      <h2 id="h-forces" data-in>D'abord, ce qui brille déjà.</h2>
+      <div class="f-list">
+        <div class="f-item" data-in>
+          <q>Est-ce un appel de vente ?</q>
+          <p>Ta FAQ ose la question, et y répond franchement. <a class="src" href="https://nancy-financr.systeme.io/consultationexclusiveinstagram-2556270c-b4543a33" target="_blank" rel="noopener">Ta page de diagnostic</a></p>
+        </div>
+        <div class="f-item" data-in data-d="1">
+          <q>7 lignes de crédits remboursés.</q>
+          <p>Justine, 28 ans, et cinq autres : un prénom, une situation, un résultat.</p>
+        </div>
+        <div class="f-item" data-in data-d="2">
+          <q>Étoile Montante Féminine 2026.</q>
+          <p>Et une plateforme à toi : budget, suivi de PEA, messagerie avec toi. <a class="src" href="https://www.finfluencer.digital/awards/fr/2026-results" target="_blank" rel="noopener">Finfluencer Awards</a><a class="src" href="https://moneyqueen.fr/" target="_blank" rel="noopener">moneyqueen.fr</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. LES 3 PIERRES -->
+  <div class="gated">
+    <section class="p-sec velvet" id="pierre-2" aria-labelledby="h-p2">
+      <div class="wrap grid2">
+        <div>
+          <p class="stamp vide" data-in><i aria-hidden="true"></i>Pierre 2 · Chaton vide</p>
+          <h2 id="h-p2" data-in>Celles qui ne sont pas prêtes repartent les mains vides.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Ta page en bio n'est pas pour toi si <q>Tu es uniquement curieuse</q>. Un seul bouton : l'appel. Même « Rejoindre Money Queen », sur ton site, y mène. Aucun mail demandé.</p>
+            <a class="src" href="https://nancy-financr.systeme.io/consultationexclusiveinstagram-2556270c-b4543a33" target="_blank" rel="noopener">Ta page en bio</a><a class="src" href="https://moneyqueen.fr/inscription" target="_blank" rel="noopener">moneyqueen.fr/inscription</a>
+          </div>
+          <p class="cost" data-in>35&nbsp;869 abonnés. Celles qui hésitent n'ont qu'une porte, et elle n'est pas pour elles.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Elles restent près de toi jusqu'au jour où elles sont prêtes. Ce jour-là, elles t'appellent.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="v-btn" role="img" aria-label="Ta page en bio : un seul bouton, réserver le diagnostic, et la liste de celles pour qui il n'est pas fait.">
+            <div class="v-cta" aria-hidden="true">JE RÉSERVE MON DIAGNOSTIC INVESTISSEUSE</div>
+            <ul class="v-no" aria-hidden="true">
+              <li><b>Pas pour toi</b> si tu es uniquement curieuse</li>
+              <li><b>Pas pour toi</b> si tu n'as pas encore commencé à épargner</li>
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-sec flip" id="pierre-4" aria-labelledby="h-p4">
+      <div class="wrap grid2">
+        <div>
+          <p class="stamp felee" data-in><i aria-hidden="true"></i>Pierre 4 · Fêlée</p>
+          <h2 id="h-p4" data-in>Money Queen n'a pas de page qui le vend. Et ses deux pages se contredisent.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">L'accueil et l'inscription ne donnent pas les mêmes chiffres. Tes CGV renvoient à <q>la page de vente en vigueur</q> : introuvable, comme le prix.</p>
+            <a class="src" href="https://moneyqueen.fr/" target="_blank" rel="noopener">L'accueil</a><a class="src" href="https://moneyqueen.fr/inscription" target="_blank" rel="noopener">l'inscription</a><a class="src" href="https://nancy-financr.systeme.io/15312ac7" target="_blank" rel="noopener">tes CGV</a>
+          </div>
+          <p class="cost" data-in>Avant l'appel, elle lit deux programmes. Et pour le prix, elle doit appeler.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Elle arrive à l'appel en sachant déjà ce qu'elle achète, et pourquoi c'est toi.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="fiches" role="img" aria-label="Deux fiches de Money Queen côte à côte. Accueil : 9 modules, 60 leçons, lives mensuels. Inscription : 13 modules, 80 leçons, lives hebdomadaires. Prix : aucun sur les deux.">
+            <div class="fiche" aria-hidden="true"><h3>moneyqueen.fr</h3><dl><dt>Modules</dt><dd>9</dd><dt>Leçons</dt><dd>60+</dd><dt>Lives</dt><dd>mensuels</dd><dt>Prix</dt><dd class="x">?</dd></dl></div>
+            <div class="fiche" aria-hidden="true"><h3>/inscription</h3><dl><dt>Modules</dt><dd>13</dd><dt>Leçons</dt><dd>80+</dd><dt>Lives</dt><dd>hebdo</dd><dt>Prix</dt><dd class="x">?</dd></dl></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-sec blush" id="pierre-5" aria-labelledby="h-p5">
+      <div class="wrap grid2">
+        <div>
+          <p class="stamp felee" data-in><i aria-hidden="true"></i>Pierre 5 · Fêlée</p>
+          <h2 id="h-p5" data-in>Ta réouverture tient à un post.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote"><q>MoneyQueen réouvre ses portes le 2 Novembre !! Pour candidater t'as juste à écrire en comm' QUEEN.</q> 148 j'aime, 5 commentaires. Aucune liste d'attente, aucune page d'ouverture trouvée.</p>
+            <a class="src" href="https://www.instagram.com/p/DfHEh-oDQYC/" target="_blank" rel="noopener">Ton post du 30 octobre</a>
+          </div>
+          <p class="cost" data-in>C'est l'algorithme qui décide qui apprend que les portes rouvrent.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>À la prochaine ouverture, celles qui attendaient le savent en premier, et sont prêtes.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="v-post" role="img" aria-label="Ton post du 30 octobre : Money Queen réouvre ses portes le 2 novembre, écris QUEEN en commentaire. 5 commentaires.">
+            <div class="v-post-top" aria-hidden="true"><i></i>nancy.financr</div>
+            <div class="v-post-img" aria-hidden="true">Réouverture le 2 novembre<small>écris QUEEN en comm'</small></div>
+            <div class="v-post-b" aria-hidden="true"><b>148 j'aime · 5 commentaires</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 4. APERÇU -->
+  <section class="apercu gated" aria-labelledby="h-ap">
+    <div class="wrap ap-grid">
+      <div>
+        <h2 id="h-ap" data-in>La pierre qui manque.</h2>
+        <p data-in>Une page pour celles qui ne sont pas encore prêtes, dans ta voix.</p>
+      </div>
+      <div class="maquette" data-in role="img" aria-label="Maquette floutée d'une page d'inscription à une newsletter, avec un champ mail et des témoignages.">
+        <p class="t" aria-hidden="true">Money Queen</p>
+        <p class="st" aria-hidden="true">Pas encore prête ?</p>
+        <div class="flou" aria-hidden="true"><i class="w9"></i><i class="w8"></i><i class="w6"></i><div class="f"></div><div class="p"></div><div class="m"></div><div class="m"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FIN -->
+  <section class="fin gated" aria-labelledby="h-fin">
+    <div class="wrap">
+      <svg class="mini" viewBox="0 0 170 110" aria-hidden="true">
+        <path d="M12 74 L22 14 L55 46 L85 6 L115 46 L148 14 L158 74 Z" fill="#D4AF5A" stroke="#7E5C1C" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="8" y="72" width="154" height="30" rx="6" fill="#C39A42" stroke="#7E5C1C" stroke-width="3"/>
+        <circle cx="30" cy="87" r="9" fill="#2F7A5B"/><circle cx="57" cy="87" r="9" fill="#2F7A5B"/><circle cx="85" cy="87" r="9" fill="#2F7A5B"/><circle cx="113" cy="87" r="9" fill="#2F7A5B"/><circle cx="140" cy="87" r="9" fill="#2F7A5B"/>
+      </svg>
+      <h2 id="h-fin" data-in>Maintenant, tu sais où sont tes pierres fêlées.</h2>
+      <p data-in>Si tu veux qu'on les regarde ensemble, réponds simplement à mon message.</p>
+      <p class="sign" data-in>Alexis</p>
+    </div>
+  </section>
+</main>
+
+<footer class="gated">
+  <div class="wrap">
+    Page préparée par Alexis pour Nancy Ruyer (Money Queen). Ce n'est pas son site officiel. Constats des 23 et 24/11/2026. Aucun résultat garanti. Tout investissement comporte un risque de perte en capital.
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('locked');
+
+  /* Arrivées au scroll */
+  var inEls=document.querySelectorAll('[data-in]');
+  if(!('IntersectionObserver' in window)||reduce){inEls.forEach(function(el){el.classList.add('in');});}
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.1});
+    inEls.forEach(function(el){io.observe(el);});
+  }
+
+  /* La couronne : 5 pierres à toucher */
+  var gems=document.querySelectorAll('.gem'),count=0,cnt=document.getElementById('cnt'),unlock=document.getElementById('unlock');
+  gems.forEach(function(g){
+    g.setAttribute('aria-pressed','false');
+    g.addEventListener('click',function(){
+      if(g.classList.contains('on'))return;
+      g.classList.add('on');g.setAttribute('aria-pressed','true');
+      var li=document.querySelector('.stone[data-g="'+g.getAttribute('data-g')+'"]');
+      if(li)li.classList.add('on');
+      count++;cnt.textContent=count;
+      if(count===gems.length){
+        unlock.hidden=false;root.classList.remove('locked');
+        unlock.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

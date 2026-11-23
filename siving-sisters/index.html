@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sophie, le tableau des clés de Siving</title>
+<meta name="description" content="Ton tunnel en tableau à clés d'agence : 5 crochets à regarder. Pour Sophie Inghels, par Alexis.">
+<meta property="og:title" content="Sophie, le tableau des clés de Siving">
+<meta property="og:description" content="5 crochets. Deux étiquettes à refaire, un crochet vide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#123B25; --pine-2:#1B4E32; --pine-3:#0B2A19;
+  --lime:#C6EC8A; --lime-2:#E4F7C6;
+  --paper:#F8F6EC; --cream:#FFFDF5; --ink:#1D2A21; --muted:#4A5A4E;
+  --coral:#E0574E; --coral-ink:#A8332C;
+  --brass:#C9A24A; --brass-2:#A9832F;
+  --wall:#E9E4D3; --wood:#7A5A3A; --wood-2:#5E4329;
+  --font-title:"Poppins", system-ui, sans-serif;
+  --font-hand:"Caveat", "Comic Sans MS", cursive;
+  --maxw:1120px; --gutter:20px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16.5px/1.65 var(--font-title);overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--font-title);font-weight:800;line-height:1.14;margin:0 0 .5em;letter-spacing:-.015em;text-wrap:balance}
+h1{font-size:clamp(1.8rem,7vw,3.2rem)}
+h2{font-size:clamp(1.5rem,5.2vw,2.5rem)}
+p{margin:0 0 1em}
+a{color:inherit}
+q{quotes:"«\00a0" "\00a0»"}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.src{display:inline-flex;align-items:center;min-height:48px;margin-right:16px;font-size:.92rem;font-weight:600;color:var(--pine-2);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.src:hover{color:var(--coral-ink)}
+.hl{background:linear-gradient(transparent 52%,var(--lime) 52%);padding:0 .1em}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:999px;background:var(--pine);color:var(--lime);font:800 1rem var(--font-title);text-decoration:none}
+.btn:hover{background:var(--pine-2)}
+
+/* ---------- 1. Le tableau ---------- */
+.scene{background:var(--wall);background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.025) 0 2px,transparent 2px 60px);padding:36px 0 44px}
+.top{max-width:46em}
+.said{font:700 1.5rem/1.2 var(--font-hand);color:var(--pine-2);margin:0}
+.said-src{margin:0 0 14px;font-size:.92rem}
+.said-src a{display:inline-flex;align-items:center;min-height:48px;margin-right:14px;color:var(--pine-2);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.lede{font-size:1.05rem;color:var(--muted);max-width:34em}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;margin:8px 0 6px;padding:0;font-size:.95rem}
+.legend li{display:flex;align-items:center;gap:8px}
+.dot{width:16px;height:16px;border-radius:4px;flex:none}
+.dot.ok{background:var(--lime);border:2px solid var(--pine)}
+.dot.re{background:var(--cream);border:2px dashed var(--coral-ink)}
+.dot.vide{background:transparent;border:2px solid var(--wood)}
+.count{font-weight:800;margin:6px 0 18px}
+
+.board{position:relative;margin:0 auto;max-width:980px;background:linear-gradient(180deg,var(--pine-2),var(--pine));border:14px solid var(--wood);border-radius:6px;box-shadow:inset 0 0 0 3px var(--wood-2),0 14px 0 -6px rgba(0,0,0,.12);padding:16px 10px 22px}
+.plaque{margin:0 auto 10px;width:max-content;max-width:100%;background:var(--brass);color:var(--pine-3);font:800 .8rem/1 var(--font-title);letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;border-radius:3px;box-shadow:inset 0 -2px 0 var(--brass-2)}
+.hooks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:4px 2px}
+.hook{position:relative;display:flex;justify-content:center}
+.h-btn{position:relative;width:100%;max-width:150px;min-height:236px;background:none;border:0;padding:0;cursor:pointer;color:inherit;font:inherit;display:flex;flex-direction:column;align-items:center;-webkit-tap-highlight-color:transparent;border-radius:8px}
+.h-btn:hover .tag{transform:translateY(3px)}
+.peg{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#F1D78E,var(--brass) 55%,var(--brass-2));margin-top:4px;flex:none;box-shadow:0 2px 0 rgba(0,0,0,.3)}
+.key{width:34px;height:92px;margin-top:-6px;flex:none}
+.key .k{fill:var(--brass)}
+.key .k2{fill:var(--brass-2)}
+.tag{position:relative;margin-top:-8px;width:min(118px,92%);background:var(--cream);border-radius:6px 6px 10px 10px;padding:18px 6px 10px;text-align:center;box-shadow:0 3px 0 rgba(0,0,0,.25);transition:transform .25s var(--ease);border:2px solid transparent}
+.tag::before{content:"";position:absolute;top:6px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--pine);box-shadow:0 0 0 2px var(--brass)}
+.tag-n{display:block;font:700 1.25rem/1.05 var(--font-hand);color:var(--ink)}
+.tag-s{display:block;margin-top:6px;font:800 .7rem/1.15 var(--font-title);letter-spacing:.04em;text-transform:uppercase;padding:4px 4px;border-radius:3px}
+.js .hook:not(.on) .tag-s{visibility:hidden}
+.js .hook:not(.on) .tag{background:#EDE8D8}
+[data-s="ok"] .tag-s{background:var(--lime);color:var(--pine-3)}
+[data-s="re"] .tag-s{background:var(--coral-ink);color:#fff}
+[data-s="vide"] .tag-s{background:var(--wood);color:#fff}
+.hook.on[data-s="re"] .tag{border:2px dashed var(--coral-ink)}
+.hook.on[data-s="ok"] .tag{border-color:var(--pine)}
+/* crochet vide : pas de clé, l'étiquette est punaisée seule sur le bois */
+.hook[data-s="vide"] .key{visibility:hidden}
+.hook[data-s="vide"] .tag{transform:rotate(-6deg)}
+.hook.on[data-s="vide"] .tag{background:transparent;border:2px dashed var(--lime)}
+.hook.on[data-s="vide"] .tag-n{color:var(--lime)}
+.ring{position:absolute;inset:-4px;border-radius:10px;border:3px solid var(--lime);opacity:0;transition:opacity .3s}
+.js .hook:not(.on) .h-btn:hover .ring{opacity:.7}
+
+.fiches{list-style:none;margin:22px auto 0;padding:0;max-width:980px;display:grid;gap:10px}
+.fiche{background:var(--cream);border-left:6px solid var(--pine);border-radius:4px;padding:12px 16px;font-size:.97rem}
+.fiche b{display:block;font-weight:800}
+.fiche[data-s="re"]{border-left-color:var(--coral-ink)}
+.fiche[data-s="vide"]{border-left:6px dashed var(--wood)}
+.js .fiche:not(.on){display:none}
+.unlock{max-width:980px;margin:18px auto 0;background:var(--pine);color:#fff;border-radius:6px;padding:20px 22px}
+.unlock .big{font:800 1.2rem/1.3 var(--font-title);margin:0 0 .3em;color:var(--lime)}
+.unlock p{color:#E6F0E8}
+.js .unlock[hidden]{display:none}
+
+/* ---------- Arrivées ---------- */
+.locked .gated{display:none}
+.js [data-in]{opacity:0;transform:translateX(-26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js [data-in].in{opacity:1;transform:none}
+.js .flip [data-in]{transform:translateX(26px)}
+.js .flip [data-in].in{transform:none}
+
+/* ---------- 2. Ce qui marche ---------- */
+.bien{padding:76px 0 52px;background:var(--paper)}
+.b-list{display:grid;gap:10px;margin-top:18px}
+.b-item{padding:18px 0 4px;border-top:3px solid var(--pine)}
+.b-item q{display:block;font:800 clamp(1.1rem,3.2vw,1.4rem)/1.3 var(--font-title);margin-bottom:6px}
+.b-item p{color:var(--muted);margin:0}
+
+/* ---------- 3. Les soucis ---------- */
+.sec{padding:80px 0;overflow:hidden}
+.sec.dark{background:var(--pine);color:#fff}
+.sec.dark .src{color:var(--lime)}
+.sec.dark .src:hover{color:#fff}
+.sec.dark .lab{color:var(--lime)}
+.sec.dark .quote{border-left-color:var(--lime)}
+.sec.lime{background:var(--lime-2)}
+.grid2{display:grid;gap:34px}
+.where{font:600 .92rem/1.3 var(--font-title);margin:0 0 10px;opacity:.85}
+.stamp{display:inline-block;font:800 .82rem/1 var(--font-title);letter-spacing:.05em;text-transform:uppercase;padding:7px 11px;border-radius:3px;margin-bottom:14px}
+.stamp.re{background:var(--coral-ink);color:#fff}
+.stamp.vide{background:var(--wood);color:#fff}
+.lab{font:800 .86rem var(--font-title);text-transform:uppercase;letter-spacing:.05em;color:var(--pine-2);margin:0 0 6px}
+.quote{border-left:4px solid var(--coral);padding:2px 0 2px 14px;margin:0 0 4px}
+.quote q{font-weight:600}
+.cost{font:600 clamp(1.05rem,2.6vw,1.2rem)/1.5 var(--font-title);margin:18px 0}
+.change{background:var(--lime);color:var(--pine-3);border-radius:4px;padding:16px 18px;font-weight:600}
+.change .lab{color:var(--pine-3)}
+.lock{display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px 14px;border:2px dashed currentColor;border-radius:4px;opacity:.85;font-weight:600}
+.lock .bars{flex:1;display:grid;gap:6px;filter:blur(2.5px);opacity:.45}
+.lock .bars span{display:block;height:7px;border-radius:7px;background:currentColor}
+.lock .bars span:nth-child(2){width:65%}
+.lock-txt{flex:2}
+.visual{display:flex;justify-content:center}
+.big-tag{width:250px;background:var(--cream);color:var(--ink);border-radius:12px 12px 18px 18px;padding:40px 20px 22px;text-align:center;position:relative;box-shadow:0 6px 0 rgba(0,0,0,.25);transform:rotate(-3deg)}
+.big-tag::before{content:"";position:absolute;top:14px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--pine);box-shadow:0 0 0 4px var(--brass)}
+.big-tag .t1{font:800 .78rem var(--font-title);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0}
+.big-tag .t2{font:700 2.1rem/1.05 var(--font-hand);margin:6px 0 10px}
+.big-tag .t3{font-size:.9rem;color:var(--muted);margin:0}
+.big-tag.re{border:3px dashed var(--coral-ink)}
+.sticker{display:inline-block;margin-top:14px;background:var(--coral-ink);color:#fff;font:800 .8rem var(--font-title);padding:6px 10px;border-radius:3px;transform:rotate(3deg)}
+.rooms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px;max-width:300px}
+.rooms span{background:var(--pine);color:var(--lime);font:600 .85rem/1.2 var(--font-title);padding:7px 10px;border-radius:999px}
+.empty-hook{width:240px;text-align:center}
+.empty-hook .peg{width:30px;height:30px;margin:0 auto}
+.empty-hook .ghost{width:120px;height:150px;margin:6px auto 0;border:3px dashed rgba(198,236,138,.6);border-radius:12px;display:flex;align-items:center;justify-content:center;font:700 2.4rem var(--font-hand);color:var(--lime)}
+.empty-hook p{margin:12px 0 0;color:#DCE9DF;font-size:.92rem}
+
+/* ---------- 4. Aperçu ---------- */
+.apercu{padding:80px 0;background:var(--paper)}
+.ap-grid{display:grid;gap:32px;align-items:center}
+.maquette{max-width:320px;margin:0 auto;background:#fff;border:2px solid var(--pine);border-radius:8px;padding:20px 18px 22px;box-shadow:10px 10px 0 var(--lime)}
+.maquette .t{font:800 1.05rem/1.25 var(--font-title);margin:0 0 4px}
+.maquette .st{font:700 1.3rem var(--font-hand);color:var(--pine-2);margin:0 0 12px}
+.flou{filter:blur(4px);user-select:none;pointer-events:none}
+.flou i{display:block;height:9px;border-radius:9px;background:#D7DCCB;margin:0 0 8px}
+.flou .w8{width:80%}.flou .w6{width:60%}.flou .w9{width:92%}
+.flou .ph{height:90px;border-radius:6px;background:var(--pine);margin:12px 0}
+.flou .q{height:42px;border-radius:4px;border-left:5px solid var(--lime);background:#F1F4E6;margin:10px 0}
+.flou .p{height:44px;border-radius:999px;background:var(--pine);margin-top:12px}
+
+/* ---------- 5. Fin ---------- */
+.fin{padding:84px 0 76px;text-align:center;background:var(--pine);color:#fff}
+.fin p{max-width:32em;margin-left:auto;margin-right:auto;color:#E6F0E8}
+.fin h2{color:#fff}
+.sign{font:700 2.8rem var(--font-hand);margin:22px 0 0;color:var(--lime)!important}
+footer{padding:24px 0 34px;font-size:.85rem;color:var(--muted)}
+
+@media (min-width:720px){
+  body{font-size:17.5px}
+  .scene{padding:56px 0 60px}
+  .hooks{grid-template-columns:repeat(5,1fr)}
+  .board{padding:20px 18px 26px}
+  .fiches{grid-template-columns:repeat(2,1fr)}
+  .b-list{grid-template-columns:repeat(3,1fr);gap:30px}
+  .grid2{grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}
+  .flip .grid2{grid-template-columns:.75fr 1.25fr}
+  .flip .visual{order:-1}
+  .ap-grid{grid-template-columns:1fr 1fr;gap:60px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="cle" viewBox="0 0 34 92">
+    <rect x="16" y="0" width="2" height="12" fill="#5E4329"/>
+    <circle fill="#C9A24A" cx="17" cy="24" r="13"/>
+    <circle cx="17" cy="24" r="5" fill="#1B4E32"/>
+    <rect fill="#C9A24A" x="14" y="34" width="6" height="54" rx="2"/>
+    <rect fill="#A9832F" x="20" y="64" width="7" height="5"/>
+    <rect fill="#A9832F" x="20" y="74" width="5" height="5"/>
+    <rect fill="#A9832F" x="20" y="82" width="8" height="5"/>
+  </symbol>
+</svg>
+
+<main>
+  <!-- 1. LE TABLEAU À CLÉS -->
+  <section class="scene" aria-labelledby="h1">
+    <div class="wrap">
+      <div class="top">
+        <p class="said">« On peut t'apporter les clés pour oser sauter le pas. »</p>
+        <p class="said-src"><a href="https://www.siving.fr/obr/" target="_blank" rel="noopener">Ta page de vente</a><a href="https://www.instagram.com/sivingsisters/" target="_blank" rel="noopener">@sivingsisters</a></p>
+        <h1 id="h1">Sophie, voici le tableau des clés de Siving.</h1>
+        <p class="lede">Cinq crochets, cinq étapes du chemin de tes futures élèves. Lis chaque étiquette.</p>
+        <ul class="legend">
+          <li><span class="dot ok" aria-hidden="true"></span><span><b>En place</b> : la clé ouvre ce qui est écrit.</span></li>
+          <li><span class="dot re" aria-hidden="true"></span><span><b>Étiquette à refaire</b> : elle n'est plus juste.</span></li>
+          <li><span class="dot vide" aria-hidden="true"></span><span><b>Crochet vide</b> : pas de clé.</span></li>
+        </ul>
+        <p class="count" aria-live="polite"><span id="cnt">0</span> / 5 étiquettes lues</p>
+      </div>
+
+      <div class="board">
+        <p class="plaque">Agence Siving · clés</p>
+        <ol class="hooks">
+          <li class="hook" data-s="ok" data-i="1">
+            <button class="h-btn" type="button" aria-expanded="false" aria-controls="f1">
+              <span class="ring" aria-hidden="true"></span><span class="peg" aria-hidden="true"></span>
+              <svg class="key" aria-hidden="true"><use href="#cle"/></svg>
+              <span class="tag"><span class="tag-n">Le reel du 22/11</span><span class="tag-s">En place</span></span>
+            </button>
+          </li>
+          <li class="hook" data-s="re" data-i="2">
+            <button class="h-btn" type="button" aria-expanded="false" aria-controls="f2">
+              <span class="ring" aria-hidden="true"></span><span class="peg" aria-hidden="true"></span>
+              <svg class="key" aria-hidden="true"><use href="#cle"/></svg>
+              <span class="tag"><span class="tag-n">La vidéo gratuite</span><span class="tag-s">Étiquette à refaire</span></span>
+            </button>
+          </li>
+          <li class="hook" data-s="re" data-i="3">
+            <button class="h-btn" type="button" aria-expanded="false" aria-controls="f3">
+              <span class="ring" aria-hidden="true"></span><span class="peg" aria-hidden="true"></span>
+              <svg class="key" aria-hidden="true"><use href="#cle"/></svg>
+              <span class="tag"><span class="tag-n">Objectif Bien Rentable</span><span class="tag-s">Étiquette à refaire</span></span>
+            </button>
+          </li>
+          <li class="hook" data-s="ok" data-i="4">
+            <button class="h-btn" type="button" aria-expanded="false" aria-controls="f4">
+              <span class="ring" aria-hidden="true"></span><span class="peg" aria-hidden="true"></span>
+              <svg class="key" aria-hidden="true"><use href="#cle"/></svg>
+              <span class="tag"><span class="tag-n">Les 6 mois de la Siving Family</span><span class="tag-s">En place</span></span>
+            </button>
+          </li>
+          <li class="hook" data-s="vide" data-i="5">
+            <button class="h-btn" type="button" aria-expanded="false" aria-controls="f5">
+              <span class="ring" aria-hidden="true"></span><span class="peg" aria-hidden="true"></span>
+              <svg class="key" aria-hidden="true"><use href="#cle"/></svg>
+              <span class="tag"><span class="tag-n">siving.fr</span><span class="tag-s">Crochet vide</span></span>
+            </button>
+          </li>
+        </ol>
+      </div>
+
+      <ol class="fiches">
+        <li class="fiche" data-s="ok" id="f1"><b>Le reel du 22/11</b>450 000 € affichés, 378 000 € signés. 7 446 lectures, un seul appel : <q>Commente GUIDE</q>.</li>
+        <li class="fiche" data-s="re" id="f2"><b>La vidéo gratuite</b>Ton lien en bio dit encore <q>Sophie et Valérie</q>.</li>
+        <li class="fiche" data-s="re" id="f3"><b>Objectif Bien Rentable</b>3 997 €. Promet encore Valerie, annonce moins que ce que vivent tes élèves.</li>
+        <li class="fiche" data-s="ok" id="f4"><b>Les 6 mois de la Siving Family</b>141 avis à 4,8/5. Tes élèves y nomment leur coach.</li>
+        <li class="fiche" data-s="vide" id="f5"><b>siving.fr</b>L'accueil de ton site affiche <q>Oups !</q></li>
+      </ol>
+
+      <div class="unlock" id="unlock" hidden>
+        <p class="big">2 clés en place, 2 étiquettes à refaire, 1 crochet vide.</p>
+        <p>Non essayée : la clé des mails après la vidéo.</p>
+        <a class="btn" href="#bien" style="background:var(--lime);color:var(--pine-3)">Voir les 3 points</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CE QUI MARCHE -->
+  <section class="bien gated" id="bien" aria-labelledby="h-bien">
+    <div class="wrap">
+      <h2 id="h-bien" data-in>Les clés en place sont solides.</h2>
+      <div class="b-list">
+        <div class="b-item" data-in>
+          <q>Sophie, Siving Sisters.</q>
+          <p>Tu réponds à tes avis un par un, avec le prénom du coach. <a class="src" href="https://fr.trustpilot.com/review/siving.fr" target="_blank" rel="noopener">Trustpilot</a></p>
+        </div>
+        <div class="b-item" data-in>
+          <q>Tu ne négocies pas un prix, tu négocies avec une personne.</q>
+          <p>Une histoire chiffrée, un seul appel. <a class="src" href="https://www.instagram.com/p/DgDSYavIqMo/" target="_blank" rel="noopener">Ton reel du 22/11</a></p>
+        </div>
+        <div class="b-item" data-in>
+          <q>Une promesse, trois puces, la preuve.</q>
+          <p>Ta page de capture va droit au but. <a class="src" href="https://www.siving.fr/video-gratuite-siving-sisters/" target="_blank" rel="noopener">Ta vidéo gratuite</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gated">
+    <!-- SOUCI 1 -->
+    <section class="sec dark" id="s1" aria-labelledby="h-s1">
+      <div class="wrap grid2">
+        <div>
+          <span class="stamp re" data-in>Étiquette à refaire</span>
+          <h2 id="h-s1" data-in>Depuis le 12 octobre, tu portes Siving seule. Tes pages ne le savent pas encore.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Le 12/10 : <q>Val tourne une page !</q> Le 23/11, ta page à 3 997 € : <q>Échanges continus avec les coachs et avec nous, Sophie &amp; Valerie</q>. Ton lien en bio : <q>Nous c'est Sophie et Valérie</q>.</p>
+            <a class="src" href="https://www.instagram.com/p/DeZnPKYiMv6/" target="_blank" rel="noopener">Ton post du 12/10</a><a class="src" href="https://www.siving.fr/obr/" target="_blank" rel="noopener">Objectif Bien Rentable</a><a class="src" href="https://www.siving.fr/video-gratuite-siving-sisters/" target="_blank" rel="noopener">La vidéo gratuite</a>
+          </div>
+          <p class="cost" data-in>Celle qui te suit a lu ton post. Au moment de payer, elle lit une promesse qu'elle sait dépassée. Et ta « suite » n'a pas encore de page.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Tes pages racontent ton histoire d'aujourd'hui. Et ta suite a où arriver.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="big-tag re" role="img" aria-label="L'étiquette de la clé Objectif Bien Rentable porte encore : Sophie et Valerie. Une pastille : depuis le 12/10, Val tourne une page.">
+            <p class="t1" aria-hidden="true">Objectif Bien Rentable</p>
+            <p class="t2" aria-hidden="true">Sophie &amp; Valerie</p>
+            <p class="t3" aria-hidden="true">accompagnement · 3 997 €</p>
+            <span class="sticker" aria-hidden="true">12/10 : « Val tourne une page »</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOUCI 2 -->
+    <section class="sec lime flip" id="s2" aria-labelledby="h-s2">
+      <div class="wrap grid2">
+        <div>
+          <span class="stamp re" data-in>Étiquette à refaire</span>
+          <h2 id="h-s2" data-in>Ta clé ouvre plus de pièces que son étiquette n'en annonce.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Ta page dit <q>Lives mensuels</q>. Tes élèves écrivent <q>Les coachings chaque semaine</q>, <q>l'accompagnement en groupe pendant 6 mois par Margaux</q>.</p>
+            <a class="src" href="https://fr.trustpilot.com/review/siving.fr" target="_blank" rel="noopener">Tes avis Trustpilot</a><a class="src" href="https://www.siving.fr/obr/" target="_blank" rel="noopener">Objectif Bien Rentable</a>
+          </div>
+          <p class="cost" data-in>Ce qui fait écrire 141 avis manque là où elle hésite.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Avant de payer, elle voit ce que tes élèves vivent chaque semaine.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div role="img" aria-label="L'étiquette annonce : lives mensuels. Les pièces que la clé ouvre vraiment, d'après les avis : coaching chaque semaine, 6 mois en groupe, un coach dédié.">
+            <div class="big-tag" aria-hidden="true"><p class="t1">Ouvre</p><p class="t2">Lives mensuels</p></div>
+            <div class="rooms" aria-hidden="true"><span>chaque semaine</span><span>6 mois en groupe</span><span>un coach dédié</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOUCI 3 -->
+    <section class="sec dark" id="s3" aria-labelledby="h-s3">
+      <div class="wrap grid2">
+        <div>
+          <span class="stamp vide" data-in>Crochet vide</span>
+          <h2 id="h-s3" data-in>Qui tape siving.fr tombe sur « Oups ! ».</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">L'accueil de ton site, le 23/11 : <q>La page que vous cherchez ne semble pas disponible.</q> Ton blog : <q>Aucun article pour l'instant</q>.</p>
+            <a class="src" href="https://www.siving.fr/" target="_blank" rel="noopener">siving.fr</a><a class="src" href="https://www.siving.fr/articles/" target="_blank" rel="noopener">Ton blog</a>
+          </div>
+          <p class="cost" data-in>Celle qui t'a vue aux Finfluencer Awards tape siving.fr. Elle trouve une erreur, pas tes avis.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>siving.fr l'accueille et l'emmène où tu veux.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="empty-hook" role="img" aria-label="Le crochet siving.fr, sans clé. À la place : 404.">
+            <span class="peg" aria-hidden="true"></span>
+            <div class="ghost" aria-hidden="true">404</div>
+            <p aria-hidden="true">siving.fr</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 4. APERÇU -->
+  <section class="apercu gated" aria-labelledby="h-ap">
+    <div class="wrap ap-grid">
+      <div>
+        <h2 id="h-ap" data-in>L'étiquette qui manque.</h2>
+        <p data-in>Ta page Objectif Bien Rentable, à ton nom, avec tes élèves dedans.</p>
+      </div>
+      <div class="maquette" data-in role="img" aria-label="Maquette floutée d'une page de vente Objectif Bien Rentable signée Sophie, avec des témoignages.">
+        <p class="t" aria-hidden="true">Objectif Bien Rentable</p>
+        <p class="st" aria-hidden="true">avec Sophie</p>
+        <div class="flou" aria-hidden="true"><i class="w9"></i><i class="w8"></i><div class="ph"></div><i class="w6"></i><div class="q"></div><div class="q"></div><i class="w8"></i><div class="p"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FIN -->
+  <section class="fin gated" aria-labelledby="h-fin">
+    <div class="wrap">
+      <h2 id="h-fin" data-in>Tu sais ce qu'ouvre chaque clé. Maintenant, tu sais aussi lesquelles attendent une nouvelle étiquette.</h2>
+      <p data-in>Si tu veux qu'on les regarde ensemble, réponds à mon message.</p>
+      <p class="sign" data-in>Alexis</p>
+    </div>
+  </section>
+</main>
+
+<footer class="gated">
+  <div class="wrap">
+    Page préparée par Alexis pour Sophie Inghels (Siving). Ce n'est pas son site officiel. Constats du 23/11/2026. Aucun résultat garanti. Tout investissement comporte un risque de perte en capital.
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('locked');
+
+  var inEls=document.querySelectorAll('[data-in]');
+  if(!('IntersectionObserver' in window)||reduce){inEls.forEach(function(el){el.classList.add('in');});}
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.1});
+    inEls.forEach(function(el){io.observe(el);});
+  }
+
+  var hooks=document.querySelectorAll('.hook'),count=0,cnt=document.getElementById('cnt'),unlock=document.getElementById('unlock');
+  hooks.forEach(function(li){
+    var b=li.querySelector('.h-btn');
+    b.addEventListener('click',function(){
+      if(li.classList.contains('on'))return;
+      li.classList.add('on');b.setAttribute('aria-expanded','true');
+      document.getElementById('f'+li.getAttribute('data-i')).classList.add('on');
+      count++;cnt.textContent=count;
+      if(count===hooks.length){
+        unlock.hidden=false;root.classList.remove('locked');
+        unlock.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
