@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Katia, ta table est mise. Presque.</title>
+<meta name="description" content="Cinq couverts, une invitée qui arrive de tes posts, et trois cartons à reprendre.">
+<meta property="og:title" content="Katia, ta table est mise. Presque.">
+<meta property="og:description" content="Cinq couverts, une invitée qui arrive de tes posts, et trois cartons à reprendre.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Karla:wght@400;700&family=Kaushan+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FFF7EC; --cloth:#FBE1C0; --cloth-line:#E7C08F; --ink:#14314D; --ink-2:#3E5470; --line:#E3CFB3;
+  --navy:#14314D; --amber:#F3AE3F; --amber-soft:#FCE3B6; --coral:#C9503D; --coral-soft:#F7D5CB; --plate:#FFFFFF;
+  --font-title:'Montserrat',system-ui,sans-serif; --font-body:'Karla',system-ui,sans-serif; --font-hand:'Kaushan Script',cursive;
+  --maxw:1120px; --gutter:20px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 17px/1.6 var(--font-body);overflow-x:hidden}
+img,svg{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--font-title);font-weight:800;line-height:1.15;margin:0 0 .5em;text-wrap:balance}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+section{padding:64px 0}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+button{font:inherit;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;background:var(--navy);color:#fff;text-decoration:none;font-family:var(--font-title);font-weight:600;border-radius:999px}
+.src{display:inline-flex;align-items:center;min-height:44px;margin-right:16px;font-size:.88em;color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
+.hand{font-family:var(--font-hand);font-weight:400}
+
+/* Scène */
+.scene{padding:40px 0 56px;background:linear-gradient(180deg,#FFF3E2 0%,var(--cream) 100%)}
+.said{font-family:var(--font-hand);font-size:1.45em;color:var(--coral);margin:0 0 .1em;line-height:1.3}
+.g,.f-item q::before,.f-item q::after{font-family:var(--font-body);font-weight:400}
+.said-src{margin:0 0 1.2em}
+.scene h1{font-size:clamp(2rem,6vw,3.3rem);color:var(--navy)}
+.lede{font-size:1.08em;max-width:36em}
+.legend{list-style:none;margin:0 0 1em;padding:0;display:grid;gap:6px;font-size:.95em}
+.legend li{display:flex;align-items:center;gap:10px}
+.legend i{flex:none;width:30px;height:20px;border-radius:4px;border:2px solid var(--navy)}
+.count{font-family:var(--font-title);font-weight:600;font-size:.95em}
+.table{position:relative;margin:14px auto 0;max-width:640px}
+.table svg{width:100%;height:auto}
+.cut{transition:transform .6s var(--ease);transform-box:fill-box;transform-origin:center}
+.askew .cut-f{transform:rotate(-38deg) translate(6px,4px)}
+.askew .cut-k{transform:rotate(52deg) translate(-4px,6px)}
+.dish{opacity:0;transition:opacity .6s var(--ease)}
+.served .dish{opacity:1}
+.card{position:absolute;transform:translate(-50%,-50%);width:15%;min-width:54px;height:13%;min-height:48px;padding:0;border:0;background:none;perspective:600px}
+.card-in{position:absolute;inset:0;transition:transform .7s var(--ease);transform-style:preserve-3d}
+.card.on .card-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:6px;border:2px solid var(--navy);box-shadow:0 3px 0 rgba(20,49,77,.25)}
+.front{background:#fff;color:var(--navy);font-family:var(--font-hand);font-size:clamp(1.1rem,3.4vw,1.6rem)}
+.front::after{content:"";position:absolute;left:8px;right:8px;bottom:6px;border-bottom:1px dashed var(--cloth-line)}
+.back{transform:rotateY(180deg);font-family:var(--font-title);font-weight:800;font-size:clamp(.62rem,1.8vw,.85rem);letter-spacing:.02em}
+.card[data-s="dresse"] .back{background:var(--navy);color:#fff}
+.card[data-s="vrac"] .back{background:var(--amber);color:var(--navy)}
+.card[data-s="faux"] .back{background:var(--coral);color:#fff}
+.card:not(.on):hover .front{background:var(--amber-soft)}
+.card{transition:transform .6s var(--ease) .35s}
+.card.on[data-row="haut"]{transform:translate(-50%,-112%) scale(.86)}
+.card.on[data-row="bas"]{transform:translate(-50%,12%) scale(.86)}
+.ends{display:flex;justify-content:space-between;font-family:var(--font-hand);font-size:1.05em;color:var(--ink-2);margin-top:4px}
+.cartons{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px}
+.carton{background:#fff;border-left:6px solid var(--line);padding:10px 14px;border-radius:0 8px 8px 0}
+.carton-h{font-family:var(--font-title);font-weight:600}
+.carton-h .tag{display:inline-block;margin-top:6px}
+.carton-h .tt{display:block}
+.carton .n{font-family:var(--font-hand);color:var(--coral);font-size:1.2em}
+.tag{font-size:.72em;text-transform:uppercase;letter-spacing:.08em;padding:2px 8px;border-radius:999px}
+.carton[data-s="dresse"] .tag{background:var(--navy);color:#fff}
+.carton[data-s="vrac"] .tag{background:var(--amber);color:var(--navy)}
+.carton[data-s="faux"] .tag{background:var(--coral);color:#fff}
+.carton p{margin:.25em 0 0}
+.js .carton:not(.on) .tag,.js .carton:not(.on) p{display:none}
+.js .carton:not(.on){opacity:.55}
+.carton.on[data-s="dresse"]{border-color:var(--navy)}
+.carton.on[data-s="vrac"]{border-color:var(--amber)}
+.carton.on[data-s="faux"]{border-color:var(--coral)}
+.unlock{margin-top:22px;padding:20px;background:var(--navy);color:#fff;border-radius:10px}
+.unlock .big{font-family:var(--font-title);font-weight:800;font-size:1.3em;margin-bottom:.3em}
+.unlock .btn{background:var(--amber);color:var(--navy);margin-top:6px}
+.js.locked .gated{display:none}
+
+/* Forces */
+.forces{background:#fff}
+.f-list{display:grid;gap:26px;margin-top:10px}
+.f-item q{display:block;font-family:var(--font-hand);font-size:1.5em;color:var(--navy);quotes:"« " " »";line-height:1.25;margin-bottom:.3em}
+
+/* Couverts (soucis) */
+.c-sec{border-top:1px solid var(--line)}
+.c-sec.tint{background:#FFF0DC}
+.stamp{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-title);font-weight:600;font-size:.85em;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.stamp i{width:26px;height:18px;border-radius:4px;border:2px solid var(--navy)}
+.stamp.vrac i{background:var(--amber)}
+.stamp.faux i{background:var(--coral)}
+.c-sec h2{font-size:clamp(1.6rem,4.4vw,2.4rem)}
+.lab{font-family:var(--font-title);font-weight:600;font-size:.8em;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-2);margin:0 0 .3em}
+.quote q{quotes:"« " " »"}
+.cost{font-size:1.1em;font-weight:700;border-left:4px solid var(--coral);padding-left:14px}
+.change{background:#fff;border-radius:8px;padding:14px 16px;margin-bottom:16px}
+.lock{display:flex;align-items:center;gap:14px;font-size:.92em;color:var(--ink-2)}
+.bars{display:grid;gap:6px;width:120px;filter:blur(3px);opacity:.6}
+.bars span{display:block;height:8px;background:var(--ink-2);border-radius:4px}
+.bars span:nth-child(2){width:70%}
+.grid2{display:grid;gap:30px}
+.visual{align-self:center}
+
+/* Visuels de preuve */
+.v-acad{background:#fff;border-radius:10px;padding:18px;display:grid;gap:10px;justify-items:center;box-shadow:0 6px 0 var(--coral-soft)}
+.v-btn{width:100%;text-align:center;font-family:var(--font-title);font-weight:800;font-size:.82em;padding:12px;border-radius:6px;background:var(--coral);color:#fff}
+.v-arrow{font-family:var(--font-title);color:var(--ink-2);font-size:.85em}
+.v-rdv{width:100%;border:2px dashed var(--ink-2);border-radius:6px;padding:12px;text-align:center;font-size:.92em}
+.v-rdv b{display:block;font-family:var(--font-title)}
+.v-place{background:#fff;border:2px solid var(--navy);border-radius:6px;padding:6px 18px;font-family:var(--font-hand);font-size:1.6em;color:var(--coral);transform:rotate(-4deg)}
+.v-liinks{background:#fff;border-radius:10px;padding:16px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-width:360px;margin:0 auto}
+.v-liinks span{aspect-ratio:1;border-radius:6px;background:#EADCC8;display:flex;align-items:center;justify-content:center;font-family:var(--font-title);font-size:.7em;color:var(--ink-2)}
+.v-liinks .k{background:var(--amber);color:var(--navy);font-weight:800}
+.v-liinks .lg{grid-column:1/-1;aspect-ratio:auto;background:none;justify-content:flex-start;gap:10px;font-size:.78em}
+.v-liinks .lg i{width:16px;height:16px;border-radius:4px;background:var(--amber)}
+.v-nums{background:#fff;border-radius:10px;padding:8px 16px;width:100%;border-collapse:collapse;font-size:.92em}
+.v-nums th,.v-nums td{padding:10px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.v-nums th{font-family:var(--font-title);font-weight:600;font-size:.85em}
+.v-nums td{font-family:var(--font-hand);font-size:1.15em;color:var(--coral)}
+.v-nums tr:last-child th,.v-nums tr:last-child td{border-bottom:0}
+
+/* Aperçu et fin */
+.apercu{background:var(--navy);color:#fff}
+.ap-grid{display:grid;gap:26px;align-items:center}
+.maquette{background:var(--cream);color:var(--navy);border-radius:10px;padding:22px;max-width:420px;width:100%;margin:0 auto}
+.maquette .t{font-family:var(--font-hand);font-size:1.7em;margin:0}
+.maquette .flou{filter:blur(5px);user-select:none;display:grid;gap:10px;margin-top:12px}
+.maquette .flou i{display:block;height:10px;border-radius:5px;background:var(--ink-2)}
+.maquette .flou .w8{width:80%}.maquette .flou .w6{width:60%}
+.maquette .flou .ch{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.maquette .flou .ch b{height:56px;border-radius:8px;background:var(--amber)}
+.maquette .flou .f{height:44px;border-radius:8px;border:2px solid var(--ink-2);background:#fff}
+.fin{text-align:center}
+.fin .sign{font-family:var(--font-hand);font-size:2.4em;color:var(--navy);margin-top:10px}
+footer{padding:26px 0 40px;font-size:.82em;color:var(--ink-2);border-top:1px solid var(--line)}
+
+/* Arrivées au scroll */
+.js.motion [data-in]{opacity:0;transform:translateY(22px) scale(.98);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js.motion [data-in].in{opacity:1;transform:none}
+.js.motion [data-in][data-d="1"]{transition-delay:.12s}
+.js.motion [data-in][data-d="2"]{transition-delay:.24s}
+
+@media (min-width:720px){
+  body{font-size:18px}
+  section{padding:96px 0}
+  .scene{padding:56px 0 72px}
+  .scene-grid{display:grid;grid-template-columns:5fr 6fr;gap:40px;align-items:start}
+  .scene-grid .cartons,.scene-grid .unlock{grid-column:1/-1}
+  .cartons{grid-template-columns:repeat(5,1fr)}
+  .f-list{grid-template-columns:repeat(3,1fr)}
+  .grid2{grid-template-columns:7fr 5fr;gap:56px}
+  .ap-grid{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion');</script>
+
+<main>
+  <!-- 1. LA TABLE : 5 cartons à retourner -->
+  <section class="scene" aria-labelledby="h1">
+    <div class="wrap scene-grid">
+      <div class="s-txt">
+        <p class="said"><span class="g">«</span>&nbsp;Ici, on parle d'argent sans tabou&nbsp;!&nbsp;<span class="g">»</span></p>
+        <p class="said-src"><a class="src" href="https://formation.katiafinances.fr/" target="_blank" rel="noopener">Ta page de l'Académie</a><a class="src" href="https://www.instagram.com/katia_finances/" target="_blank" rel="noopener">@katia_finances</a></p>
+        <h1 id="h1">Katia, ta table est mise. Presque.</h1>
+        <p class="lede">Tata Budget et Tonton Cash sont en bout de table. Une invitée arrive d'un de tes posts. Retourne ses cinq cartons.</p>
+        <ul class="legend">
+          <li><i style="background:var(--navy)"></i><span><b>Dressé</b> : tout l'attend.</span></li>
+          <li><i style="background:var(--amber)"></i><span><b>En vrac</b> : c'est là, mais elle s'y perd.</span></li>
+          <li><i style="background:var(--coral)"></i><span><b>Faux nom</b> : ça ne s'adresse pas à elle.</span></li>
+        </ul>
+        <p class="count" aria-live="polite"><b id="cnt">0</b> / 5 cartons retournés</p>
+      </div>
+
+      <div>
+        <div class="table">
+          <svg viewBox="0 0 640 400" aria-hidden="true">
+            <ellipse cx="320" cy="372" rx="250" ry="16" fill="#E9D3B4" opacity=".7"/>
+            <rect x="92" y="62" width="456" height="276" rx="44" fill="#FBE1C0" stroke="#E7C08F" stroke-width="4"/>
+            <rect x="108" y="78" width="424" height="244" rx="32" fill="none" stroke="#14314D" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round" opacity=".55"/>
+            <!-- bouts de table -->
+            <circle cx="46" cy="200" r="30" fill="#14314D"/><circle cx="46" cy="200" r="18" fill="#F3AE3F"/>
+            <circle cx="594" cy="200" r="30" fill="#14314D"/><circle cx="594" cy="200" r="18" fill="#C9503D"/>
+            <!-- centre de table -->
+            <ellipse cx="320" cy="202" rx="44" ry="18" fill="#fff" stroke="#E7C08F" stroke-width="3"/>
+            <circle cx="304" cy="198" r="7" fill="#F3AE3F"/><circle cx="322" cy="206" r="7" fill="#C9503D"/><circle cx="338" cy="197" r="7" fill="#F3AE3F"/>
+            <!-- couverts 1 à 5 -->
+            <g id="p1"><circle cx="200" cy="132" r="42" fill="#FFFFFF" stroke="#D9BF9B" stroke-width="3"/><circle cx="200" cy="132" r="29" fill="none" stroke="#EADBC5" stroke-width="2"/><circle class="dish" cx="200" cy="132" r="22" fill="#F3AE3F"/><rect class="cut cut-f" x="146" y="106" width="6" height="52" rx="3" fill="#3E5470"/><rect class="cut cut-k" x="248" y="106" width="6" height="52" rx="3" fill="#3E5470"/></g>
+            <g id="p2"><circle cx="320" cy="132" r="42" fill="#FFFFFF" stroke="#D9BF9B" stroke-width="3"/><circle cx="320" cy="132" r="29" fill="none" stroke="#EADBC5" stroke-width="2"/><circle class="dish" cx="320" cy="132" r="22" fill="#F3AE3F"/><rect class="cut cut-f" x="266" y="106" width="6" height="52" rx="3" fill="#3E5470"/><rect class="cut cut-k" x="368" y="106" width="6" height="52" rx="3" fill="#3E5470"/></g>
+            <g id="p3"><circle cx="440" cy="132" r="42" fill="#FFFFFF" stroke="#D9BF9B" stroke-width="3"/><circle cx="440" cy="132" r="29" fill="none" stroke="#EADBC5" stroke-width="2"/><circle class="dish" cx="440" cy="132" r="22" fill="#F3AE3F"/><rect class="cut cut-f" x="386" y="106" width="6" height="52" rx="3" fill="#3E5470"/><rect class="cut cut-k" x="488" y="106" width="6" height="52" rx="3" fill="#3E5470"/></g>
+            <g id="p4"><circle cx="260" cy="270" r="42" fill="#FFFFFF" stroke="#D9BF9B" stroke-width="3"/><circle cx="260" cy="270" r="29" fill="none" stroke="#EADBC5" stroke-width="2"/><circle class="dish" cx="260" cy="270" r="22" fill="#F3AE3F"/><rect class="cut cut-f" x="206" y="244" width="6" height="52" rx="3" fill="#3E5470"/><rect class="cut cut-k" x="308" y="244" width="6" height="52" rx="3" fill="#3E5470"/></g>
+            <g id="p5"><circle cx="380" cy="270" r="42" fill="#FFFFFF" stroke="#D9BF9B" stroke-width="3"/><circle cx="380" cy="270" r="29" fill="none" stroke="#EADBC5" stroke-width="2"/><circle class="dish" cx="380" cy="270" r="22" fill="#F3AE3F"/><rect class="cut cut-f" x="326" y="244" width="6" height="52" rx="3" fill="#3E5470"/><rect class="cut cut-k" x="428" y="244" width="6" height="52" rx="3" fill="#3E5470"/></g>
+          </svg>
+          <button class="card" type="button" data-row="haut" data-c="1" data-s="dresse" style="left:31.25%;top:33%" aria-label="Carton 1 : Tes posts"><span class="card-in"><span class="face front">1</span><span class="face back">Dressé</span></span></button>
+          <button class="card" type="button" data-row="haut" data-c="2" data-s="vrac" style="left:50%;top:33%" aria-label="Carton 2 : Commence ici"><span class="card-in"><span class="face front">2</span><span class="face back">En vrac</span></span></button>
+          <button class="card" type="button" data-row="haut" data-c="3" data-s="vrac" style="left:68.75%;top:33%" aria-label="Carton 3 : Ta présentation"><span class="card-in"><span class="face front">3</span><span class="face back">En vrac</span></span></button>
+          <button class="card" type="button" data-row="bas" data-c="4" data-s="faux" style="left:40.6%;top:67.5%" aria-label="Carton 4 : L'Académie"><span class="card-in"><span class="face front">4</span><span class="face back">Faux nom</span></span></button>
+          <button class="card" type="button" data-row="bas" data-c="5" data-s="dresse" style="left:59.4%;top:67.5%" aria-label="Carton 5 : Madame Investit"><span class="card-in"><span class="face front">5</span><span class="face back">Dressé</span></span></button>
+        </div>
+        <p class="ends"><span>Tata Budget</span><span>Tonton Cash</span></p>
+      </div>
+
+      <ol class="cartons">
+        <li class="carton" data-row="haut" data-c="1" data-s="dresse"><div class="carton-h"><span class="tt"><span class="n">1</span> Tes posts</span><span class="tag">Dressé</span></div><p>Neuf posts en deux semaines. «&nbsp;143 idées&nbsp;» : 423 commentaires.</p></li>
+        <li class="carton" data-row="haut" data-c="2" data-s="vrac"><div class="carton-h"><span class="tt"><span class="n">2</span> «&nbsp;Commence ici&nbsp;»</span><span class="tag">En vrac</span></div><p>19 blocs sur ton Liinks. Le cadeau arrive en dernier.</p></li>
+        <li class="carton" data-row="haut" data-c="3" data-s="vrac"><div class="carton-h"><span class="tt"><span class="n">3</span> Ta présentation</span><span class="tag">En vrac</span></div><p>530 femmes ici, 4&nbsp;000 là.</p></li>
+        <li class="carton" data-c="4" data-s="faux"><div class="carton-h"><span class="tt"><span class="n">4</span> L'Académie</span><span class="tag">Faux nom</span></div><p>«&nbsp;Je rejoins&nbsp;», puis un rendez-vous. Au masculin.</p></li>
+        <li class="carton" data-c="5" data-s="dresse"><div class="carton-h"><span class="tt"><span class="n">5</span> Madame Investit</span><span class="tag">Dressé</span></div><p>Trois prix, un bouton, on entre.</p></li>
+      </ol>
+
+      <div class="unlock" id="unlock" hidden>
+        <p class="big">2 dressés, 2 en vrac, 1 faux nom.</p>
+        <p>Ce qu'elle reçoit après un cadeau téléchargé : non vérifié.</p>
+        <a class="btn" href="#forces">Voir les 3 couverts</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CE QUI EST DÉJÀ SERVI -->
+  <section class="forces gated" id="forces" aria-labelledby="h-forces">
+    <div class="wrap">
+      <h2 id="h-forces" data-in>D'abord, ce qui est déjà servi.</h2>
+      <div class="f-list">
+        <div class="f-item" data-in>
+          <q>Toutes mes dettes sont soldées.</q>
+          <p>179 avis Trustpilot, 4,9 sur 5. Des récits, pas des étoiles. <a class="src" href="https://fr.trustpilot.com/review/katiafinances.fr" target="_blank" rel="noopener">Tes avis</a></p>
+        </div>
+        <div class="f-item" data-in data-d="1">
+          <q>Libérée de 30 ans de découvert.</q>
+          <p>Cédrique et onze autres vidéos : un prénom, une histoire. <a class="src" href="https://formation.katiafinances.fr/" target="_blank" rel="noopener">L'Académie</a></p>
+        </div>
+        <div class="f-item" data-in data-d="2">
+          <q>Quatre services.</q>
+          <p>Du gratuit à l'École, en passant par Madame Investit à 33&nbsp;€ par mois. <a class="src" href="https://www.liinks.co/katia_finances" target="_blank" rel="noopener">Ton Liinks</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. LES 3 COUVERTS -->
+  <div class="gated">
+    <section class="c-sec tint" id="couvert-4" aria-labelledby="h-c4">
+      <div class="wrap grid2">
+        <div>
+          <p class="stamp faux" data-in><i aria-hidden="true"></i>Carton 4 · Faux nom</p>
+          <h2 id="h-c4" data-in>Six boutons «&nbsp;Je rejoins l'Académie&nbsp;». Ils mènent à un rendez-vous.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote"><q>Je rejoins l'Académie</q>, <q>Je booste mes finances !</q> : tous descendent vers deux formules sans prix. Seule sortie, un appel de 45 minutes où l'on découvrira <q>son tarif</q>. Et la page lui demande : <q>Prêt ?</q></p>
+            <a class="src" href="https://formation.katiafinances.fr/" target="_blank" rel="noopener">Ta page de l'Académie</a><a class="src" href="https://calendly.com/d/dv6h-bvd-734/l-academie-des-finances-personnelles-clone" target="_blank" rel="noopener">le rendez-vous</a>
+          </div>
+          <p class="cost" data-in>Elle cliquait pour entrer. On lui propose un appel, sans prix. Celle qui hésite referme l'onglet.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Dès le premier bouton, elle sait qu'il y a un appel, et pourquoi. La page lui parle, à elle.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span>Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="v-acad" role="img" aria-label="Le parcours sur ta page : le bouton Je rejoins l'Académie mène à un rendez-vous de 45 minutes, tarif donné pendant l'appel. Sur le carton : Prêt ?">
+            <div class="v-btn" aria-hidden="true">JE REJOINS L'ACADÉMIE</div>
+            <div class="v-arrow" aria-hidden="true">× 6, puis</div>
+            <div class="v-rdv" aria-hidden="true"><b>Je prends rendez-vous</b>45 min · tarif : pendant l'appel</div>
+            <div class="v-place" aria-hidden="true">Prêt ?</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="c-sec" id="couvert-2" aria-labelledby="h-c2">
+      <div class="wrap grid2">
+        <div>
+          <p class="stamp vrac" data-in><i aria-hidden="true"></i>Carton 2 · En vrac</p>
+          <h2 id="h-c2" data-in>«&nbsp;Commence ici&nbsp;», puis 19 portes.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Ta bio promet <q>Commence ici</q>. Ton Liinks ouvre sur l'École des coachs, une communauté, quatre produits, sept images de témoignages qui renvoient… au Liinks. Le cadeau arrive en 15<sup>e</sup> position.</p>
+            <a class="src" href="https://www.instagram.com/katia_finances/" target="_blank" rel="noopener">Ta bio</a><a class="src" href="https://www.liinks.co/katia_finances" target="_blank" rel="noopener">ton Liinks</a>
+          </div>
+          <p class="cost" data-in>Elle sort d'un reel, pressée. Ta bio lui promet un point de départ. Elle trouve un buffet.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Une seule porte. Elle sait où entrer, et ce qui l'attend ensuite.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span>Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="v-liinks" role="img" aria-label="Ton Liinks en 19 blocs : 14 avant les cinq ressources gratuites, qui sont en dernier.">
+            <span aria-hidden="true">1</span><span aria-hidden="true">2</span><span aria-hidden="true">3</span><span aria-hidden="true">4</span><span aria-hidden="true">5</span>
+            <span aria-hidden="true">6</span><span aria-hidden="true">7</span><span aria-hidden="true">8</span><span aria-hidden="true">9</span><span aria-hidden="true">10</span>
+            <span aria-hidden="true">11</span><span aria-hidden="true">12</span><span aria-hidden="true">13</span><span aria-hidden="true">14</span><span class="k" aria-hidden="true">15</span>
+            <span class="k" aria-hidden="true">16</span><span class="k" aria-hidden="true">17</span><span class="k" aria-hidden="true">18</span><span class="k" aria-hidden="true">19</span>
+            <span class="lg" aria-hidden="true"><i></i>les cadeaux</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="c-sec tint" id="couvert-3" aria-labelledby="h-c3">
+      <div class="wrap grid2">
+        <div>
+          <p class="stamp vrac" data-in><i aria-hidden="true"></i>Carton 3 · En vrac</p>
+          <h2 id="h-c3" data-in>À chaque page, un autre chiffre.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Ton À propos : <q>plus de 530 femmes</q>. Ton accueil : <q>plus de 4000 femmes</q>. Ta communauté passe de 20K à 55 000 selon la page. Ta bio dit 4,8 sur Trustpilot, qui affiche 4,9.</p>
+            <a class="src" href="https://katiafinances.fr/a-propos/" target="_blank" rel="noopener">À propos</a><a class="src" href="https://katiafinances.fr/" target="_blank" rel="noopener">accueil</a><a class="src" href="https://formation.katiafinances.fr/diagnostic" target="_blank" rel="noopener">diagnostic</a>
+          </div>
+          <p class="cost" data-in>Tes lectrices se méfient de ceux qui parlent d'argent. Un chiffre qui bouge, c'est le premier doute, sur tes meilleures preuves.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Un seul jeu de chiffres, à jour, partout. Celle qui vérifie tombe juste.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span>Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <table class="v-nums">
+            <caption class="lab" style="text-align:left;padding:8px 0">Relevé le 24/11/2026</caption>
+            <tr><th scope="row">Femmes accompagnées</th><td>530 · 4000</td></tr>
+            <tr><th scope="row">Communauté</th><td>20K · 25K · 45K · 50K · 55K</td></tr>
+            <tr><th scope="row">Trustpilot</th><td>4,8 · 4,9</td></tr>
+            <tr><th scope="row">L'Académie</th><td>3 mois · 6 mois</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 4. LE COUVERT QUI MANQUE -->
+  <section class="apercu gated" aria-labelledby="h-ap">
+    <div class="wrap ap-grid">
+      <div>
+        <h2 id="h-ap" data-in>Le couvert qui manque.</h2>
+        <p data-in>Une page «&nbsp;Commence ici&nbsp;», dans ta voix.</p>
+      </div>
+      <div class="maquette" data-in role="img" aria-label="Maquette floutée d'une page d'entrée : un titre, trois choix et un champ mail.">
+        <p class="t" aria-hidden="true">Commence ici</p>
+        <div class="flou" aria-hidden="true"><i class="w8"></i><i class="w6"></i><div class="ch"><b></b><b></b><b></b></div><div class="f"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FIN -->
+  <section class="fin gated" aria-labelledby="h-fin">
+    <div class="wrap">
+      <h2 id="h-fin" data-in>Maintenant, tu sais quels cartons reprendre.</h2>
+      <p data-in>Si tu veux qu'on regarde la table ensemble, réponds simplement à mon message.</p>
+      <p class="sign" data-in>Alexis</p>
+    </div>
+  </section>
+</main>
+
+<footer class="gated">
+  <div class="wrap">
+    Page préparée par Alexis pour Katia (Katia Finances). Ce n'est pas son site officiel. Constats du 24/11/2026. Aucun résultat garanti. Tout investissement comporte un risque de perte en capital.
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('locked');
+
+  /* Arrivées au scroll */
+  var inEls=document.querySelectorAll('[data-in]');
+  if(!('IntersectionObserver' in window)||reduce){inEls.forEach(function(el){el.classList.add('in');});}
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.1});
+    inEls.forEach(function(el){io.observe(el);});
+  }
+
+  /* La table : 5 cartons à retourner */
+  var cards=document.querySelectorAll('.card'),count=0,cnt=document.getElementById('cnt'),unlock=document.getElementById('unlock');
+  cards.forEach(function(c){
+    c.setAttribute('aria-pressed','false');
+    c.addEventListener('click',function(){
+      if(c.classList.contains('on'))return;
+      c.classList.add('on');c.setAttribute('aria-pressed','true');
+      var n=c.getAttribute('data-c'),s=c.getAttribute('data-s');
+      var plate=document.getElementById('p'+n);
+      if(plate){plate.classList.add(s==='dresse'?'served':(s==='vrac'?'askew':'empty'));}
+      var li=document.querySelector('.carton[data-c="'+n+'"]');
+      if(li)li.classList.add('on');
+      count++;cnt.textContent=count;
+      if(count===cards.length){
+        unlock.hidden=false;root.classList.remove('locked');
+        unlock.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

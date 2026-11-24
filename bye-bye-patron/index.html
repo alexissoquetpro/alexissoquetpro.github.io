@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Thibaut, vérifions ton gros billet</title>
+<meta name="description" content="Cinq signes de sécurité sur le billet Bye Bye Patron, passés sous la lampe.">
+<meta property="og:title" content="Thibaut, vérifions ton gros billet">
+<meta property="og:description" content="Cinq signes de sécurité sur le billet Bye Bye Patron, passés sous la lampe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0C1615; --night-2:#132423; --teal:#0F6B66; --teal-2:#1C8C85; --teal-soft:#BFE3DE;
+  --paper:#F5F0E4; --paper-2:#EAE2CF; --ink:#141A19; --muted:#4D5654;
+  --orange:#F0861E; --orange-2:#B85A00; --orange-soft:#FBD9B4;
+  --uv:#8B5CF6; --uv-soft:#D9CCFF; --red:#B3261E;
+  --font-title:"Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body:"Barlow", system-ui, sans-serif;
+  --maxw:1120px; --gutter:20px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--font-body);overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--font-title);font-weight:800;line-height:1.05;margin:0 0 .45em;text-wrap:balance;letter-spacing:.005em}
+h1{font-size:clamp(2.3rem,8.4vw,4rem);text-transform:uppercase}
+h2{font-size:clamp(1.8rem,5.6vw,2.8rem)}
+p{margin:0 0 1em}
+a{color:inherit}
+q{quotes:"«\00a0" "\00a0»"}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.src{display:inline-flex;align-items:center;min-height:48px;margin-right:18px;font-size:.92rem;font-weight:600;color:var(--teal);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.src:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:10px;background:var(--orange);color:#1A0E00;font:700 1.05rem var(--font-body);text-decoration:none}
+.btn:hover{background:var(--orange-soft)}
+
+/* ---------- 1. Le billet ---------- */
+.scene{background:radial-gradient(110% 80% at 80% 0%,var(--night-2) 0%,var(--night) 60%);color:var(--paper);padding:38px 0 48px}
+.scene-grid{display:grid;gap:26px;grid-template-areas:"txt" "note" "list" "unl"}
+.s-txt{grid-area:txt}
+.said{font:italic 600 1.1rem/1.4 var(--font-body);color:var(--orange-soft);margin:0}
+.said-src a{display:inline-flex;align-items:center;min-height:48px;color:var(--teal-soft);font-size:.92rem;text-decoration:underline;text-underline-offset:3px}
+.lede{color:#DDE7E4;max-width:30em}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;margin:0 0 14px;padding:0;font-size:.94rem;color:#DDE7E4}
+.legend li{display:flex;align-items:center;gap:8px}
+.legend i{width:16px;height:16px;border-radius:50%;flex:none}
+.count{font:700 1rem var(--font-body);color:var(--orange-soft);margin:0}
+.count b{color:#fff;font-size:1.25rem}
+
+.note{grid-area:note;position:relative;width:100%;max-width:640px;margin:0 auto}
+.note svg{width:100%;height:auto;border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.note .f{transition:fill .6s var(--ease),stroke .6s var(--ease),opacity .6s var(--ease)}
+.note .f.uv{fill:var(--uv-soft);stroke:var(--uv)}
+.note .f.uv.line{fill:none}
+.sign-pt{position:absolute;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;border:3px solid var(--paper);background:var(--orange);color:#1A0E00;font:800 1.15rem var(--font-title);cursor:pointer;padding:0;box-shadow:0 0 0 3px rgba(12,22,21,.6),0 4px 10px rgba(0,0,0,.4);-webkit-tap-highlight-color:transparent}
+@media (hover:hover){.sign-pt:not(.on):hover{transform:scale(1.08)}}
+.sign-pt.on{box-shadow:0 0 0 4px var(--uv),0 0 22px 6px rgba(139,92,246,.55)}
+.sign-pt.on[data-s="auth"]{background:var(--teal-2);color:#fff}
+.sign-pt.on[data-s="doute"]{background:repeating-linear-gradient(45deg,var(--orange) 0 6px,var(--orange-2) 6px 12px);color:#fff}
+.sign-pt.on[data-s="manque"]{background:var(--night);color:var(--paper);border-style:dashed}
+
+.signs{grid-area:list;list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.sg{background:rgba(255,255,255,.05);border:1px solid rgba(191,227,222,.28);border-radius:12px;padding:12px 16px}
+.sg-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font:700 1.12rem/1.2 var(--font-title);letter-spacing:.01em}
+.sg-h .n{font:700 .85rem var(--font-body);color:var(--orange-soft)}
+.sg-h small{font:500 .85rem var(--font-body);color:var(--teal-soft)}
+.tag{font:700 .78rem/1 var(--font-body);padding:5px 9px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}
+[data-s="auth"] .tag{background:var(--teal-soft);color:#08302D}
+[data-s="doute"] .tag{background:var(--orange);color:#1A0E00}
+[data-s="manque"] .tag{background:transparent;color:#fff;border:1px dashed #fff}
+.sg p{margin:6px 0 0;font-size:.96rem;color:#DDE7E4}
+.js .sg:not(.on){opacity:.85}
+.js .sg:not(.on) .tag,.js .sg:not(.on) p{display:none}
+.js .sg:not(.on) .sg-h::after{content:"à vérifier";font:600 .82rem var(--font-body);color:var(--teal-soft)}
+.unlock{grid-area:unl;background:var(--paper);color:var(--ink);border-radius:12px;padding:20px;border-left:8px solid var(--uv)}
+.unlock .big{font:800 1.5rem/1.15 var(--font-title);margin:0 0 .3em}
+.js .unlock[hidden]{display:none}
+
+/* ---------- Arrivées ---------- */
+.locked .gated{display:none}
+.js [data-in]{opacity:0;transform:translateX(-28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .flip [data-in]{transform:translateX(28px)}
+.js [data-in].in{opacity:1;transform:none}
+.js [data-d="1"]{transition-delay:.12s}.js [data-d="2"]{transition-delay:.24s}
+
+/* ---------- 2. Ce qui passe ---------- */
+.forces{padding:76px 0 56px;background:var(--paper)}
+.f-list{display:grid;gap:8px;margin-top:18px}
+.f-item{padding:18px 0 4px;border-top:3px solid var(--teal)}
+.f-item q{display:block;font:700 clamp(1.25rem,3.6vw,1.6rem)/1.15 var(--font-title);margin-bottom:8px}
+.f-item p{color:var(--muted);margin:0}
+
+/* ---------- 3. Les signes ---------- */
+.p-sec{padding:80px 0;overflow:hidden}
+.p-sec.dark{background:var(--night);color:var(--paper)}
+.p-sec.dark .src{color:var(--teal-soft)}
+.p-sec.dark .src:hover{color:#fff}
+.p-sec.dark .lab{color:var(--orange-soft)}
+.p-sec.dark .quote{color:#E6EEEC}
+.p-sec.sand{background:var(--paper-2)}
+.grid2{display:grid;gap:34px}
+.stamp{display:inline-flex;align-items:center;gap:10px;font:700 .92rem/1 var(--font-body);margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em}
+.stamp i{width:22px;height:22px;border-radius:50%;border:3px solid var(--uv)}
+.stamp.doute i{background:repeating-linear-gradient(45deg,var(--orange) 0 4px,var(--orange-2) 4px 8px)}
+.stamp.manque i{border-style:dashed}
+.lab{font:700 .85rem var(--font-body);color:var(--teal);margin:0 0 6px;text-transform:uppercase;letter-spacing:.06em}
+.quote{border-left:4px solid var(--orange);padding:2px 0 2px 14px;margin:0 0 2px}
+.cost{font:700 clamp(1.2rem,3vw,1.45rem)/1.25 var(--font-title);margin:18px 0}
+.change{background:var(--teal-soft);color:var(--ink);border-radius:12px;padding:16px 18px;font-weight:600}
+.change .lab,.p-sec.dark .change .lab{color:var(--teal)}
+.lock{display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px 14px;border:2px dashed currentColor;border-radius:12px;opacity:.85;font-weight:600}
+.lock .bars{flex:1;display:grid;gap:6px;filter:blur(2.5px);opacity:.45}
+.lock .bars span{display:block;height:7px;border-radius:7px;background:currentColor}
+.lock .bars span:nth-child(2){width:65%}
+.lock-txt{flex:2}
+
+/* visuel : sa page de liens */
+.v-links{max-width:330px;margin:0 auto;background:#0A0A0A;color:#fff;border-radius:16px;padding:22px 18px;box-shadow:10px 10px 0 var(--orange)}
+.v-links .h{font:800 1.3rem/1.1 var(--font-title);text-align:center;margin:0 0 4px}
+.v-links .s{font-size:.85rem;text-align:center;color:#C9D3D1;margin:0 0 16px}
+.v-btn{border-radius:10px;padding:12px 14px;margin:0 0 10px;font-weight:600;font-size:.92rem;line-height:1.3}
+.v-btn.b1{background:#1E2A29;border:2px solid var(--orange)}
+.v-btn.b1 small{display:block;color:var(--orange-soft);font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.v-btn.b2{background:#1E2A29}
+.v-btn.empty{border:2px dashed #7C8A88;color:#AEBBB9;background:transparent;font-weight:500}
+/* visuel : les deux numéros de série */
+.serials{max-width:400px;margin:0 auto;display:grid;gap:12px}
+.serial{background:var(--paper);border-radius:10px;padding:12px 14px;box-shadow:0 6px 0 rgba(15,107,102,.35)}
+.serial h3{font:600 .8rem var(--font-body);color:var(--muted);margin:0 0 6px;text-transform:none}
+.serial ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.serial li{font:800 1.15rem/1.1 var(--font-title);color:var(--teal);font-variant-numeric:tabular-nums;border:2px solid var(--teal-soft);border-radius:6px;padding:6px 4px;text-align:center}
+.serial li small{display:block;font:500 .7rem var(--font-body);color:var(--muted)}
+.serial li.x{color:var(--red);border-color:#E8A9A4}
+.serials p{grid-column:1/-1;text-align:center;font-size:.92rem;margin:0;color:var(--paper)}
+/* visuel : trois noms, une page */
+.names{max-width:340px;margin:0 auto;display:grid;gap:10px;justify-items:center}
+.names .nm{width:100%;background:#fff;color:var(--ink);border:2px solid var(--teal);border-radius:10px;padding:10px 14px;font:700 1.2rem var(--font-title);display:flex;justify-content:space-between;align-items:center}
+.names .nm small{font:500 .8rem var(--font-body);color:var(--muted)}
+.names .arrow{font:800 1.6rem/1 var(--font-title);color:var(--teal-soft)}
+.names .wa{width:100%;background:#1E7F46;color:#fff;border-radius:999px;padding:14px;text-align:center;font-weight:700}
+.names .none{font-size:.9rem;color:var(--muted);text-align:center;margin:0}
+
+/* ---------- 4. Aperçu ---------- */
+.apercu{padding:80px 0;background:var(--paper)}
+.ap-grid{display:grid;gap:30px;align-items:center}
+.maquette{max-width:330px;margin:0 auto;background:#fff;border:2px solid var(--night);border-radius:12px;padding:20px 18px 22px;box-shadow:10px 10px 0 var(--uv)}
+.maquette .t{font:800 1.35rem/1.1 var(--font-title);margin:0 0 4px}
+.maquette .st{font-weight:600;color:var(--teal);margin:0 0 12px;font-size:.92rem}
+.flou{filter:blur(4px);user-select:none;pointer-events:none}
+.flou i{display:block;height:9px;border-radius:9px;background:#D9DFDD;margin:0 0 8px}
+.flou .w8{width:80%}.flou .w6{width:60%}.flou .w9{width:92%}
+.flou .c{height:60px;border-radius:8px;background:#EEF3F2;margin:12px 0 8px}
+.flou .p{height:44px;border-radius:8px;background:var(--orange)}
+
+/* ---------- 5. Fin ---------- */
+.fin{padding:84px 0 76px;text-align:center;background:radial-gradient(120% 90% at 50% 0%,var(--night-2) 0%,var(--night) 100%);color:#fff}
+.fin p{max-width:32em;margin-left:auto;margin-right:auto;color:#DDE7E4}
+.mini{width:220px;margin:0 auto 26px}
+.sign{font:italic 700 2.6rem var(--font-title);margin:24px 0 0;color:var(--orange-soft)!important}
+footer{padding:24px 0 34px;font-size:.86rem;color:var(--muted)}
+
+@media (min-width:720px){
+  body{font-size:18px}
+  .scene{padding:56px 0 64px}
+  .sign-pt{width:54px;height:54px;margin:-27px 0 0 -27px}
+  .signs{grid-template-columns:1fr 1fr}
+  .signs li:last-child{grid-column:1/-1}
+  .f-list{grid-template-columns:repeat(3,1fr);gap:30px}
+  .grid2{grid-template-columns:1.2fr .8fr;gap:60px;align-items:center}
+  .flip .grid2{grid-template-columns:.8fr 1.2fr}
+  .flip .visual{order:-1}
+  .ap-grid{grid-template-columns:1fr 1fr;gap:60px}
+}
+@media (min-width:1000px){
+  .scene-grid{grid-template-columns:.9fr 1.1fr;grid-template-areas:"txt note" "list list" "unl unl";column-gap:56px;align-items:center}
+  .signs{grid-template-columns:repeat(5,1fr)}
+  .signs li:last-child{grid-column:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<main>
+  <!-- 1. LE BILLET : 5 signes de sécurité à vérifier -->
+  <section class="scene" aria-labelledby="h1">
+    <div class="wrap scene-grid">
+      <div class="s-txt">
+        <p class="said">« Rien n'est inventé, tout est vérifiable. »</p>
+        <p class="said-src"><a href="https://www.grosbillets.com/coulisses" target="_blank" rel="noopener">Ta page Les Coulisses, grosbillets.com</a></p>
+        <h1 id="h1">Thibaut, vérifions ton gros billet.</h1>
+        <p class="lede">Cinq signes de sécurité. Passe-les sous la lampe, un par un.</p>
+        <ul class="legend">
+          <li><i style="background:var(--teal-2)"></i><span><b>Authentique</b> : il passe.</span></li>
+          <li><i style="background:repeating-linear-gradient(45deg,#F0861E 0 4px,#B85A00 4px 8px)"></i><span><b>Douteux</b> : il est là, mais il trouble.</span></li>
+          <li><i style="border:2px dashed #fff"></i><span><b>Manquant</b> : rien n'est imprimé.</span></li>
+        </ul>
+        <p class="count" aria-live="polite"><b id="cnt">0</b> / 5 signes vérifiés</p>
+      </div>
+
+      <div class="note">
+        <svg viewBox="0 0 640 320" aria-hidden="true">
+          <defs>
+            <pattern id="guil" width="28" height="28" patternUnits="userSpaceOnUse">
+              <circle cx="14" cy="14" r="12" fill="none" stroke="#0F6B66" stroke-width=".8" opacity=".22"/>
+              <circle cx="0" cy="0" r="12" fill="none" stroke="#0F6B66" stroke-width=".8" opacity=".22"/>
+              <circle cx="28" cy="28" r="12" fill="none" stroke="#0F6B66" stroke-width=".8" opacity=".22"/>
+            </pattern>
+            <linearGradient id="g-paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5F0E4"/><stop offset="1" stop-color="#DCEBE6"/></linearGradient>
+          </defs>
+          <rect x="0" y="0" width="640" height="320" rx="14" fill="url(#g-paper)"/>
+          <rect x="0" y="0" width="640" height="320" rx="14" fill="url(#guil)"/>
+          <rect x="14" y="14" width="612" height="292" rx="8" fill="none" stroke="#0F6B66" stroke-width="3"/>
+          <rect x="22" y="22" width="596" height="276" rx="6" fill="none" stroke="#0F6B66" stroke-width="1" stroke-dasharray="2 4"/>
+          <!-- 3. numéros de série -->
+          <g class="f" id="f3" fill="#B3261E" stroke="none">
+            <text x="48" y="62" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="22" letter-spacing="3">BBP 2M+ 2011</text>
+            <text x="440" y="284" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="22" letter-spacing="3">BBP 1M+ 2013</text>
+          </g>
+          <!-- titre du billet -->
+          <text x="48" y="128" font-family="Barlow Condensed, sans-serif" font-weight="800" font-size="64" fill="#0F6B66" letter-spacing="2">BBP</text>
+          <text x="50" y="156" font-family="Barlow, sans-serif" font-weight="700" font-size="15" fill="#141A19" letter-spacing="4">GROS BILLET</text>
+          <text x="50" y="178" font-family="Barlow, sans-serif" font-weight="500" font-size="12" fill="#4D5654" letter-spacing="1.5">IMMOBILIER · LIBERTÉ · GROS BILLETS</text>
+          <path d="M50 192 H300" stroke="#F0861E" stroke-width="4"/>
+          <!-- 5. la signature -->
+          <g class="f line" id="f5" fill="none" stroke="#141A19" stroke-width="2.5" stroke-linecap="round">
+            <path d="M120 250 C130 226 146 226 142 248 C139 266 158 238 168 244 C178 250 176 262 190 246 C200 236 214 252 228 240"/>
+            <path d="M112 262 H236" stroke-width="1"/>
+          </g>
+          <!-- 4. l'hologramme (emplacement vide) -->
+          <rect class="f" id="f4" x="262" y="200" width="92" height="64" rx="10" fill="none" stroke="#4D5654" stroke-width="2" stroke-dasharray="6 5"/>
+          <!-- 2. le fil de sécurité -->
+          <g class="f line" id="f2" fill="none" stroke="#F0861E" stroke-width="5" stroke-dasharray="14 10">
+            <path d="M410 22 V298"/>
+          </g>
+          <!-- 1. le filigrane -->
+          <g class="f" id="f1" fill="#FFFFFF" stroke="#0F6B66" stroke-width="1.5" opacity=".9">
+            <ellipse cx="530" cy="150" rx="62" ry="78"/>
+          </g>
+          <g fill="none" stroke="#0F6B66" stroke-width="2" opacity=".55">
+            <rect x="514" y="128" width="32" height="44" rx="16"/>
+            <path d="M530 172 V190 M516 190 H544"/>
+          </g>
+        </svg>
+        <button class="sign-pt" type="button" data-g="1" data-s="auth" style="left:82.8%;top:47%" aria-label="Signe 1, le filigrane : Le podcast du mercredi"><span>1</span></button>
+        <button class="sign-pt" type="button" data-g="2" data-s="doute" style="left:64%;top:40%" aria-label="Signe 2, le fil de sécurité : Ton lien en bio"><span>2</span></button>
+        <button class="sign-pt" type="button" data-g="3" data-s="doute" style="left:40%;top:17%" aria-label="Signe 3, le numéro de série : Tes chiffres"><span>3</span></button>
+        <button class="sign-pt" type="button" data-g="4" data-s="manque" style="left:48.4%;top:72%" aria-label="Signe 4, l'hologramme : Le Club"><span>4</span></button>
+        <button class="sign-pt" type="button" data-g="5" data-s="auth" style="left:12%;top:80%" aria-label="Signe 5, la signature : Les Coulisses"><span>5</span></button>
+      </div>
+
+      <ol class="signs">
+        <li class="sg" data-g="1" data-s="auth"><div class="sg-h"><span class="n">1</span>Le podcast du mercredi <small>filigrane</small> <span class="tag">Authentique</span></div><p>300 épisodes. Chaque mercredi, 7h.</p></li>
+        <li class="sg" data-g="2" data-s="doute"><div class="sg-h"><span class="n">2</span>Ton lien en bio <small>fil de sécurité</small> <span class="tag">Douteux</span></div><p>Il promet l'immobilier, puis ouvre sur la bourse.</p></li>
+        <li class="sg" data-g="3" data-s="doute"><div class="sg-h"><span class="n">3</span>Tes chiffres <small>numéro de série</small> <span class="tag">Douteux</span></div><p>2M ici, 1M là. Rien ne concorde.</p></li>
+        <li class="sg" data-g="4" data-s="manque"><div class="sg-h"><span class="n">4</span>Le Club <small>hologramme</small> <span class="tag">Manquant</span></div><p>Annoncé chaque semaine. Aucune page.</p></li>
+        <li class="sg" data-g="5" data-s="auth"><div class="sg-h"><span class="n">5</span>Les Coulisses <small>signature</small> <span class="tag">Authentique</span></div><p>Ta meilleure page de vente.</p></li>
+      </ol>
+
+      <div class="unlock" id="unlock" hidden>
+        <p class="big">2 authentiques, 2 douteux, 1 manquant.</p>
+        <p>Les trois qui troublent la lampe, de près.</p>
+        <a class="btn" href="#forces">Voir les 3 signes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CE QUI PASSE DÉJÀ -->
+  <section class="forces gated" id="forces" aria-labelledby="h-forces">
+    <div class="wrap">
+      <h2 id="h-forces" data-in>D'abord, ce qui passe sous la lampe.</h2>
+      <div class="f-list">
+        <div class="f-item" data-in>
+          <q>Le podcast te donne les principes. Il ne te montre jamais l'exécution.</q>
+          <p>Et ce que Les Coulisses ne sont pas. <a class="src" href="https://www.grosbillets.com/coulisses" target="_blank" rel="noopener">Les Coulisses</a></p>
+        </div>
+        <div class="f-item" data-in data-d="1">
+          <q>Le même bien, le même loyer. 1&nbsp;784&nbsp;€ d'écart d'impôt.</q>
+          <p>La preuve avant la promesse. <a class="src" href="https://www.grosbillets.com/fiche-immo" target="_blank" rel="noopener">Ta fiche immo</a></p>
+        </div>
+        <div class="f-item" data-in data-d="2">
+          <q>10&nbsp;000&nbsp;€ d'apport, 1&nbsp;100&nbsp;€ de cashflow.</q>
+          <p>Tes titres donnent les chiffres. <a class="src" href="https://open.spotify.com/show/1inif7F4l23XHhjHvd3xHc" target="_blank" rel="noopener">Ton podcast</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. LES 3 SIGNES -->
+  <div class="gated">
+    <section class="p-sec dark" id="signe-2" aria-labelledby="h-s2">
+      <div class="wrap grid2">
+        <div>
+          <p class="stamp doute" data-in><i aria-hidden="true"></i>Signe 2 · Fil de sécurité · Douteux</p>
+          <h2 id="h-s2" data-in>Ton lien en bio promet l'immobilier. Il ouvre sur la bourse.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote"><q>L'immobilier qui enrichit pour de vrai.</q> Premier bouton : la bourse en 60 minutes. Ta fiche immo n'est ni là, ni sur ton accueil. Et « Outils gratuits » ouvre une page vide.</p>
+            <a class="src" href="https://www.grosbillets.com/liens" target="_blank" rel="noopener">Ta page de liens</a><a class="src" href="https://www.grosbillets.com/ressource-gratuite" target="_blank" rel="noopener">Outils gratuits</a>
+          </div>
+          <p class="cost" data-in>L'auditeur immo trouve un ETF, ou rien. Il repart sans laisser son mail.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Celui qui n'est pas prêt pour le Club reste près de toi.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="v-links" role="img" aria-label="Ta page de liens : le titre promet l'immobilier, le premier bouton mène à la bourse, et aucun bouton ne mène à ta fiche immo.">
+            <p class="h" aria-hidden="true">L'immobilier qui enrichit pour de vrai.</p>
+           <div class="v-btn b1" aria-hidden="true"><small>1er bouton</small>Investir en bourse en 60 minutes chrono</div>
+            <div class="v-btn b2" aria-hidden="true">Les Coulisses de Bye Bye Patron</div>
+            <div class="v-btn empty" aria-hidden="true">Ta fiche immo : pas de bouton</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-sec flip sand" id="signe-3" aria-labelledby="h-s3">
+      <div class="wrap grid2">
+        <div>
+          <p class="stamp doute" data-in><i aria-hidden="true"></i>Signe 3 · Numéro de série · Douteux</p>
+          <h2 id="h-s3" data-in>Tes deux numéros de série ne concordent pas.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Ta bio : <q>2M+ écoutes</q>. Ton site : <q>1M+</q>. Investisseur depuis 2011 sur Spotify, depuis 2013 sur Les Coulisses. Alicante, 6-10 mai : <q>plus que 2 places</q> ici, <q>Complet</q> là.</p>
+            <a class="src" href="https://www.instagram.com/bye_bye_patron/" target="_blank" rel="noopener">Ta bio</a><a class="src" href="https://www.grosbillets.com/" target="_blank" rel="noopener">Ton accueil</a><a class="src" href="https://www.grosbillets.com/alicante" target="_blank" rel="noopener">Alicante</a>
+          </div>
+          <p class="cost" data-in>Ton public sait repérer les vendeurs de rêve. Un chiffre qui bouge, il le repère.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Le sceptique vérifie. Et tout concorde, partout.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="serials" role="img" aria-label="Deux relevés côte à côte. Bio et Spotify : 2 millions d'écoutes, investisseur depuis 2011, plus que 2 places à Alicante du 6 au 10 mai. Site, Coulisses et page du séjour : 1 million, depuis 2013, complet.">
+            <div class="serial" aria-hidden="true"><h3>Bio, Spotify, accueil</h3><ol><li class="x">2M+<small>écoutes</small></li><li class="x">2011<small>depuis</small></li><li class="x">2<small>places, 6-10 mai</small></li></ol></div>
+            <div class="serial" aria-hidden="true"><h3>Site, Coulisses, Alicante</h3><ol><li class="x">1M+<small>écoutes</small></li><li class="x">2013<small>depuis</small></li><li class="x">Complet<small>6-10 mai</small></li></ol></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-sec dark" id="signe-4" aria-labelledby="h-s4">
+      <div class="wrap grid2">
+        <div>
+          <p class="stamp manque" data-in><i aria-hidden="true"></i>Signe 4 · Hologramme · Manquant</p>
+          <h2 id="h-s4" data-in>Le Club n'a pas de page.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">Dans tes épisodes : <q>Le Club Bye Bye Patron : un coach dédié pour trouver tes prochains biens, premier mois offert.</q> Le lien : un bouton WhatsApp, sans le mot « Club ». Ni format, ni prix.</p>
+            <a class="src" href="https://open.spotify.com/episode/6zgEh1QlL2FqlGRWjVAxyF" target="_blank" rel="noopener">L'épisode du 18/11</a><a class="src" href="https://www.grosbillets.com/appel-decouverte" target="_blank" rel="noopener">La page du lien</a>
+          </div>
+          <p class="cost" data-in>Celui qui hésite doit t'écrire à froid, sans savoir ce qu'il achète.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Il t'écrit en sachant déjà si le Club est pour lui.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="names" role="img" aria-label="Trois noms pour la même offre, Club1vest, Club Invest et Club Bye Bye Patron, qui mènent tous à un seul bouton WhatsApp.">
+            <div class="nm" aria-hidden="true">Club1vest <small>bons plans</small></div>
+            <div class="nm" aria-hidden="true">Club Invest <small>fiche immo</small></div>
+            <div class="nm" aria-hidden="true">Club Bye Bye Patron <small>podcast</small></div>
+            <div class="arrow" aria-hidden="true">↓</div>
+            <div class="wa" aria-hidden="true">Écris-moi sur WhatsApp →</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 4. APERÇU -->
+  <section class="apercu gated" aria-labelledby="h-ap">
+    <div class="wrap ap-grid">
+      <div>
+        <h2 id="h-ap" data-in>L'hologramme qui manque.</h2>
+        <p data-in>Une page pour le Club, dans ta voix.</p>
+      </div>
+      <div class="maquette" data-in role="img" aria-label="Maquette floutée d'une page de vente pour le Club, avec un bloc de témoignages et un bouton.">
+        <p class="t" aria-hidden="true">Le Club Bye Bye Patron</p>
+        <p class="st" aria-hidden="true">Un coach dédié pour tes prochains biens</p>
+        <div class="flou" aria-hidden="true"><i class="w9"></i><i class="w8"></i><i class="w6"></i><div class="c"></div><i class="w8"></i><div class="p"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FIN -->
+  <section class="fin gated" aria-labelledby="h-fin">
+    <div class="wrap">
+      <svg class="mini" viewBox="0 0 220 110" aria-hidden="true">
+        <rect x="4" y="4" width="212" height="102" rx="8" fill="#F5F0E4" stroke="#0F6B66" stroke-width="3"/>
+        <text x="18" y="48" font-family="Barlow Condensed, sans-serif" font-weight="800" font-size="30" fill="#0F6B66">BBP</text>
+        <path d="M140 8 V102" stroke="#8B5CF6" stroke-width="4" stroke-dasharray="8 6"/>
+        <ellipse cx="182" cy="55" rx="22" ry="30" fill="#D9CCFF" stroke="#8B5CF6" stroke-width="2"/>
+        <rect x="88" y="64" width="38" height="28" rx="6" fill="#D9CCFF" stroke="#8B5CF6" stroke-width="2"/>
+        <path d="M20 84 C30 70 40 72 38 84 C36 94 50 76 60 82" fill="none" stroke="#8B5CF6" stroke-width="2.5"/>
+      </svg>
+      <h2 id="h-fin" data-in>Maintenant, tu sais quels signes troublent la lampe.</h2>
+      <p data-in>Si tu veux qu'on les regarde ensemble, réponds simplement à mon message.</p>
+      <p class="sign" data-in>Alexis</p>
+    </div>
+  </section>
+</main>
+
+<footer class="gated">
+  <div class="wrap">
+    Page préparée par Alexis pour Thibaut (Bye Bye Patron). Ce n'est pas son site officiel. Constats du 24/11/2026. Aucun résultat garanti. Tout investissement comporte un risque de perte en capital.
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('locked');
+
+  /* Arrivées au scroll */
+  var inEls=document.querySelectorAll('[data-in]');
+  if(!('IntersectionObserver' in window)||reduce){inEls.forEach(function(el){el.classList.add('in');});}
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.1});
+    inEls.forEach(function(el){io.observe(el);});
+  }
+
+  /* Le billet : 5 signes passés sous la lampe UV */
+  var pts=document.querySelectorAll('.sign-pt'),count=0,cnt=document.getElementById('cnt'),unlock=document.getElementById('unlock');
+  pts.forEach(function(b){
+    b.setAttribute('aria-pressed','false');
+    b.addEventListener('click',function(){
+      if(b.classList.contains('on'))return;
+      var g=b.getAttribute('data-g');
+      b.classList.add('on');b.setAttribute('aria-pressed','true');
+      var f=document.getElementById('f'+g);if(f)f.classList.add('uv');
+      var li=document.querySelector('.sg[data-g="'+g+'"]');if(li)li.classList.add('on');
+      count++;cnt.textContent=count;
+      if(count===pts.length){
+        unlock.hidden=false;root.classList.remove('locked');
+        unlock.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

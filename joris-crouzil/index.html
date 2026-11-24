@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Joris, le planning de ton futur élève</title>
+<meta name="description" content="Ton tunnel en diagramme de Gantt : 5 tâches à ouvrir. Pour Joris Crouzil (Meraxia), par Alexis.">
+<meta property="og:title" content="Joris, le planning de ton futur élève">
+<meta property="og:description" content="5 tâches. Deux en retard, une dépendance cassée.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBF7EE; --paper-2:#F3EBDA; --grid:rgba(154,106,42,.13); --grid-2:rgba(154,106,42,.24);
+  --ink:#2C2116; --muted:#5A4B3C; --bronze:#8A5A1E; --bronze-2:#B98A45; --sand:#E9D8B8;
+  --night:#2B2017; --night-2:#3A2C1F; --cream:#F6EEDE;
+  --ok:#4C6234; --ok-2:#DDE6CF; --late:#A8431F; --late-2:#F4DCCF;
+  --font-title:"Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body:"Barlow", system-ui, sans-serif;
+  --font-quote:"Playfair Display", Georgia, serif;
+  --maxw:1120px; --gutter:20px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--font-body);overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--font-title);font-weight:700;line-height:1.08;margin:0 0 .5em;letter-spacing:.005em;text-wrap:balance}
+h1{font-size:clamp(2.1rem,8vw,3.6rem)}
+h2{font-size:clamp(1.7rem,5.6vw,2.7rem)}
+p{margin:0 0 1em}
+a{color:inherit}
+q{quotes:"«\00a0" "\00a0»"}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+:focus-visible{outline:3px solid var(--late);outline-offset:3px}
+.src{display:inline-flex;align-items:center;min-height:48px;margin-right:18px;font-size:.93rem;font-weight:600;color:var(--bronze);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.src:hover{color:var(--late)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:4px;background:var(--cream);color:var(--night);font:700 1.1rem var(--font-title);letter-spacing:.04em;text-transform:uppercase;text-decoration:none}
+.btn:hover{background:#fff}
+
+/* ---------- 1. Le planning ---------- */
+.scene{padding:34px 0 46px;background-color:var(--paper);background-image:
+  linear-gradient(var(--grid-2) 1px,transparent 1px),linear-gradient(90deg,var(--grid-2) 1px,transparent 1px),
+  linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:60px 60px,60px 60px,12px 12px,12px 12px}
+.top{max-width:46em}
+.said{font:italic 600 clamp(1.1rem,3.4vw,1.35rem)/1.4 var(--font-quote);color:var(--bronze);margin:0}
+.said-src{margin:0 0 10px;font-size:.93rem}
+.lede{font-size:1.05rem;color:var(--muted);max-width:36em}
+.legend{list-style:none;margin:8px 0 4px;padding:0;display:grid;gap:6px;font-size:.96rem}
+.legend li{display:flex;align-items:center;gap:10px}
+.sw{width:34px;height:14px;border-radius:2px;flex:none}
+.sw.ok{background:var(--ok)}
+.sw.late{background:repeating-linear-gradient(135deg,var(--late) 0 5px,var(--late-2) 5px 9px)}
+.sw.dep{background:transparent;border:2px dashed var(--late)}
+.count{font:700 1.05rem var(--font-title);letter-spacing:.04em;text-transform:uppercase;margin:12px 0 14px}
+
+.gantt{background:#FFFDF8;border:2px solid var(--ink);border-radius:4px;box-shadow:8px 8px 0 var(--sand);max-width:1000px;margin:0 auto}
+.g-head{display:flex;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:2px solid var(--ink);background:var(--night);color:var(--cream);font:700 .86rem/1.2 var(--font-title);letter-spacing:.08em;text-transform:uppercase}
+.g-rows{list-style:none;margin:0;padding:0}
+.g-row{border-bottom:1px solid var(--grid-2)}
+.g-row:last-child{border-bottom:0}
+.g-btn{display:grid;grid-template-columns:1fr;gap:4px;width:100%;min-height:72px;padding:10px 14px 12px;background:none;border:0;text-align:left;color:inherit;font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.g-btn:hover{background:var(--paper-2)}
+.g-lab{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.g-id{font:700 .8rem var(--font-title);color:var(--bronze);letter-spacing:.06em}
+.g-name{font:700 1.15rem/1.15 var(--font-title)}
+.g-st{font:700 .78rem/1 var(--font-title);letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;border-radius:2px}
+.js .g-row:not(.on) .g-st{display:none}
+.g-track{position:relative;height:26px;background-image:linear-gradient(90deg,var(--grid-2) 1px,transparent 1px);background-size:10% 100%}
+.bar{position:absolute;top:4px;height:18px;border:2px solid var(--ink);border-radius:2px;background:#fff;transition:background .4s var(--ease)}
+.over{position:absolute;top:4px;height:18px;border:2px solid var(--late);border-left:0;border-radius:0 2px 2px 0;background:repeating-linear-gradient(135deg,var(--late) 0 5px,var(--late-2) 5px 9px);transform-origin:left center;transition:transform .6s var(--ease)}
+.link{position:absolute;top:-8px;width:12px;height:16px;border-left:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.link::after{content:"";position:absolute;right:-6px;bottom:-6px;border:5px solid transparent;border-left:7px solid var(--ink)}
+.g-row[data-s="dep"].on .link{border-left-style:dashed;border-color:var(--late);height:10px}
+.g-row[data-s="dep"].on .link::after{display:none}
+.cut{position:absolute;top:-4px;font:700 1rem/1 var(--font-title);color:var(--late);opacity:0;transition:opacity .4s}
+.g-row[data-s="dep"].on .cut{opacity:1}
+.mile{position:absolute;top:4px;width:18px;height:18px;background:var(--bronze);transform:rotate(45deg);border:2px solid var(--ink)}
+/* états révélés */
+.js .g-row:not(.on) .over{transform:scaleX(0)}
+.g-row.on[data-s="ok"] .bar{background:var(--ok)}
+.g-row.on[data-s="late"] .bar{background:var(--late)}
+.g-row.on[data-s="dep"] .bar{background:#fff;border:2px dashed var(--late)}
+[data-s="ok"] .g-st{background:var(--ok);color:#fff}
+[data-s="late"] .g-st{background:var(--late);color:#fff}
+[data-s="dep"] .g-st{background:#fff;color:var(--late);border:2px dashed var(--late)}
+.js .g-row:not(.on) .g-name{text-decoration:underline dotted var(--bronze-2) 2px;text-underline-offset:5px}
+
+.fiches{list-style:none;margin:20px auto 0;padding:0;max-width:1000px;display:grid;gap:10px}
+.fiche{background:#FFFDF8;border:1px solid var(--grid-2);border-left:6px solid var(--ok);padding:12px 16px;font-size:.97rem}
+.fiche b{display:block;font:700 1.05rem var(--font-title);letter-spacing:.02em}
+.fiche[data-s="late"]{border-left-color:var(--late)}
+.fiche[data-s="dep"]{border-left:6px dashed var(--late)}
+.js .fiche:not(.on){display:none}
+.unlock{max-width:1000px;margin:18px auto 0;background:var(--night);color:var(--cream);border-radius:4px;padding:20px 22px}
+.unlock .big{font:700 1.35rem/1.25 var(--font-title);margin:0 0 .3em;color:#fff}
+.js .unlock[hidden]{display:none}
+
+/* ---------- arrivées ---------- */
+.locked .gated{display:none}
+.js [data-in]{opacity:0;transform:translateY(22px) scale(.98);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js [data-in].in{opacity:1;transform:none}
+
+/* ---------- 2. Ce qui marche ---------- */
+.bien{padding:76px 0 56px}
+.b-list{display:grid;gap:10px;margin-top:18px}
+.b-item{padding:16px 0 4px;border-top:3px solid var(--ok)}
+.b-item q{display:block;font:italic 600 clamp(1.1rem,3vw,1.3rem)/1.35 var(--font-quote);margin-bottom:6px}
+.b-item p{color:var(--muted);margin:0}
+
+/* ---------- 3. Soucis ---------- */
+.sec{padding:80px 0;overflow:hidden}
+.sec.dark{background:var(--night);color:var(--cream)}
+.sec.dark .src{color:var(--bronze-2)}
+.sec.dark .src:hover{color:#fff}
+.sec.dark .lab{color:var(--bronze-2)}
+.sec.sand{background:var(--paper-2)}
+.grid2{display:grid;gap:34px}
+.stamp{display:inline-block;font:700 .9rem/1 var(--font-title);letter-spacing:.08em;text-transform:uppercase;padding:7px 11px;border-radius:2px;margin-bottom:14px;background:var(--late);color:#fff}
+.stamp.dep{background:transparent;color:inherit;border:2px dashed var(--late)}
+.sec.dark .stamp.dep{border-color:#E08A64}
+.lab{font:700 .92rem var(--font-title);text-transform:uppercase;letter-spacing:.07em;color:var(--bronze);margin:0 0 6px}
+.quote{border-left:4px solid var(--late);padding:2px 0 2px 14px;margin:0 0 4px}
+.quote q{font-weight:600}
+.cost{font:500 clamp(1.05rem,2.6vw,1.2rem)/1.5 var(--font-body);margin:18px 0}
+.change{background:var(--ok-2);color:var(--ink);border-left:6px solid var(--ok);padding:14px 18px;font-weight:600}
+.change .lab{color:var(--ok)}
+.lock{display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px 14px;border:2px dashed currentColor;border-radius:4px;opacity:.85;font-weight:600}
+.lock .bars{flex:1;display:grid;gap:6px;filter:blur(2.5px);opacity:.45}
+.lock .bars span{display:block;height:7px;border-radius:7px;background:currentColor}
+.lock .bars span:nth-child(2){width:65%}
+.lock-txt{flex:2}
+.visual{display:flex;justify-content:center}
+.card{width:100%;max-width:330px;background:#FFFDF8;color:var(--ink);border:2px solid var(--ink);border-radius:4px;box-shadow:8px 8px 0 rgba(0,0,0,.25)}
+.card-h{background:var(--paper-2);border-bottom:2px solid var(--ink);padding:8px 12px;font:700 .85rem var(--font-title);letter-spacing:.08em;text-transform:uppercase}
+.card-r{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:10px 12px;border-bottom:1px solid var(--grid-2)}
+.card-r:last-child{border-bottom:0}
+.card-r span{font-size:.92rem;color:var(--muted)}
+.card-r b{font:700 1.9rem/1 var(--font-title)}
+.card-r.late b{color:var(--late)}
+.mini{position:relative;height:130px;margin:6px 12px 14px}
+.mini .t{position:absolute;height:26px;border:2px solid var(--ink);border-radius:2px;font:700 .8rem/22px var(--font-title);padding:0 8px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.mini .t1{top:8px;left:0;width:56%;border-style:dashed;border-color:var(--late);color:var(--late);background:#fff}
+.mini .t2{top:92px;left:34%;width:66%;background:var(--late);color:#fff}
+.mini .br{position:absolute;left:46%;top:36px;height:54px;border-left:2px dashed var(--late)}
+.mini .x{position:absolute;left:calc(46% - 7px);top:52px;font:700 1.2rem/1 var(--font-title);color:var(--late);background:#FFFDF8}
+
+/* ---------- 4. Aperçu ---------- */
+.apercu{padding:80px 0}
+.ap-grid{display:grid;gap:32px;align-items:center}
+.maquette{max-width:330px;margin:0 auto;background:#fff;border:2px solid var(--ink);border-radius:4px;padding:20px 18px 22px;box-shadow:10px 10px 0 var(--sand)}
+.maquette .t{font:700 1.3rem/1.15 var(--font-title);margin:0 0 4px}
+.maquette .st{font:italic 600 1rem var(--font-quote);color:var(--bronze);margin:0 0 12px}
+.flou{filter:blur(4px);user-select:none;pointer-events:none}
+.flou i{display:block;height:9px;border-radius:9px;background:#E2D6C0;margin:0 0 8px}
+.flou .w8{width:80%}.flou .w6{width:60%}.flou .w9{width:92%}
+.flou .ph{height:70px;border-radius:4px;background:var(--night-2);margin:12px 0}
+.flou .q{height:40px;border-left:5px solid var(--ok);background:var(--ok-2);margin:10px 0}
+.flou .p{height:44px;border-radius:4px;background:var(--bronze);margin-top:12px}
+
+/* ---------- 5. Fin ---------- */
+.fin{padding:84px 0 76px;text-align:center;background:var(--night);color:var(--cream)}
+.fin p{max-width:32em;margin-left:auto;margin-right:auto}
+.fin h2{color:#fff}
+.sign{font:italic 600 2.6rem var(--font-quote);margin:22px 0 0;color:var(--bronze-2)}
+footer{padding:24px 0 34px;font-size:.86rem;color:var(--muted)}
+
+@media (min-width:720px){
+  body{font-size:18px}
+  .scene{padding:54px 0 62px}
+  .legend{grid-template-columns:repeat(3,auto);gap:8px 26px}
+  .g-btn{grid-template-columns:330px 1fr;align-items:center;gap:14px;min-height:60px}
+  .fiches{grid-template-columns:repeat(2,1fr)}
+  .b-list{grid-template-columns:repeat(3,1fr);gap:30px}
+  .grid2{grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}
+  .flip .grid2{grid-template-columns:.75fr 1.25fr}
+  .flip .visual{order:-1}
+  .ap-grid{grid-template-columns:1fr 1fr;gap:60px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<main>
+  <!-- 1. LE PLANNING -->
+  <section class="scene" aria-labelledby="h1">
+    <div class="wrap">
+      <div class="top">
+        <p class="said">« le Planning, le Contrôle des Coûts, et la Gestion des Risques de projets internationaux »</p>
+        <p class="said-src"><a class="src" href="https://meraxia.fr/prise-rdv-mentorat-efficience-page" target="_blank" rel="noopener">Ta page de candidature</a><a class="src" href="https://www.instagram.com/meraxia_/" target="_blank" rel="noopener">@meraxia_</a></p>
+        <h1 id="h1">Joris, voici le planning de ton futur élève.</h1>
+        <p class="lede">Du reel qu'il voit à Efficience, cinq tâches qui s'enchaînent. Ouvre chacune.</p>
+        <ul class="legend">
+          <li><span class="sw ok" aria-hidden="true"></span><span><b>Dans les temps</b> : elle fait son travail.</span></li>
+          <li><span class="sw late" aria-hidden="true"></span><span><b>En retard</b> : elle a glissé.</span></li>
+          <li><span class="sw dep" aria-hidden="true"></span><span><b>Dépendance cassée</b> : il lui manque ce qui vient avant.</span></li>
+        </ul>
+        <p class="count" aria-live="polite"><span id="cnt">0</span> / 5 tâches ouvertes</p>
+      </div>
+
+      <div class="gantt">
+        <p class="g-head" style="margin:0"><span>Projet : un élève de plus</span><span>Meraxia</span></p>
+        <ol class="g-rows">
+          <li class="g-row" data-s="late" data-i="1">
+            <button class="g-btn" type="button" aria-expanded="false" aria-controls="f1">
+              <span class="g-lab"><span class="g-id">T1</span><span class="g-name">Tes reels</span><span class="g-st">En retard</span></span>
+              <span class="g-track" aria-hidden="true"><span class="bar" style="left:0;width:22%"></span><span class="over" style="left:22%;width:16%"></span></span>
+            </button>
+          </li>
+          <li class="g-row" data-s="ok" data-i="2">
+            <button class="g-btn" type="button" aria-expanded="false" aria-controls="f2">
+              <span class="g-lab"><span class="g-id">T2</span><span class="g-name">Le calculateur offert</span><span class="g-st">Dans les temps</span></span>
+              <span class="g-track" aria-hidden="true"><span class="link" style="left:20%"></span><span class="bar" style="left:22%;width:20%"></span></span>
+            </button>
+          </li>
+          <li class="g-row" data-s="late" data-i="3">
+            <button class="g-btn" type="button" aria-expanded="false" aria-controls="f3">
+              <span class="g-lab"><span class="g-id">T3</span><span class="g-name">La vidéo de la méthode</span><span class="g-st">En retard</span></span>
+              <span class="g-track" aria-hidden="true"><span class="link" style="left:38%"></span><span class="bar" style="left:40%;width:18%"></span><span class="over" style="left:58%;width:14%"></span></span>
+            </button>
+          </li>
+          <li class="g-row" data-s="dep" data-i="4">
+            <button class="g-btn" type="button" aria-expanded="false" aria-controls="f4">
+              <span class="g-lab"><span class="g-id">T4</span><span class="g-name">L'appel de sélection</span><span class="g-st">Dépendance cassée</span></span>
+              <span class="g-track" aria-hidden="true"><span class="link" style="left:54%"></span><span class="cut" style="left:calc(54% - 3px)">×</span><span class="bar" style="left:56%;width:18%"></span></span>
+            </button>
+          </li>
+          <li class="g-row" data-s="ok" data-i="5">
+            <button class="g-btn" type="button" aria-expanded="false" aria-controls="f5">
+              <span class="g-lab"><span class="g-id">T5</span><span class="g-name">Le Mentorat Efficience</span><span class="g-st">Dans les temps</span></span>
+              <span class="g-track" aria-hidden="true"><span class="link" style="left:72%"></span><span class="bar" style="left:74%;width:20%"></span><span class="mile" style="left:calc(94% + 2px)"></span></span>
+            </button>
+          </li>
+        </ol>
+      </div>
+
+      <ol class="fiches">
+        <li class="fiche" data-s="late" id="f1"><b>T1 · Tes reels</b>17/11 : <q>commente “INVESTIR”</q>. 3 commentaires, 1&nbsp;603 vues.</li>
+        <li class="fiche" data-s="ok" id="f2"><b>T2 · Le calculateur offert</b><q>Ne gaspille plus de temps à visiter des biens qui ne valent pas l'investissement !</q></li>
+        <li class="fiche" data-s="late" id="f3"><b>T3 · La vidéo de la méthode</b><q>Méthode 100% INÉDITE</q>. Mot pour mot ton ancien site.</li>
+        <li class="fiche" data-s="dep" id="f4"><b>T4 · L'appel de sélection</b>Premier écran : <q>Réserve ton appel de sélection ici</q>. Les raisons viennent après.</li>
+        <li class="fiche" data-s="ok" id="f5"><b>T5 · Le Mentorat Efficience</b><q>Succès ou remboursé</q>, écrit noir sur blanc.</li>
+      </ol>
+
+      <div class="unlock" id="unlock" hidden>
+        <p class="big">2 tâches dans les temps, 2 en retard, 1 dépendance cassée.</p>
+        <p>Non ouverte : tes mails, je ne suis pas inscrit.</p>
+        <a class="btn" href="#bien">Voir les 3 points</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CE QUI MARCHE -->
+  <section class="bien gated" id="bien" aria-labelledby="h-bien">
+    <div class="wrap">
+      <h2 id="h-bien" data-in>Ce qui tient déjà le planning.</h2>
+      <div class="b-list">
+        <div class="b-item" data-in>
+          <q>Commente “calculateur”</q>
+          <p>1&nbsp;475 commentaires, 256&nbsp;243 vues. Tu sais ce qui fait parler. <a class="src" href="https://www.instagram.com/reel/DCJFtYci57N/" target="_blank" rel="noopener">Ton reel du 09/11/2024</a></p>
+        </div>
+        <div class="b-item" data-in>
+          <q>70 % de nos élèves ont déjà suivi une autre formation.</q>
+          <p>Un angle rare, et juste. <a class="src" href="https://www.instagram.com/p/Df4_nosIjTU/" target="_blank" rel="noopener">Ton post du 18/11</a></p>
+        </div>
+        <div class="b-item" data-in>
+          <q>Succès ou remboursé</q>
+          <p>Peu de mentors osent l'écrire. <a class="src" href="https://meraxia.fr/cgv" target="_blank" rel="noopener">Tes CGV</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gated">
+    <!-- SOUCI 1 -->
+    <section class="sec dark" id="s1" aria-labelledby="h-s1">
+      <div class="wrap grid2">
+        <div>
+          <span class="stamp" data-in>T1 · En retard</span>
+          <h2 id="h-s1" data-in>Le même geste qu'en 2024. Presque plus personne ne le fait.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">09/11/2024 : <q>commente “calculateur”</q>, 1&nbsp;475 commentaires. 17/11/2026 : <q>commente “INVESTIR”</q>, 3. 43 commentaires sur tes 9 posts depuis le 26/10.</p>
+            <a class="src" href="https://www.instagram.com/reel/DCJFtYci57N/" target="_blank" rel="noopener">Reel du 09/11/2024</a><a class="src" href="https://www.instagram.com/reel/Df2bEpkoT2Q/" target="_blank" rel="noopener">Reel du 17/11/2026</a>
+          </div>
+          <p class="cost" data-in>Tout ton planning démarre sur ce commentaire. Sans lui, rien ne suit.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Des reels qui refont commenter, avec un mot qu'on a envie de taper.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="card" role="img" aria-label="Fiche de la tâche T1 : 1 475 commentaires le 9 novembre 2024, 3 le 17 novembre 2026.">
+            <p class="card-h" style="margin:0" aria-hidden="true">T1 · Commentaires</p>
+            <p class="card-r" style="margin:0" aria-hidden="true"><span>« calculateur » · 09/11/2024</span><b>1&nbsp;475</b></p>
+            <p class="card-r late" style="margin:0" aria-hidden="true"><span>« INVESTIR » · 17/11/2026</span><b>3</b></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOUCI 2 -->
+    <section class="sec sand flip" id="s2" aria-labelledby="h-s2">
+      <div class="wrap grid2">
+        <div>
+          <span class="stamp dep" data-in>T4 · Dépendance cassée</span>
+          <h2 id="h-s2" data-in>Ton appel de sélection démarre avant ses raisons.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote">D'abord <q>Réserve ton appel de sélection ici</q> et l'agenda. Dessous : <q>+60 biens</q> (ta bio dit 76), <q>+500 élèves accompagnés</q> (ton Linktree dit 700). Ta garantie ? Seulement dans tes CGV.</p>
+            <a class="src" href="https://meraxia.fr/prise-rdv-mentorat-efficience-page" target="_blank" rel="noopener">Ta page de candidature</a><a class="src" href="https://linktr.ee/meraxia_" target="_blank" rel="noopener">Ton Linktree</a><a class="src" href="https://meraxia.fr/cgv" target="_blank" rel="noopener">Tes CGV</a>
+          </div>
+          <p class="cost" data-in>Celui qui a déjà payé une formation cherche la faille. Il en trouve deux, et pas ta garantie.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Il arrive à l'agenda en sachant pourquoi il réserve.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="card" role="img" aria-label="La tâche L'appel de sélection démarre alors que sa tâche prérequise, Ses raisons de réserver, n'existe pas : le lien est coupé.">
+            <p class="card-h" style="margin:0" aria-hidden="true">T4 · Prérequis</p>
+            <div class="mini" aria-hidden="true">
+              <span class="t t1">Ses raisons de réserver</span>
+              <span class="br"></span><span class="x">×</span>
+              <span class="t t2">L'appel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOUCI 3 -->
+    <section class="sec dark" id="s3" aria-labelledby="h-s3">
+      <div class="wrap grid2">
+        <div>
+          <span class="stamp" data-in>T3 · En retard</span>
+          <h2 id="h-s3" data-in>Ta page vidéo dit « inédite » à ceux qui ont déjà tout lu.</h2>
+          <div data-in>
+            <p class="lab">Ce que j'ai vu</p>
+            <p class="quote"><q>Méthode 100% INÉDITE</q>, <q>Cliquez sur l'image animée</q>. Même titre que ton ancien site. Rien pour les 70 % de tes élèves déjà formés ailleurs. Vidéo non vue : elle est derrière le formulaire.</p>
+            <a class="src" href="https://meraxia.fr/vsl-mentorat-org" target="_blank" rel="noopener">Ta page vidéo</a><a class="src" href="https://www.meraxia-formations.fr/" target="_blank" rel="noopener">Ton ancien site</a>
+          </div>
+          <p class="cost" data-in>Celui qui est déjà formé lit une promesse de plus. Et la page le vouvoie, quand tu le tutoies partout.</p>
+          <div class="change" data-in><p class="lab">Ce qui change</p>Ta vidéo dit tout de suite à celui qui sait déjà : c'est pour toi.</div>
+          <div class="lock" data-in><span class="bars" aria-hidden="true"><span></span><span></span></span><span class="lock-txt">Le comment, si tu veux.</span></div>
+        </div>
+        <div class="visual" data-in>
+          <div class="card" role="img" aria-label="Fiche de la tâche T3 : même titre sur l'ancien site et sur la page actuelle.">
+            <p class="card-h" style="margin:0" aria-hidden="true">T3 · Titre de la page</p>
+            <p class="card-r" style="margin:0" aria-hidden="true"><span>meraxia-formations.fr</span><b>=</b></p>
+            <p class="card-r late" style="margin:0" aria-hidden="true"><span>meraxia.fr, aujourd'hui</span><b>=</b></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 4. APERÇU -->
+  <section class="apercu gated" aria-labelledby="h-ap">
+    <div class="wrap ap-grid">
+      <div>
+        <h2 id="h-ap" data-in>La tâche qui manque au planning.</h2>
+        <p data-in>Ta page de candidature, ses raisons avant l'agenda.</p>
+      </div>
+      <div class="maquette" data-in role="img" aria-label="Maquette floutée d'une page de candidature au Mentorat Efficience, avec témoignages et garantie avant l'agenda.">
+        <p class="t" aria-hidden="true">Mentorat Efficience</p>
+        <p class="st" aria-hidden="true">avant ton appel</p>
+        <div class="flou" aria-hidden="true"><i class="w9"></i><i class="w8"></i><div class="ph"></div><i class="w6"></i><div class="q"></div><div class="q"></div><i class="w8"></i><div class="p"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FIN -->
+  <section class="fin gated" aria-labelledby="h-fin">
+    <div class="wrap">
+      <h2 id="h-fin" data-in>Tu sais lire un planning. Maintenant, tu sais où glisse celui-là.</h2>
+      <p data-in>Si tu veux qu'on le regarde ensemble, réponds-moi.</p>
+      <p class="sign" data-in>Alexis</p>
+    </div>
+  </section>
+</main>
+
+<footer class="gated">
+  <div class="wrap">
+    Page préparée par Alexis pour Joris Crouzil (Meraxia). Ce n'est pas son site officiel. Constats du 24/11/2026. Aucun résultat garanti. Tout investissement comporte un risque de perte en capital.
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('locked');
+
+  var inEls=document.querySelectorAll('[data-in]');
+  if(!('IntersectionObserver' in window)||reduce){inEls.forEach(function(el){el.classList.add('in');});}
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.1});
+    inEls.forEach(function(el){io.observe(el);});
+  }
+
+  var rows=document.querySelectorAll('.g-row'),count=0,cnt=document.getElementById('cnt'),unlock=document.getElementById('unlock');
+  rows.forEach(function(li){
+    var b=li.querySelector('.g-btn');
+    b.addEventListener('click',function(){
+      if(li.classList.contains('on'))return;
+      li.classList.add('on');b.setAttribute('aria-expanded','true');
+      document.getElementById('f'+li.getAttribute('data-i')).classList.add('on');
+      count++;cnt.textContent=count;
+      if(count===rows.length){
+        unlock.hidden=false;root.classList.remove('locked');
+        unlock.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
